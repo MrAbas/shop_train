@@ -1,0 +1,33 @@
+{
+  "printWidth": 120,
+  "semi": true,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "bracketSpacing": true,
+  "tabWidth": 2,
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "trailingComma": "all",
+  "importOrder": [
+    "react",
+    "^react-dom$",
+    "^react-(.*)$",
+    "react-redux",
+    "antd",
+    "antd/*",
+    "^axios",
+    "<THIRD_PARTY_MODULES>",
+    "^@src/.*",
+    "^@interfaces/.*",
+    "^@utils/.*",
+    "^@components/.*",
+    "^@svg/.*",
+    "^./.*",
+    "^../.*",
+    "../../.*",
+    ".*scss$",
+    ".*css$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
