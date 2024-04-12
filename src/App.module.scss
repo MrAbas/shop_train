@@ -1,6 +1,14 @@
 .container {
-  margin: 0 auto;
-  max-width: 1470px;
-  min-height: 710px;
-  background-color: black;
+  position: relative;
+  width: 1000px;
+  min-width: 1000px;
+  min-height: 600px;
+  height: 600px;
+  padding: 25px;
+  background-color: #ecf0f3;
+  box-shadow:
+    10px 10px 10px #d1d9e6,
+    -10px -10px 10px #f9f9f9;
+  border-radius: 12px;
+  overflow: hidden;
 }

@@ -1,6 +1,6 @@
-import "./App.global";
-import Switcher from "./Switcher/Switcher";
-import styles from "./App.module";
+import "./App.global.scss";
+import Switcher from "./Switch/Switch";
+import styles from "./App.module.scss";
 
 function App() {
   return (
