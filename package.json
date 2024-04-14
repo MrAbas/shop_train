@@ -8,11 +8,13 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/express": "^4.17.21",
     "@types/react-leaflet": "^3.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.19.2",
+    "normalize-scss": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.75.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -52,8 +54,11 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "file-loader": "^6.2.0",
     "postcss-lit": "^1.1.1",
     "prettier": "3.2.5",
+    "sass": "^1.75.0",
+    "sass-loader": "^14.2.0",
     "stylelint": "^14.16.1",
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-rational-order": "^0.1.2",
@@ -61,6 +66,7 @@
     "stylelint-config-standard-scss": "^6.1.0",
     "stylelint-order": "^6.0.1",
     "stylelint-prettier": "^2.0.0",
-    "stylelint-scss": "^4.3.0"
+    "stylelint-scss": "^4.3.0",
+    "webpack": "^5.91.0"
   }
 }

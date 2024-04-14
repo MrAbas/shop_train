@@ -1,0 +1,68 @@
+.loginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 550px;
+  width: 100%;
+  min-height: 600px;
+}
+
+.titleForm {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 3;
+  color: #181818;
+}
+
+.spanForm {
+  margin-top: 30px;
+  margin-bottom: 12px;
+  max-width: 156px;
+  width: 100%;
+  min-height: 15px;
+}
+
+.inputForm {
+  max-width: 350px;
+  width: 100%;
+  min-height: 40px;
+  margin: 4px 0;
+  padding-left: 25px;
+  font-size: 13px;
+  letter-spacing: 0.15px;
+  border: none;
+  outline: none;
+  font-family: Montserrat, sans-serif;
+  background-color: #ecf0f3;
+  transition: 0.25s ease;
+  border-radius: 8px;
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+}
+
+.linkForm {
+  max-width: 172px;
+  width: 100%;
+  min-height: 32px;
+  color: #181818;
+  font-size: 15px;
+  margin-top: 25px;
+  border-bottom: 1px solid #a0a5a8;
+  line-height: 2;
+}
+
+.buttonForm {
+  max-width: 180px;
+  width: 100%;
+  min-height: 50px;
+  border-radius: 25px;
+  margin-top: 50px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.15px;
+  background-color: #4b70e2;
+  color: #f9f9f9;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
+  border: none;
+  outline: none;
+}
