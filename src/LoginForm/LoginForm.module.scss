@@ -1,3 +1,14 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+  min-height: 600px;
+  padding: 25px;
+  background-color: #ecf0f3;
+}
+
 .loginForm {
   display: flex;
   justify-content: center;
@@ -52,7 +63,7 @@
 }
 
 .buttonForm {
-  max-width: 180px;
+  max-width: 168px;
   width: 100%;
   min-height: 50px;
   border-radius: 25px;

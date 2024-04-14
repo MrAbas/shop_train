@@ -1,15 +1,15 @@
 import SwitchContainer from "./Switch/Switch";
-import LoginBLock from "./LoginContainer/LoginContainer";
 import "./App.global.scss";
-// import RegistrationBlock from "./RegistrationBlock/RegistrationBlock";
+// import LoginForm from "./LoginForm/LoginForm";
+import RegistrationForm from "./RegistrationForm/RegistrationForm";
 import styles from "./App.module.scss"; // TODO импорты не сортируются
 
 function App() {
   return (
     <div className={`${styles.container}`}>
-      {/* <RegistrationBlock /> */}
-      <LoginBLock />
+      {/* <LoginForm /> */}
       <SwitchContainer />
+      <RegistrationForm />
     </div>
   );
 }
