@@ -1,6 +1,6 @@
-import iconTg from "../../../shared/tg.svg";
-import iconInst from "../../../shared/inst.svg";
-import iconTw from "../../../shared/twitter.svg";
+import iconTg from "../../../shared/icons/tg.svg";
+import iconInst from "../../../shared/icons/inst.svg";
+import iconTw from "../../../shared/icons/twitter.svg";
 import styles from "./FormIcons.module.scss";
 
 export default function FormIcons() {
