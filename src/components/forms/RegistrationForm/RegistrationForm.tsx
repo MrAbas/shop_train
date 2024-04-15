@@ -1,4 +1,5 @@
 import FormIcons from "../FormIcons/FormIcons";
+import { SIGN_UP } from "./constants";
 import styles from "./RegistrationForm.module.scss";
 
 export default function RegistrationForm() {
@@ -12,7 +13,7 @@ export default function RegistrationForm() {
         <input className={styles.formInput} type="text" placeholder="Email" />
         <input className={styles.formInput} type="password" placeholder="Password" />
         <button className={styles.formBtn} type="button">
-          SIGN UP
+          {SIGN_UP}
         </button>
       </form>
     </div>

@@ -1,4 +1,5 @@
 import FormIcons from "../FormIcons/FormIcons";
+import { SIGN_IN } from "../../Switch/constants";
 import styles from "./LoginForm.module.scss";
 
 export default function LoginForm() {
@@ -15,7 +16,7 @@ export default function LoginForm() {
           {/* TODO href ошибка # */}
         </a>
         <button className={styles.buttonForm} type="button">
-          SIGN IN
+          {SIGN_IN}
         </button>
       </form>
     </div>

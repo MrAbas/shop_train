@@ -1,15 +1,17 @@
-import SwitchContainer from "./Switch/Switch";
+import Switch from "./components/Switch/Switch";
+import RegistrationForm from "./components/forms/RegistrationForm/RegistrationForm";
+// import Switch2 from "./components/Switch2/Switch2";
+// import LoginForm from "./components/forms/LoginForm/LoginForm";
 import "./App.global.scss";
-// import LoginForm from "./LoginForm/LoginForm";
-import RegistrationForm from "./RegistrationForm/RegistrationForm";
 import styles from "./App.module.scss"; // TODO импорты не сортируются
 
 function App() {
   return (
     <div className={`${styles.container}`}>
-      {/* <LoginForm /> */}
-      <SwitchContainer />
+      <Switch />
       <RegistrationForm />
+      {/* <LoginForm /> */}
+      {/* <Switch2 /> */}
     </div>
   );
 }
