@@ -17,6 +17,13 @@
   z-index: 0;
 }
 
+.changeForm {
+  left: 0;
+  transition: 1.25s;
+  transform-origin: right;
+  z-index: 200;
+}
+
 .loginForm {
   display: flex;
   justify-content: center;

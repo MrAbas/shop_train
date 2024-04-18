@@ -8,7 +8,13 @@ import styles from "./LoginForm.module.scss";
 export default function LoginForm() {
   const isActive = useAppSelector(switchSelector);
   return (
-    <div className={isActive.active ? styles.loginContainer : `${styles.loginContainer} ${styles.changeContainer}`}>
+    <div
+      className={
+        isActive.active
+          ? `${styles.loginContainer} ${styles.changeContainer} ${styles.changeForm}`
+          : `${styles.loginContainer} ${styles.changeContainer}`
+      }
+    >
       <form className={styles.loginForm}>
         <h2 className={styles.titleForm}>Sign in to Website</h2>
         <FormIcons />

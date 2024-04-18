@@ -13,7 +13,13 @@ export default function SwitchContainer1() {
   };
 
   return (
-    <div className={isActive.active ? `${styles.switchContainer} ${styles.changeContainer}` : styles.switchContainer}>
+    <div
+      className={
+        isActive.active
+          ? `${styles.switchContainer} ${styles.changeContainer}`
+          : `${styles.switchContainer} ${styles.isHidden}`
+      }
+    >
       <h2 className={styles.title}>Hello Friend!</h2>
       <p className={styles.switchDescription}>Enter your personal details and start journey with us</p>
       <button className={stylesBtn.btn} type="button" onClick={() => switchForm()}>

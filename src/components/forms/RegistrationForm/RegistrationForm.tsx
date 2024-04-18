@@ -9,7 +9,13 @@ export default function RegistrationForm() {
   const isActive = useAppSelector(switchSelector);
 
   return (
-    <div className={isActive.active ? styles.containerForm : `${styles.containerForm} ${styles.changeContainer}`}>
+    <div
+      className={
+        isActive.active
+          ? `${styles.containerForm} ${styles.changeContainer} ${styles.changeForm}`
+          : `${styles.containerForm} ${styles.changeContainer}`
+      }
+    >
       <form className={styles.registrationForm} method="action">
         <h2 className={styles.title}>Create Account</h2>
         <FormIcons />

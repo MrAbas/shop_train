@@ -17,6 +17,12 @@
   left: calc(100% - 600px);
 }
 
+.changeForm {
+  left: 0;
+  transition: 1.25s;
+  transform-origin: right;
+}
+
 .registrationForm {
   display: flex;
   justify-content: center;
