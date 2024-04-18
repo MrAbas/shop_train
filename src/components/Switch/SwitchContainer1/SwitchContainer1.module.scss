@@ -1,0 +1,41 @@
+.switchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  min-height: 600px;
+  background-color: #ecf0f3;
+  overflow: hidden;
+  position: absolute;
+  z-index: 200;
+  top: 0;
+  left: 600px;
+}
+
+.changeContainer {
+  top: 0;
+  left: 0;
+}
+
+.isHidden {
+  visibility: hidden;
+  transition: 1.25s;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 3;
+  color: #181818;
+}
+
+.switchDescription {
+  max-width: 257px;
+  min-height: 45px;
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  text-align: center;
+  line-height: 1.6;
+}

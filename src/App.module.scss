@@ -4,6 +4,8 @@
   max-width: 1000px;
   width: 100%;
   min-height: 600px;
+  /* stylelint-disable-next-line CssSyntaxError */
+  max-height: 600px;  // TODO max
   padding: 25px;
   margin: 0 auto;
   background-color: #ecf0f3;

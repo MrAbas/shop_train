@@ -7,6 +7,14 @@
   min-height: 600px;
   padding: 25px;
   background-color: #ecf0f3;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.changeContainer {
+  left: calc(100% - 600px);
+  z-index: 0;
 }
 
 .loginForm {
@@ -16,7 +24,7 @@
   flex-direction: column;
   max-width: 550px;
   width: 100%;
-  min-height: 600px;
+  min-height: 550px;
 }
 
 .titleForm {

@@ -1,11 +1,14 @@
 import FormIcons from "../FormIcons/FormIcons";
-import { SIGN_IN } from "../../Switch/constants";
+import { SIGN_IN } from "../../Switch/SwitchContainer2/constants";
+import { useAppSelector } from "../../../store/hooks";
+import { switchSelector } from "../../../store/selectors";
 import stylesBtn from "../../../shared/stylesBtns.module.scss";
 import styles from "./LoginForm.module.scss";
 
 export default function LoginForm() {
+  const isActive = useAppSelector(switchSelector);
   return (
-    <div className={styles.loginContainer}>
+    <div className={isActive.active ? styles.loginContainer : `${styles.loginContainer} ${styles.changeContainer}`}>
       <form className={styles.loginForm}>
         <h2 className={styles.titleForm}>Sign in to Website</h2>
         <FormIcons />

@@ -1,15 +1,16 @@
-import { SIGN_IN } from "./constants";
-import stylesBtn from "../../shared/stylesBtns.module.scss";
+import SwitchContainer1 from "./SwitchContainer1/SwitchContainer1";
+import SwitchContainer2 from "./SwitchContainer2/SwitchContainer2";
+import { useAppSelector } from "../../store/hooks";
+import { switchSelector } from "../../store/selectors";
 import styles from "./Switch.module.scss";
 
 export default function Switch() {
+  const isActive = useAppSelector(switchSelector);
+
   return (
-    <div className={styles.switchContainer}>
-      <h2 className={styles.title}>Welcome Back!</h2>
-      <p className={styles.switchDescription}>To keep connected with us please login with your personal info</p>
-      <button className={stylesBtn.btn} type="button">
-        {SIGN_IN}
-      </button>
+    <div className={isActive.active ? `${styles.switchContainer} ${styles.changeSwitch}` : styles.switchContainer}>
+      <SwitchContainer1 />
+      <SwitchContainer2 />
     </div>
   );
 }

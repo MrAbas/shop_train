@@ -4,6 +4,17 @@
   min-height: 600px;
   padding: 25px;
   background-color: #ecf0f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  transition: 1.25s;
+}
+
+.changeContainer {
+  z-index: 100;
+  left: calc(100% - 600px);
 }
 
 .registrationForm {
