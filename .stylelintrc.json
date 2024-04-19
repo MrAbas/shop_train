@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard"],
+  "extends": ["stylelint-config-standard", "stylelint-config-clean-order"],
   "rules": { "selector-class-pattern": "^([aA-zZ][aA-zZ0-9]*)" },
   "declaration-block-no-duplicate-properties": [
     true,
