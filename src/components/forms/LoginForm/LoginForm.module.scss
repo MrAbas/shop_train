@@ -9,12 +9,12 @@
   background-color: #ecf0f3;
   position: absolute;
   top: 0;
-  left: 0;
 }
 
 .changeContainer {
   left: calc(100% - 600px);
   z-index: 0;
+  transition: 1.25s;
 }
 
 .changeForm {
