@@ -2,7 +2,7 @@ import FormIcons from "../FormIcons/FormIcons";
 import { SIGN_IN } from "../../Switch/SwitchContainer2/constants";
 import { useAppSelector } from "../../../store/hooks";
 import { switchSelector } from "../../../store/selectors";
-import stylesBtn from "../../../shared/stylesBtns.module.scss";
+import LoginButton from "../../../shared/Btn/LoginButton";
 import styles from "./LoginForm.module.scss";
 
 export default function LoginForm() {
@@ -10,7 +10,7 @@ export default function LoginForm() {
   return (
     <div
       className={
-        isActive.active
+        isActive
           ? `${styles.loginContainer} ${styles.changeContainer} ${styles.changeForm}`
           : `${styles.loginContainer} ${styles.changeContainer}`
       }
@@ -25,9 +25,7 @@ export default function LoginForm() {
           Forgot your password?
           {/* TODO href ошибка # */}
         </a>
-        <button className={stylesBtn.btn} type="button">
-          {SIGN_IN}
-        </button>
+        <LoginButton content={SIGN_IN} />
       </form>
     </div>
   );

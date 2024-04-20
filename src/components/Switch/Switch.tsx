@@ -10,7 +10,7 @@ export default function Switch() {
   const isActive = useAppSelector(switchSelector);
 
   return (
-    <div className={isActive.active ? `${styles.switchContainer} ${styles.changeSwitch}` : styles.switchContainer}>
+    <div className={isActive ? `${styles.switchContainer} ${styles.changeSwitch}` : styles.switchContainer}>
       <SwitchContainer1 />
       <SwitchContainer2 />
       <DecorativeCircle1 />

@@ -1,34 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface CounterState {
+interface state {
   active: boolean;
+  theme: string;
 }
 
-const initialState: CounterState = {
+const initialState: state = {
   active: false,
+  theme: "light-theme",
 };
 
-export const shopSlice = createSlice({
+const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
     handleClick(state) {
       state.active = !state.active;
     },
-    /* increment: (state) => {
-      state.value += 1;
+    toggleTheme(state) {
+      state.theme = state.theme === "light-theme" ? "dark-theme" : "light-theme";
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
-    }, */
   },
 });
 
-export const { handleClick } = shopSlice.actions;
+export const { handleClick, toggleTheme } = shopSlice.actions;
 
 export default shopSlice.reducer;

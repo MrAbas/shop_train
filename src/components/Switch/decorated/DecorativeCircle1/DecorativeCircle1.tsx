@@ -4,9 +4,5 @@ import styles from "./DecorativeCircle1.module.scss";
 
 export default function DecorativeCircle1() {
   const isActive = useAppSelector(switchSelector);
-  return (
-    <div
-      className={isActive.active ? `${styles.switchCircle} ${styles.switchCircleChange}` : styles.switchCircle}
-    ></div>
-  );
+  return <div className={isActive ? `${styles.switchCircle} ${styles.switchCircleChange}` : styles.switchCircle} />;
 }
