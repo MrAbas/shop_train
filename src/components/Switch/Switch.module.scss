@@ -13,10 +13,17 @@
   height: 100%;
   padding: 50px;
 
-  background-color: #ecf0f3;
   box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #f9f9f9;
 
   transition: 1.25s;
+}
+
+.switchContainer_light {
+  background-color: #ecf0f3;
+}
+
+.switchContainer_dark {
+  background-color: #303234;
 }
 
 .changeSwitch {

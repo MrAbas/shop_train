@@ -1,28 +1,34 @@
 import FormIcons from "../FormIcons/FormIcons";
 import { SIGN_UP } from "./constants";
-import { switchSelector } from "../../../store/selectors";
+import { switchSelector, themeSelector } from "../../../store/selectors";
 import { useAppSelector } from "../../../store/hooks";
 import LoginButton from "../../../shared/Btn/LoginButton";
 import styles from "./RegistrationForm.module.scss";
 
 export default function RegistrationForm() {
   const isActive = useAppSelector(switchSelector);
-
+  const theme = useAppSelector(themeSelector);
   return (
     <div
       className={
         isActive
-          ? `${styles.containerForm} ${styles.changeContainer} ${styles.changeForm}`
-          : `${styles.containerForm} ${styles.changeContainer}`
+          ? `${styles.containerForm} ${styles.changeContainer} ${styles.changeForm} ${styles[`containerForm_${theme}`]}`
+          : `${styles.containerForm} ${styles.changeContainer} ${styles[`containerForm_${theme}`]} `
       }
     >
       <form className={styles.registrationForm} method="action">
-        <h2 className={styles.title}>Create Account</h2>
+        <h2 className={`${styles.title} ${styles[`title_${theme}`]}`}>Create Account</h2>
         <FormIcons />
-        <span className={styles.registrationSpan}>or use email for registration</span>
-        <input className={styles.formInput} type="text" placeholder="Name" />
-        <input className={styles.formInput} type="text" placeholder="Email" />
-        <input className={styles.formInput} type="password" placeholder="Password" />
+        <span className={`${styles.registrationSpan} ${styles[`registrationSpan_${theme}`]}`}>
+          or use email for registration
+        </span>
+        <input className={`${styles.formInput} ${styles[`formInput_${theme}`]}`} type="text" placeholder="Name" />
+        <input className={`${styles.formInput} ${styles[`formInput_${theme}`]}`} type="text" placeholder="Email" />
+        <input
+          className={`${styles.formInput} ${styles[`formInput_${theme}`]}`}
+          type="password"
+          placeholder="Password"
+        />
         <LoginButton content={SIGN_UP} />
       </form>
     </div>

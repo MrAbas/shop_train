@@ -16,6 +16,14 @@
   transition: 1.25s;
 }
 
+.containerForm_light {
+  background-color: #ecf0f3;
+}
+
+.containerForm_dark {
+  background-color: #303234;
+}
+
 .changeContainer {
   z-index: 100;
   left: calc(100% - 600px);
@@ -43,7 +51,14 @@
   font-size: 34px;
   font-weight: 700;
   line-height: 3;
+}
+
+.title_light {
   color: #181818;
+}
+
+.title_dark {
+  color: #f9f9f9;
 }
 
 .registrationSpan {
@@ -52,6 +67,14 @@
   min-height: 15px;
   margin-top: 30px;
   margin-bottom: 12px;
+}
+
+.registrationSpan_light {
+  color: #181818;
+}
+
+.registrationSpan_dark {
+  color: #f9f9f9;
 }
 
 .formInput {
@@ -69,9 +92,18 @@
   border: none;
   border-radius: 8px;
   outline: none;
-  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
 
   transition: 0.25s ease;
+}
+
+.formInput_light {
+  background-color: #ecf0f3;
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+}
+
+.formInput_dark {
+  background-color: #303234;
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
 }
 
 .formBtn {

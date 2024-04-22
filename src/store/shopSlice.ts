@@ -8,7 +8,7 @@ interface state {
 
 const initialState: state = {
   active: false,
-  theme: "light-theme",
+  theme: "light",
 };
 
 const shopSlice = createSlice({
@@ -19,7 +19,7 @@ const shopSlice = createSlice({
       state.active = !state.active;
     },
     toggleTheme(state) {
-      state.theme = state.theme === "light-theme" ? "dark-theme" : "light-theme";
+      state.theme = state.theme === "light" ? "dark" : "light";
     },
   },
 });

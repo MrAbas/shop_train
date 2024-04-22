@@ -8,7 +8,7 @@ export default function BtnTheme() {
   const [, setTheme] = useState(localStorage.theme ? localStorage.theme : "light");
 
   const addToLS = () => {
-    const newTheme = localStorage.theme === "light-theme" ? "dark-theme" : "light-theme";
+    const newTheme = localStorage.theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.theme = newTheme;
   };

@@ -8,15 +8,28 @@
   width: 100%;
   max-width: 400px;
   min-height: 100%;
+}
 
+.switchContainer_light {
   background-color: #ecf0f3;
+}
+
+.switchContainer_dark {
+  background-color: #303234;
 }
 
 .title {
   font-size: 34px;
   font-weight: 700;
   line-height: 3;
+}
+
+.title_light {
   color: #181818;
+}
+
+.title_dark {
+  color: #f9f9f9;
 }
 
 .isHidden {
@@ -34,4 +47,12 @@
   line-height: 1.6;
   text-align: center;
   letter-spacing: 0.25px;
+}
+
+.switchDescription_light {
+  color: #181818;
+}
+
+.switchDescription_dark {
+  color: #f9f9f9;
 }

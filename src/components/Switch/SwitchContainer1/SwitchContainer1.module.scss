@@ -12,8 +12,14 @@
   width: 100%;
   max-width: 400px;
   min-height: 600px;
+}
 
+.switchContainer_light {
   background-color: #ecf0f3;
+}
+
+.switchContainer_dark {
+  background-color: #303234;
 }
 
 .changeContainer {
@@ -35,6 +41,14 @@
   color: #181818;
 }
 
+.title_light {
+  color: #181818;
+}
+
+.title_dark {
+  color: #f9f9f9;
+}
+
 .switchDescription {
   max-width: 257px;
   min-height: 45px;
@@ -43,4 +57,12 @@
   line-height: 1.6;
   text-align: center;
   letter-spacing: 0.25px;
+}
+
+.switchDescription_light {
+  color: #181818;
+}
+
+.switchDescription_dark {
+  color: #f9f9f9;
 }

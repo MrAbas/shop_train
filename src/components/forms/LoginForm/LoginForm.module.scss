@@ -10,8 +10,14 @@
   max-width: 600px;
   min-height: 600px;
   padding: 25px;
+}
 
+.loginContainer_light {
   background-color: #ecf0f3;
+}
+
+.loginContainer_dark {
+  background-color: #303234;
 }
 
 .changeContainer {
@@ -45,12 +51,28 @@
   color: #181818;
 }
 
+.titleForm_light {
+  color: #181818;
+}
+
+.titleForm_dark {
+  color: #f9f9f9;
+}
+
 .spanForm {
   width: 100%;
   max-width: 167px;
   min-height: 15px;
   margin-top: 30px;
   margin-bottom: 12px;
+}
+
+.spanForm_light {
+  color: #181818;
+}
+
+.spanForm_dark {
+  color: #f9f9f9;
 }
 
 .inputForm {
@@ -64,13 +86,20 @@
   font-size: 13px;
   letter-spacing: 0.15px;
 
-  background-color: #ecf0f3;
   border: none;
   border-radius: 8px;
   outline: none;
   box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
 
   transition: 0.25s ease;
+}
+
+.inputForm_light {
+  background-color: #ecf0f3;
+}
+
+.inputForm_dark {
+  background-color: #303234;
 }
 
 .linkForm {
@@ -81,7 +110,14 @@
 
   font-size: 15px;
   line-height: 2;
-  color: #181818;
+}
 
+.linkForm_light {
+  color: #181818;
   border-bottom: 1px solid #a0a5a8;
+}
+
+.linkForm_dark {
+  color: #f9f9f9;
+  border-bottom: 1px solid #f9f9f9;
 }

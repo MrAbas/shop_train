@@ -2,16 +2,16 @@ import Switch from "./components/Switch/Switch";
 import RegistrationForm from "./components/forms/RegistrationForm/RegistrationForm";
 import LoginForm from "./components/forms/LoginForm/LoginForm";
 import BtnTheme from "./BtnTheme/BtnTheme";
-// import { useAppSelector } from "./store/hooks";
-// import { themeSelector } from "./store/selectors";
+import { useAppSelector } from "./store/hooks";
+import { themeSelector } from "./store/selectors";
 import "./App.global.scss";
 import styles from "./App.module.scss"; // TODO импорты не сортируются
 
 function App() {
-  // const theme = useAppSelector(themeSelector);
+  const theme = useAppSelector(themeSelector);
 
   return (
-    <div className={`${styles.container} ${styles.theme}`}>
+    <div className={`${styles.container} ${styles[`container_${theme}`]}`}>
       <RegistrationForm />
       <LoginForm />
       <Switch />
