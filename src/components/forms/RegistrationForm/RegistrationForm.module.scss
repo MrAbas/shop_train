@@ -1,17 +1,14 @@
 .containerForm {
   position: absolute;
-  top: 0;
+  top: -27px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-  max-width: 600px;
+  width: 60%;
   min-height: 600px;
   padding: 25px;
-
-  background-color: #ecf0f3;
 
   transition: 1.25s;
 }
@@ -26,7 +23,7 @@
 
 .changeContainer {
   z-index: 100;
-  left: calc(100% - 600px);
+  left: calc(100% - 872px);
 }
 
 .changeForm {

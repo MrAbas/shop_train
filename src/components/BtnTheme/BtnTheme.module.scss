@@ -1,0 +1,35 @@
+.btnTheme {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 250;
+  left: 1400px;
+
+  width: 100%;
+  max-width: 30px;
+  min-height: 30px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.btnTheme_light {
+  background-image: url("../../shared/icons/btn_light.svg");
+}
+
+.btnTheme_dark {
+  background-image: url("../../shared/icons/btn_dark.svg");
+}
+
+@media (max-width: 970px) {
+  .btnTheme {
+    left: 850px;
+  }
+}
+
+@media (max-width: 900px) {
+  .btnTheme {
+    left: 800px;
+  }
+}

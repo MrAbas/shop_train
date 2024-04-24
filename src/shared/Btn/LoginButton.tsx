@@ -4,7 +4,7 @@ import styles from "./stylesBtn.module.scss";
 
 interface ButtonProps {
   content: string;
-  onClick?: () => void;
+  onClick?: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 const LoginButton: React.FC<ButtonProps> = ({ content, onClick }) => {

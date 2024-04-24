@@ -1,7 +1,7 @@
 import Switch from "./components/Switch/Switch";
 import RegistrationForm from "./components/forms/RegistrationForm/RegistrationForm";
 import LoginForm from "./components/forms/LoginForm/LoginForm";
-import BtnTheme from "./BtnTheme/BtnTheme";
+import BtnTheme from "./components/BtnTheme/BtnTheme";
 import { useAppSelector } from "./store/hooks";
 import { themeSelector } from "./store/selectors";
 import "./App.global.scss";

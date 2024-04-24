@@ -6,8 +6,7 @@
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-  max-width: 600px;
+  width: 60%;
   min-height: 600px;
   padding: 25px;
 }
@@ -22,7 +21,7 @@
 
 .changeContainer {
   z-index: 0;
-  left: calc(100% - 600px);
+  left: calc(100% - 872px);
   transition: 1.25s;
 }
 

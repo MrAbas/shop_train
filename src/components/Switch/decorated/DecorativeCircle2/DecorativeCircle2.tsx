@@ -10,7 +10,7 @@ export default function DecorativeCircle2() {
     <div
       className={
         isActive
-          ? `${styles.switchCircle} ${styles[`switchCircle_${theme} ${styles.switchCircleChange} `]}`
+          ? `${styles.switchCircle} ${styles.switchCircleChange} ${styles[`switchCircle_${theme}`]}`
           : `${styles.switchCircle} ${styles[`switchCircle_${theme}`]}`
       }
     />

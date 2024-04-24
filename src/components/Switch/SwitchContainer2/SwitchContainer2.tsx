@@ -19,7 +19,7 @@ export default function SwitchContainer2() {
       className={
         isActive
           ? `${styles.switchContainer} ${styles[`switchContainer_${theme}`]} ${styles.isHidden}`
-          : `${styles.switchContainer} ${styles[`switchContainer_${theme}`]} ${styles.changeContainer}`
+          : `${styles.switchContainer} ${styles[`switchContainer_${theme}`]}`
       }
     >
       <h2 className={`${styles.title} ${styles[`title_${theme}`]}`}>Welcome Back!</h2>

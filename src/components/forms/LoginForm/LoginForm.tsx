@@ -1,3 +1,4 @@
+import { useState } from "react";
 import FormIcons from "../FormIcons/FormIcons";
 import { SIGN_IN } from "../../Switch/SwitchContainer2/constants";
 import { useAppSelector } from "../../../store/hooks";
@@ -9,6 +10,18 @@ export default function LoginForm() {
   const isActive = useAppSelector(switchSelector);
   const theme = useAppSelector(themeSelector);
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault;
+    if (email && password) {
+      localStorage.setItem("authorized", "true");
+    }
+    console.log(email);
+    console.log(password); // TODO  не работает
+  };
+
   return (
     <div
       className={
@@ -18,15 +31,23 @@ export default function LoginForm() {
           : `${styles.loginContainer} ${styles.changeContainer}`
       }
     >
-      <form className={styles.loginForm}>
+      <div className={styles.loginForm}>
         <h2 className={`${styles.titleForm} ${styles[`titleForm_${theme}`]}`}>Sign in to Website</h2>
         <FormIcons />
         <span className={`${styles.spanForm} ${styles[`spanForm_${theme}`]}`}>or use your email account</span>
-        <input className={`${styles.inputForm} ${styles[`inputForm_${theme}`]}`} type="text" placeholder="Email" />
+        <input
+          className={`${styles.inputForm} ${styles[`inputForm_${theme}`]}`}
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <input
           className={`${styles.inputForm} ${styles[`inputForm_${theme}`]}`}
           type="password"
           placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <a
           className={`${styles.linkForm} ${styles[`linkForm_${theme}`]}`}
@@ -34,10 +55,10 @@ export default function LoginForm() {
           aria-label="if you forgot the password"
         >
           Forgot your password?
-          {/* TODO href ошибка # */}
         </a>
-        <LoginButton content={SIGN_IN} />
-      </form>
+
+        <LoginButton onClick={handleSubmit} content={SIGN_IN} />
+      </div>
     </div>
   );
 }

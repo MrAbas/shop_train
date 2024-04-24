@@ -18,7 +18,7 @@ export default function SwitchContainer1() {
     <div
       className={
         isActive
-          ? `${styles.switchContainer} ${styles[`switchContainer_${theme}`]} ${styles.changeContainer}`
+          ? `${styles.switchContainer} ${styles[`switchContainer_${theme}`]}`
           : `${styles.switchContainer} ${styles[`switchContainer_${theme}`]} ${styles.isHidden}`
       }
     >

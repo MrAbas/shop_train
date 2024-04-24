@@ -9,8 +9,8 @@ export default function DecorativeCircle1() {
     <div
       className={
         isActive
-          ? `${styles.switchCircle} ${styles[`switchCircle_${theme} ${styles.switchCircleChange} `]}`
-          : `${styles.switchCircle} ${styles[`switchCircle_${theme}`]}` // TODO не видит класс
+          ? `${styles.switchCircle} ${styles.switchCircleChange} ${styles[`switchCircle_${theme}`]}`
+          : `${styles.switchCircle} ${styles[`switchCircle_${theme}`]}`
       }
     />
   );

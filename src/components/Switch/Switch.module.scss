@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
 
-  width: 400px;
+  width: 40%;
   height: 100%;
   padding: 50px;
 
@@ -27,7 +27,7 @@
 }
 
 .changeSwitch {
-  left: calc(100% - 400px);
+  left: calc(100% - 580px);
   transform-origin: left;
   transition: 1.25s;
 }

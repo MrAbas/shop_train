@@ -10,7 +10,6 @@
   justify-content: center;
 
   width: 100%;
-  max-width: 400px;
   min-height: 600px;
 }
 
@@ -22,13 +21,7 @@
   background-color: #303234;
 }
 
-.changeContainer {
-  top: 0;
-  left: 0;
-}
-
 .isHidden {
-  position: absolute;
   visibility: hidden;
   opacity: 0;
   transition: 1.25s;
