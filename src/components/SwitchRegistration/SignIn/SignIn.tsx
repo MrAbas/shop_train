@@ -2,10 +2,10 @@ import { SIGN_IN } from "./constants";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
 import { handleClick } from "../../../store/shopSlice";
-import LoginButton from "../../../shared/Btn/LoginButton";
-import styles from "./SwitchContainer2.module.scss";
+import LoginBtn1 from "../../../shared/Btns/LoginButton1/LoginBtn1";
+import styles from "./SignIn.module.scss";
 
-export default function SwitchContainer2() {
+export default function SignIn() {
   const isActive = useAppSelector(switchSelector);
   const theme = useAppSelector(themeSelector);
 
@@ -29,7 +29,7 @@ export default function SwitchContainer2() {
       {/* <button className={stylesBtn.btn} type="button" onClick={() => switchForm()}>
         {SIGN_IN}
       </button> */}
-      <LoginButton content={SIGN_IN} onClick={() => switchForm()} />
+      <LoginBtn1 content={SIGN_IN} onClick={() => switchForm()} />
     </div>
   );
 }

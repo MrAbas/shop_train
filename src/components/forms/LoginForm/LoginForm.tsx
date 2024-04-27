@@ -1,9 +1,9 @@
 import { useState } from "react";
 import FormIcons from "../FormIcons/FormIcons";
-import { SIGN_IN } from "../../Switch/SwitchContainer2/constants";
+import { SIGN_IN } from "../../SwitchRegistration/SignIn/constants";
 import { useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
-import LoginButton from "../../../shared/Btn/LoginButton";
+import LoginBtn2 from "../../../shared/Btns/LoginButton2/LoginBtn2";
 import styles from "./LoginForm.module.scss";
 
 export default function LoginForm() {
@@ -13,13 +13,12 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault;
     if (email && password) {
       localStorage.setItem("authorized", "true");
     }
-    console.log(email);
-    console.log(password); // TODO  не работает
+    // TODO
   };
 
   return (
@@ -57,7 +56,7 @@ export default function LoginForm() {
           Forgot your password?
         </a>
 
-        <LoginButton onClick={handleSubmit} content={SIGN_IN} />
+        <LoginBtn2 onClick={handleSubmit} content={SIGN_IN} />
       </div>
     </div>
   );

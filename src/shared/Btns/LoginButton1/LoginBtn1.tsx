@@ -1,13 +1,13 @@
-import { useAppSelector } from "../../store/hooks";
-import { themeSelector } from "../../store/selectors";
+import { useAppSelector } from "../../../store/hooks";
+import { themeSelector } from "../../../store/selectors";
 import styles from "./stylesBtn.module.scss";
 
 interface ButtonProps {
   content: string;
-  onClick?: (e: React.FormEvent<HTMLFormElement>) => void;
+  onClick?: () => void;
 }
 
-const LoginButton: React.FC<ButtonProps> = ({ content, onClick }) => {
+const LoginBtn1: React.FC<ButtonProps> = ({ content, onClick }) => {
   const theme = useAppSelector(themeSelector);
 
   return (
@@ -17,4 +17,4 @@ const LoginButton: React.FC<ButtonProps> = ({ content, onClick }) => {
   );
 };
 
-export default LoginButton;
+export default LoginBtn1;

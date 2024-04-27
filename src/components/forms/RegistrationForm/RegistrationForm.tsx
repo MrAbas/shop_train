@@ -2,7 +2,7 @@ import FormIcons from "../FormIcons/FormIcons";
 import { SIGN_UP } from "./constants";
 import { switchSelector, themeSelector } from "../../../store/selectors";
 import { useAppSelector } from "../../../store/hooks";
-import LoginButton from "../../../shared/Btn/LoginButton";
+import LoginBtn2 from "../../../shared/Btns/LoginButton2/LoginBtn2";
 import styles from "./RegistrationForm.module.scss";
 
 export default function RegistrationForm() {
@@ -29,7 +29,7 @@ export default function RegistrationForm() {
           type="password"
           placeholder="Password"
         />
-        <LoginButton content={SIGN_UP} />
+        <LoginBtn2 content={SIGN_UP} />
       </form>
     </div>
   );

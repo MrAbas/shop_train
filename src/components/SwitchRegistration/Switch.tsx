@@ -1,5 +1,5 @@
-import SwitchContainer1 from "./SwitchContainer1/SwitchContainer1";
-import SwitchContainer2 from "./SwitchContainer2/SwitchContainer2";
+import SignUp from "./SignUp/SignUp";
+import SignIn from "./SignIn/SignIn";
 import { useAppSelector } from "../../store/hooks";
 import { switchSelector, themeSelector } from "../../store/selectors";
 import DecorativeCircle1 from "./decorated/DecorativeCircle1/DecorativeCircle1";
@@ -17,8 +17,8 @@ export default function Switch() {
           : styles.switchContainer
       }
     >
-      <SwitchContainer1 />
-      <SwitchContainer2 />
+      <SignUp />
+      <SignIn />
       <DecorativeCircle1 />
       <DecorativeCircle2 />
     </div>

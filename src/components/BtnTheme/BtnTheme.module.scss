@@ -3,7 +3,7 @@
 
   position: absolute;
   z-index: 250;
-  left: 1400px;
+  left: 95vw;
 
   width: 100%;
   max-width: 30px;
@@ -15,21 +15,11 @@
 }
 
 .btnTheme_light {
+  background-color: #ecf0f3;
   background-image: url("../../shared/icons/btn_light.svg");
 }
 
 .btnTheme_dark {
+  background-color: #303234;
   background-image: url("../../shared/icons/btn_dark.svg");
-}
-
-@media (max-width: 970px) {
-  .btnTheme {
-    left: 850px;
-  }
-}
-
-@media (max-width: 900px) {
-  .btnTheme {
-    left: 800px;
-  }
 }

@@ -1,0 +1,27 @@
+.btn {
+  cursor: pointer;
+
+  width: 100%;
+  max-width: 168px;
+  min-height: 50px;
+  margin-top: 50px;
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.15px;
+
+  background-color: #4b70e2;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+}
+
+.btn_light {
+  box-shadow:
+    8px 8px 16px #d1d9e6,
+    -8px -8px 16px #f9f9f9;
+}
+
+.btn_dark {
+  box-shadow: none;
+}

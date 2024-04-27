@@ -1,4 +1,4 @@
-import Switch from "./components/Switch/Switch";
+import Switch from "./components/SwitchRegistration/Switch";
 import RegistrationForm from "./components/forms/RegistrationForm/RegistrationForm";
 import LoginForm from "./components/forms/LoginForm/LoginForm";
 import BtnTheme from "./components/BtnTheme/BtnTheme";

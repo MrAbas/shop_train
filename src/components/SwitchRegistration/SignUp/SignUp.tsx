@@ -2,10 +2,10 @@ import { SIGN_UP } from "../../forms/RegistrationForm/constants";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
 import { handleClick } from "../../../store/shopSlice";
-import LoginButton from "../../../shared/Btn/LoginButton";
-import styles from "./SwitchContainer1.module.scss";
+import LoginBtn1 from "../../../shared/Btns/LoginButton1/LoginBtn1";
+import styles from "./SignUp.module.scss";
 
-export default function SwitchContainer1() {
+export default function SignUp() {
   const isActive = useAppSelector(switchSelector);
   const theme = useAppSelector(themeSelector);
 
@@ -26,7 +26,7 @@ export default function SwitchContainer1() {
       <p className={`${styles.switchDescription} ${styles[`switchDescription_${theme}`]}`}>
         Enter your personal details and start journey with us
       </p>
-      <LoginButton content={SIGN_UP} onClick={() => switchForm()} />
+      <LoginBtn1 content={SIGN_UP} onClick={() => switchForm()} />
     </div>
   );
 }

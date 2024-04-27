@@ -4,11 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface state {
   active: boolean;
   theme: string;
+  authorized: boolean;
 }
 
 const initialState: state = {
   active: false,
   theme: localStorage.theme,
+  authorized: localStorage.authorized,
 };
 
 const shopSlice = createSlice({
