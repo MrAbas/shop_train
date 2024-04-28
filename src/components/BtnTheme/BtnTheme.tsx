@@ -6,6 +6,7 @@ import styles from "./BtnTheme.module.scss";
 export default function BtnTheme() {
   const dispatch = useAppDispatch();
   const theme = useAppSelector(themeSelector);
+
   return (
     <button
       className={`${styles.btnTheme} ${styles[`btnTheme_${theme}`]}`}
