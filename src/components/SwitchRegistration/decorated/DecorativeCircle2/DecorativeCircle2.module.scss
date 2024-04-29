@@ -1,8 +1,7 @@
 .switchCircle {
   position: absolute;
-  top: -30%;
-  bottom: -60%;
-  left: 60%;
+  bottom: 85%;
+  left: 63%;
 
   width: 100%;
   max-width: 285px;
@@ -25,7 +24,7 @@
 }
 
 .switchCircleChange {
-  left: calc(100% - 400px);
+  left: 30%;
   transform-origin: left;
   transition: 1.25s;
 }

@@ -1,6 +1,9 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-clean-order"],
-  "rules": { "selector-class-pattern": "^([aA-zZ][aA-zZ0-9]*)" },
+  "rules": {
+    "selector-class-pattern": "^([aA-zZ][aA-zZ0-9]*)",
+    "at-rule-no-unknown": null
+  },
   "declaration-block-no-duplicate-properties": [
     true,
     {

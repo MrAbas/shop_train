@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { LoginPage } from "./pages/LoginPage";
 import { store } from "./store/store";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import MainPage from "./pages/MainPage/MainPage";
+import { MainPage } from "./pages/MainPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/mainPage",
+    path: "/",
     element: <MainPage />,
     errorElement: <ErrorPage />,
   },

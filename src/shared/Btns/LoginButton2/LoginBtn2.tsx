@@ -1,10 +1,11 @@
+import { MouseEvent } from "react";
 import { useAppSelector } from "../../../store/hooks";
 import { themeSelector } from "../../../store/selectors";
 import styles from "./stylesBtn2.module.scss";
 
 interface ButtonProps {
   content: string;
-  onClick?: (e: React.FormEvent<HTMLFormElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const LoginBtn2: React.FC<ButtonProps> = ({ content, onClick }) => {
@@ -16,5 +17,5 @@ const LoginBtn2: React.FC<ButtonProps> = ({ content, onClick }) => {
     </button>
   );
 };
-
+// TODO поменять названия кнопок.
 export default LoginBtn2;

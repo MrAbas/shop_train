@@ -13,12 +13,10 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault;
+  const handleSubmit = () => {
     if (email && password) {
       localStorage.setItem("authorized", "true");
     }
-    // TODO
   };
 
   return (
