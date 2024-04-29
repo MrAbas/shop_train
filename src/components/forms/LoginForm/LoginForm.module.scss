@@ -1,3 +1,5 @@
+@use "../../../shared/variables";
+
 .loginContainer {
   position: absolute;
   top: 0;
@@ -14,11 +16,11 @@
 }
 
 .loginContainer_light {
-  background-color: #ecf0f3;
+  background-color: variables.$background_light;
 }
 
 .loginContainer_dark {
-  background-color: #303234;
+  background-color: variables.$background_dark;
 }
 
 .changeContainer {
@@ -49,15 +51,15 @@
   font-size: 34px;
   font-weight: 700;
   line-height: 3;
-  color: #181818;
+  color: variables.$black;
 }
 
 .titleForm_light {
-  color: #181818;
+  color: variables.$black;
 }
 
 .titleForm_dark {
-  color: #f9f9f9;
+  color: variables.$white;
 }
 
 .spanForm {
@@ -69,11 +71,11 @@
 }
 
 .spanForm_light {
-  color: #181818;
+  color: variables.$black;
 }
 
 .spanForm_dark {
-  color: #f9f9f9;
+  color: variables.$white;
 }
 
 .inputForm {
@@ -90,17 +92,19 @@
   border: none;
   border-radius: 8px;
   outline: none;
-  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+  box-shadow:
+    inset 2px 2px 4px variables.$background_light,
+    inset -2px -2px 4px variables.$white;
 
   transition: 0.25s ease;
 }
 
 .inputForm_light {
-  background-color: #ecf0f3;
+  background-color: variables.$background_light;
 }
 
 .inputForm_dark {
-  background-color: #303234;
+  background-color: variables.$background_dark;
 }
 
 .linkForm {
@@ -114,11 +118,11 @@
 }
 
 .linkForm_light {
-  color: #181818;
-  border-bottom: 1px solid #a0a5a8;
+  color: variables.$black;
+  border-bottom: 1px solid variables.$gray;
 }
 
 .linkForm_dark {
-  color: #f9f9f9;
-  border-bottom: 1px solid #f9f9f9;
+  color: variables.$white;
+  border-bottom: 1px solid variables.$white;
 }

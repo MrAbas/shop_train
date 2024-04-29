@@ -1,3 +1,5 @@
+@use "../../variables";
+
 .btn {
   cursor: pointer;
 
@@ -10,7 +12,7 @@
   font-weight: 700;
   letter-spacing: 1.15px;
 
-  background-color: #4b70e2;
+  background-color: variables.$purple;
   border: none;
   border-radius: 25px;
   outline: none;
@@ -18,8 +20,8 @@
 
 .btn_light {
   box-shadow:
-    8px 8px 16px #d1d9e6,
-    -8px -8px 16px #f9f9f9;
+    8px 8px 16px variables.$boxShadow_light,
+    -8px -8px 16px variables.$white;
 }
 
 .btn_dark {

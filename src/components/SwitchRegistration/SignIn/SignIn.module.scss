@@ -1,3 +1,5 @@
+@use "../../../shared/variables";
+
 .switchContainer {
   position: absolute;
   top: 0;
@@ -14,11 +16,11 @@
 }
 
 .switchContainer_light {
-  background-color: #ecf0f3;
+  background-color: variables.$background_light;
 }
 
 .switchContainer_dark {
-  background-color: #303234;
+  background-color: variables.$background_dark;
 }
 
 .title {
@@ -28,11 +30,11 @@
 }
 
 .title_light {
-  color: #181818;
+  color: variables.$black;
 }
 
 .title_dark {
-  color: #f9f9f9;
+  color: variables.$white;
 }
 
 .isHidden {
@@ -53,9 +55,9 @@
 }
 
 .switchDescription_light {
-  color: #181818;
+  color: variables.$black;
 }
 
 .switchDescription_dark {
-  color: #f9f9f9;
+  color: variables.$white;
 }

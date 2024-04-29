@@ -1,3 +1,5 @@
+@use "../../shared/variables";
+
 .btnTheme {
   cursor: pointer;
 
@@ -15,11 +17,11 @@
 }
 
 .btnTheme_light {
-  background-color: #ecf0f3;
+  background-color: variables.$background_light;
   background-image: url("../../shared/icons/btn_light.svg");
 }
 
 .btnTheme_dark {
-  background-color: #303234;
+  background-color: variables.$background_dark;
   background-image: url("../../shared/icons/btn_dark.svg");
 }
