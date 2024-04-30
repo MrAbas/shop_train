@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
 import { store } from "./store/store";
 import { MainPage } from "./pages/MainPage";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import { ErrorPage } from "./pages/ErrorPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

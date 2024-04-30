@@ -1,8 +1,8 @@
-import FormIcons from "../FormIcons/FormIcons";
+import { FormIcons } from "../FormIcons";
 import { SIGN_UP } from "./constants";
 import { switchSelector, themeSelector } from "../../../store/selectors";
 import { useAppSelector } from "../../../store/hooks";
-import LoginBtn2 from "../../../shared/Btns/LoginButton2/LoginBtn2";
+import { LoginBtn2 } from "../../../shared/Btns/LoginBtn2";
 import styles from "./RegistrationForm.module.scss";
 
 export default function RegistrationForm() {

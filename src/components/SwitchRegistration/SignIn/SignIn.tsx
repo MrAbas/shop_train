@@ -2,7 +2,7 @@ import { SIGN_IN } from "./constants";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
 import { handleClick } from "../../../store/shopSlice";
-import LoginBtn1 from "../../../shared/Btns/LoginButton1/LoginBtn1";
+import { LoginBtn1 } from "../../../shared/Btns/LoginBtn1";
 import styles from "./SignIn.module.scss";
 
 export default function SignIn() {

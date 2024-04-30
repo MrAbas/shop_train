@@ -1,9 +1,9 @@
 import { useState } from "react";
-import FormIcons from "../FormIcons/FormIcons";
+import { FormIcons } from "../FormIcons";
 import { SIGN_IN } from "../../SwitchRegistration/SignIn/constants";
 import { useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
-import LoginBtn2 from "../../../shared/Btns/LoginButton2/LoginBtn2";
+import { LoginBtn2 } from "../../../shared/Btns/LoginBtn2";
 import styles from "./LoginForm.module.scss";
 
 export default function LoginForm() {

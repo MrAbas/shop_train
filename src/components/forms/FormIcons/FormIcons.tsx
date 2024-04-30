@@ -1,14 +1,21 @@
-import iconTg from "../../../shared/icons/tg.svg";
-import iconInst from "../../../shared/icons/inst.svg";
-import iconX from "../../../shared/icons/x.svg";
+import { Inst } from "../../../shared/icons/Inst";
+import { Tg } from "../../../shared/icons/Tg";
+import { X } from "../../../shared/icons/X";
+import { useAppSelector } from "../../../store/hooks";
+import { themeSelector } from "../../../store/selectors";
 import styles from "./FormIcons.module.scss";
 
 export default function FormIcons() {
+  const theme = useAppSelector(themeSelector);
+
+  const black = "#181818";
+  const white = "#f9f9f9";
+
   return (
     <div className={styles.formIcons}>
-      <img src={iconTg} alt="telegram" className={styles.formIcon} />
-      <img src={iconInst} alt="instagram" className={styles.formIcon} />
-      <img src={iconX} alt="twitter(x)" className={styles.formIcon} />
+      <Tg color={theme === "light" ? black : white} className={styles.formIcon} />
+      <Inst color={theme === "light" ? black : white} className={styles.formIcon} />
+      <X color={theme === "light" ? black : white} className={styles.formIcon} />
     </div>
   );
 }
