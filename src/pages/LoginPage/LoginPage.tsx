@@ -1,5 +1,5 @@
-// import { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Switch from "../../components/SwitchRegistration/Switch";
 import { RegistrationForm } from "../../components/forms/RegistrationForm";
 import { LoginForm } from "../../components/forms/LoginForm";
@@ -11,14 +11,14 @@ import styles from "../../App.module.scss";
 
 const LoginPage = () => {
   const theme = useAppSelector(themeSelector);
-  /*  const userIsInactive = 1;
+  const userIsInactive = localStorage.getItem("authorized");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userIsInactive) {
+    if (userIsInactive === "true") {
       navigate("/");
     }
-  }, [userIsInactive]); TODO */
+  }, [userIsInactive]);
 
   return (
     <div className={`${styles.container} ${styles[`container_${theme}`]}`}>

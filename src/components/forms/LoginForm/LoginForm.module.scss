@@ -100,10 +100,12 @@
 }
 
 .inputForm_light {
+  color: variables.$black;
   background-color: variables.$background_light;
 }
 
 .inputForm_dark {
+  color: variables.$white;
   background-color: variables.$background_dark;
 }
 

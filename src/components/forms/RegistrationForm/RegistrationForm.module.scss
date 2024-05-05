@@ -96,6 +96,7 @@
 }
 
 .formInput_light {
+  color: variables.$black;
   background-color: variables.$background_light;
   box-shadow:
     inset 2px 2px 4px variables.$boxShadow_light,
@@ -103,6 +104,7 @@
 }
 
 .formInput_dark {
+  color: variables.$white;
   background-color: variables.$background_dark;
   box-shadow:
     inset 2px 2px 4px variables.$boxShadow_light,

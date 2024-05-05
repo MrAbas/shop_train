@@ -26,9 +26,6 @@ export default function SignIn() {
       <p className={`${styles.switchDescription} ${styles[`switchDescription_${theme}`]}`}>
         To keep connected with us please login with your personal info
       </p>
-      {/* <button className={stylesBtn.btn} type="button" onClick={() => switchForm()}>
-        {SIGN_IN}
-      </button> */}
       <LoginBtn1 content={SIGN_IN} onClick={() => switchForm()} />
     </div>
   );

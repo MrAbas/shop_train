@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
-import { store } from "./store/store";
+import { store } from "./store";
 import { MainPage } from "./pages/MainPage";
 import { ErrorPage } from "./pages/ErrorPage";
 
