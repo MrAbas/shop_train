@@ -2,7 +2,7 @@ import { SIGN_UP } from "../../forms/RegistrationForm/constants";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
 import { handleClick } from "../../../store/shopSlice";
-import { LoginBtn1 } from "../../../shared/Btns/LoginBtn1";
+import { LoginBtn } from "../../../shared/LoginBtn";
 import styles from "./SignUp.module.scss";
 
 export default function SignUp() {
@@ -26,7 +26,7 @@ export default function SignUp() {
       <p className={`${styles.switchDescription} ${styles[`switchDescription_${theme}`]}`}>
         Enter your personal details and start journey with us
       </p>
-      <LoginBtn1 content={SIGN_UP} onClick={() => switchForm()} />
+      <LoginBtn content={SIGN_UP} onClick={() => switchForm()} />
     </div>
   );
 }

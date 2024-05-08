@@ -3,7 +3,7 @@ import { FormIcons } from "../FormIcons";
 import { SIGN_IN } from "../../SwitchRegistration/SignIn/constants";
 import { useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
-import { LoginBtn2 } from "../../../shared/Btns/LoginBtn2";
+import { LoginBtn } from "../../../shared/LoginBtn";
 import styles from "./LoginForm.module.scss";
 
 export default function LoginForm() {
@@ -54,7 +54,7 @@ export default function LoginForm() {
           Forgot your password?
         </a>
 
-        <LoginBtn2 onClick={handleSubmit} content={SIGN_IN} />
+        <LoginBtn onClick={handleSubmit} content={SIGN_IN} />
       </div>
     </div>
   );
