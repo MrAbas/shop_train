@@ -4,8 +4,10 @@ import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
 import { store } from "./store";
-import { MainPage } from "./pages/MainPage";
 import { ErrorPage } from "./pages/ErrorPage";
+import Header from "./components/Header/Header";
+import { MainPage } from "./pages/MainPage";
+import { ShopPage } from "./pages/ShopPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -17,7 +19,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <MainPage />,
+    element: <Header />,
+    children: [
+      {
+        path: "/",
+        element: <MainPage />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
+      },
+    ],
     errorElement: <ErrorPage />,
   },
 ]);

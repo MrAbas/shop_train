@@ -1,0 +1,95 @@
+.wrapper {
+  width: 100%;
+  min-height: 2700px;
+  padding: 24px 208px;
+  background-color: #1d2533;
+
+  /* max-width: 1504px;
+     max-width: 1920px;
+     padding: 26px 14% 18px; */
+}
+
+.container {
+  max-width: 1504px;
+  margin: 0 auto;
+}
+
+.links {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  max-width: 115px;
+  min-height: 24px;
+  margin-bottom: 40px;
+
+  .styleLinks {
+    /* font-family: "Rostelecom Basis"; */
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgb(255 255 255 / 90%);
+    text-align: center;
+    letter-spacing: 0;
+  }
+
+  .currentLinks {
+    cursor: auto;
+    color: rgb(255 255 255 / 40%);
+  }
+}
+
+.links > li > a:not(:first-child)::before {
+  content: "";
+
+  /* Divider */
+  position: absolute;
+  top: 43.75%;
+  right: -100%;
+  bottom: 43.75%;
+  left: 100%;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  /* TODO не получилось */
+}
+
+.titleContainer {
+  display: flex;
+
+  width: 100%;
+  max-width: 249px;
+  min-height: 44px;
+  margin-bottom: 40px;
+
+  .title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 44px;
+    color: rgb(241 243 245);
+    text-align: left;
+    letter-spacing: 0%;
+
+    /* font-family: "Rostelecom Basis"; */
+  }
+
+  .countProduct {
+    width: 100%;
+    max-width: 74px;
+    height: 20px;
+    margin-left: 16px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(165 168 173);
+    text-align: right;
+    letter-spacing: 0;
+
+    /* font-family: "Rostelecom Basis"; */
+  }
+}

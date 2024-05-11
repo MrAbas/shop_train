@@ -1,0 +1,96 @@
+.header {
+  position: relative;
+  background: rgb(29 37 51);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 0 8px 0 rgb(0 0 0 / 10%);
+
+  /* TODO спросить про box-shadow */
+}
+
+.container {
+  width: 100%;
+  max-width: 1920px;
+  min-height: 80px;
+
+  /* TODO max-width: 1535px; */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14% 18px;
+
+  /* padding: 0 15px; */
+}
+
+.burgerMenu {
+  display: flex;
+
+  width: 100%;
+  max-width: 102px;
+  height: 100%;
+  min-height: 32px;
+}
+
+.menu {
+  width: 100%;
+  max-width: 66px;
+  min-height: 32px;
+  color: rgb(232 233 234);
+}
+
+.logo {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  max-width: 197px;
+  min-height: 50px;
+
+  background-image: url("../../shared/icons/logo.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 248px;
+  min-height: 24px;
+
+  li,
+  a {
+    cursor: pointer;
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .search {
+    background: url("../../shared/icons/search.svg") no-repeat center;
+    background-size: contain;
+  }
+
+  .favorites {
+    background: url("../../shared/icons/favorites.svg") no-repeat center;
+    background-size: contain;
+  }
+
+  .compare {
+    background: url("../../shared/icons/compare.svg") no-repeat center;
+    background-size: contain;
+  }
+
+  .basket {
+    background: url("../../shared/icons/basket.svg") no-repeat center;
+    background-size: contain;
+  }
+
+  .profile {
+    background: url("../../shared/icons/profile.svg") no-repeat center;
+    background-size: contain;
+  }
+}
