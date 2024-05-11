@@ -4,15 +4,11 @@ import styles from "./CustomSelect.module.scss";
 
 interface CustomSelectProps {
   btnNames: string[];
-  className: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 // TODO ошибки вызывал EsLint
-const CustomSelect: React.FC<CustomSelectProps> = ({ btnNames }) => {€
+const CustomSelect: React.FC<CustomSelectProps> = ({ btnNames }) => {
   const [showFilterList, setShowFilterList] = useState(false);
-  const handleBtnClick = () => {
-    setShowFilterList(!showFilterList);
-  };
+
   return (
     <>
       <div className={styles.directoryFiltering}>
@@ -23,7 +19,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ btnNames }) => {€
             btnTitle={btnTitle}
             // eslint-disable-next-line no-nested-ternary
             className={`${styles.btnFilter} ${index === 0 ? styles.categoryIcon : index === 4 ? styles.sortIcon : ""}`}
-            onClick={handleBtnClick}
+            state={[showFilterList, setShowFilterList]}
           />
         ))}
       </div>
