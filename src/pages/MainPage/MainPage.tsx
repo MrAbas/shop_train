@@ -28,10 +28,10 @@ export default function MainPage() {
               <span className={styles.bannerSubtitle}>[ в новой коллекции ]</span>
               <span className={styles.bannerTitleText}>Ростелеком</span>
             </h2>
+            <Link to="/shop" className={styles.link}>
+              В каталог
+            </Link>
           </div>
-          <Link to="/shop" className={styles.link}>
-            В каталог
-          </Link>
         </section>
       </main>
 

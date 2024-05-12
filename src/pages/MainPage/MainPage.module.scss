@@ -6,6 +6,7 @@
 }
 
 .banner {
+  position: relative;
   min-height: 800px;
   padding: 6.25% 14% 12.1%;
 
@@ -16,9 +17,9 @@
     rgb(148 102 255);
 
   .advertising {
-    position: relative;
-    bottom: 98px;
-    left: 1295px;
+    position: absolute;
+    top: 24px;
+    right: 14%;
 
     display: flex;
     align-items: center;
@@ -101,14 +102,16 @@
     min-height: 277px;
 
     .bannerTitleText {
-      /* --font-family: "Rostelecom Basis", sans-serif; TODO спросить в макете просто без Regular */
+      /* --font-family: "Rostelecom Basis", sans-serif; TODO спросить в макете просто без Regular и про font-size */
 
       display: inline-block;
 
       max-width: 1535px;
       min-height: 277px;
 
-      font-size: 268.01px;
+      font-size: clamp(52px, 15vw, 268.01px);
+
+      /* font-size: 268.01px; */
       font-weight: 700;
       line-height: 276.95px;
       color: rgb(232 233 234);
@@ -131,9 +134,21 @@
       text-align: left;
     }
 
-    @media (max-width: 1630px) {
+    /*  @media (max-width: 1630px) {
       .bannerTitleText { font-size: 200px; }
     }
+
+    @media (max-width: 1300px) {
+      .bannerTitleText { font-size: 180px; }
+    }
+
+    @media (max-width: 1125px) {
+      .bannerTitleText { font-size: 155px; }
+    }
+
+    @media (max-width: 960px) {
+      .bannerTitleText { font-size: 130px; }
+    } */
   }
 
   .link {
