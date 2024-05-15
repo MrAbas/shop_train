@@ -8,10 +8,6 @@ export default function Header() {
       <header className={styles.header}>
         <nav className={`${styles.nav} ${styles.container}`}>
           <div className={styles.burgerMenu}>
-            {/* <button className={styles.burger} type="button" aria-label="open menu" />
-          <span className={styles.menu}>Меню</span> */}
-            {/* TODO спросить про кнопку, хотел сделать через label, но не получилось */}
-
             <MuiDrawer />
           </div>
 

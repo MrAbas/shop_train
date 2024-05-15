@@ -54,8 +54,16 @@
     "no-case-declarations": "off",
 
     "no-unused-expressions": "off",
-    "@typescript-eslint/no-unused-expressions": "off"
-
+    "@typescript-eslint/no-unused-expressions": "off",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["CustomInputLabel"],
+        "labelAttributes": ["label"],
+        "controlComponents": ["CustomInput"],
+        "depth": 3
+      }
+    ]
     // "react/prop-types": 0,
   },
   "settings": {

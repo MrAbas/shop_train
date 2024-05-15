@@ -2,8 +2,6 @@
   position: relative;
   background: rgb(29 37 51);
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 0 8px 0 rgb(0 0 0 / 10%);
-
-  /* TODO спросить про box-shadow */
 }
 
 .container {
@@ -18,9 +16,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 14% 18px;
 
-  /* padding: 0 15px; */
+  max-width: 1535px;
+  margin: 0 auto;
+
+  /* padding: 0 15px
+  ;padding: 12px 14% 18px; */
 }
 
 .burgerMenu {

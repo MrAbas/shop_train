@@ -10,7 +10,7 @@ export default function MuiDrawer() {
   };
   /* TODO не понял как стилизовать + ошибочка */
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 100000 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
         {["Каталог", "Покупателям", "Контакты"].map((text) => (
           <ListItem key={text} disablePadding>

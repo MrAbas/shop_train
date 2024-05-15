@@ -1,7 +1,7 @@
 import { SIGN_UP } from "../../forms/RegistrationForm/constants";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
-import { handleClick } from "../../../store/shopSlice";
+import { handleClickActive } from "../../../store/shopSlice";
 import { LoginBtn } from "../../../shared/LoginBtn";
 import styles from "./SignUp.module.scss";
 
@@ -11,7 +11,7 @@ export default function SignUp() {
 
   const dispatch = useAppDispatch();
   const switchForm = () => {
-    dispatch(handleClick());
+    dispatch(handleClickActive());
   };
 
   return (

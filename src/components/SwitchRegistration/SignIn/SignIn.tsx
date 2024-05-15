@@ -1,7 +1,7 @@
 import { SIGN_IN } from "./constants";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { switchSelector, themeSelector } from "../../../store/selectors";
-import { handleClick } from "../../../store/shopSlice";
+import { handleClickActive } from "../../../store/shopSlice";
 import { LoginBtn } from "../../../shared/LoginBtn";
 import styles from "./SignIn.module.scss";
 
@@ -11,9 +11,9 @@ export default function SignIn() {
 
   const dispatch = useAppDispatch();
   const switchForm = () => {
-    dispatch(handleClick());
+    dispatch(handleClickActive());
   };
-
+  /* EsLint выдаёт ошибку */
   return (
     <div
       className={
