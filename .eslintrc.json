@@ -52,7 +52,7 @@
     "jsx-a11y/no-static-element-interactions": "off",
     "no-plusplus": "off",
     "no-case-declarations": "off",
-
+    "operator-linebreak": "off",
     "no-unused-expressions": "off",
     "@typescript-eslint/no-unused-expressions": "off",
     "jsx-a11y/label-has-associated-control": [

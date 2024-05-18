@@ -15,8 +15,8 @@ export default function MainPage() {
     <div className={styles.wrapper}>
       <main>
         <section className={styles.banner}>
-          <div className={styles.container}>
-            <span className={styles.advertising}>Реклама</span>
+          <span className={styles.advertising}>Реклама</span>
+          <div className={styles.bannerContainer}>
             <div className={styles.subtitle}>
               <span className={styles.subOne}>Зима, мода</span>
               <br />

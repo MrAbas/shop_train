@@ -18,11 +18,10 @@ const ChooseCategory: React.FC<ChooseCategoryProps> = ({ categoryNames }) => {
         }}
         aria-label="select a category"
       >
-        категории
+        Категории
       </button>
 
       <ul className={styles.filterList}>
-        {/* TODO если добавить правило в EsLint, то бывает ошибка в других файлах Sign_in */}
         {showCategoryList &&
           categoryNames.map((option, index) => (
             // eslint-disable-next-line react/no-array-index-key

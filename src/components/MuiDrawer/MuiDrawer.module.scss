@@ -24,11 +24,42 @@
   width: 20px;
   height: 13.5px;
 
-  background-image: url("../../shared/icons/burgerMenu.svg");
+  background-image: url("../../shared/assets/icons/burgerMenu.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.bg {
-  background: rgb(16 24 40);
+.wrapper {
+  margin: 0 auto;
+
+  .wrapperContent {
+    padding: 58px 2% 0;
+    background-color: #101828;
+
+    .logo {
+      position: relative;
+
+      display: block;
+
+      width: 100%;
+      max-width: 197px;
+      min-height: 50px;
+      margin-bottom: 150px;
+
+      background-image: url("../../shared/assets/icons/logo.svg");
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}
+
+.drawerList {
+  width: 100%;
+  max-width: 903px;
+
+  font-family: "Rostelecom Basis";
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 32px;
+  color: rgb(119 124 133);
 }

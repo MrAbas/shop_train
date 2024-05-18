@@ -25,7 +25,7 @@ const selectData: { name: string; option: string[] }[] = [
 
 export default function ShopPage() {
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <div className={styles.container}>
         <ul className={styles.links}>
           <li>
@@ -51,6 +51,6 @@ export default function ShopPage() {
           <CustomSelect selectData={selectData} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

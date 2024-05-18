@@ -1,6 +1,6 @@
-import { Inst } from "../../../shared/icons/Inst";
-import { Tg } from "../../../shared/icons/Tg";
-import { X } from "../../../shared/icons/X";
+import { Inst } from "../../../shared/assets/icons/Inst";
+import { Tg } from "../../../shared/assets/icons/Tg";
+import { X } from "../../../shared/assets/icons/X";
 import { useAppSelector } from "../../../store/hooks";
 import { themeSelector } from "../../../store/selectors";
 import { black, white } from "./constants";

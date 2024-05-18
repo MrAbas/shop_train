@@ -19,7 +19,6 @@ const ChoosePrice = () => {
 
       {filterList && (
         <div className={styles.priceFiltering}>
-          {/* TODO если добавить правило в EsLint, то бывает ошибка в других файлах Sign_in */}
           <div className={styles.priceFilteringContainer}>
             <div className={styles.labelContainer}>
               <label className={styles.label}>

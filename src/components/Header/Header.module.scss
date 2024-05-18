@@ -8,8 +8,6 @@
   width: 100%;
   max-width: 1920px;
   min-height: 80px;
-
-  /* TODO max-width: 1535px; */
 }
 
 .nav {
@@ -19,9 +17,9 @@
 
   max-width: 1535px;
   margin: 0 auto;
+  padding: 0 15px
 
-  /* padding: 0 15px
-  ;padding: 12px 14% 18px; */
+  /* padding: 12px 14% 18px; */
 }
 
 .burgerMenu {
@@ -49,7 +47,7 @@
   max-width: 197px;
   min-height: 50px;
 
-  background-image: url("../../shared/icons/logo.svg");
+  background-image: url("../../shared/assets/icons/logo.svg");
   background-position: center;
   background-size: cover;
 }
@@ -71,27 +69,27 @@
   }
 
   .search {
-    background: url("../../shared/icons/search.svg") no-repeat center;
+    background: url("../../shared/assets/icons/search.svg") no-repeat center;
     background-size: contain;
   }
 
   .favorites {
-    background: url("../../shared/icons/favorites.svg") no-repeat center;
+    background: url("../../shared/assets/icons/favorites.svg") no-repeat center;
     background-size: contain;
   }
 
   .compare {
-    background: url("../../shared/icons/compare.svg") no-repeat center;
+    background: url("../../shared/assets/icons/compare.svg") no-repeat center;
     background-size: contain;
   }
 
   .basket {
-    background: url("../../shared/icons/basket.svg") no-repeat center;
+    background: url("../../shared/assets/icons/basket.svg") no-repeat center;
     background-size: contain;
   }
 
   .profile {
-    background: url("../../shared/icons/profile.svg") no-repeat center;
+    background: url("../../shared/assets/icons/profile.svg") no-repeat center;
     background-size: contain;
   }
 }

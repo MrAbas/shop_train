@@ -8,9 +8,7 @@
 .banner {
   position: relative;
   min-height: 800px;
-  padding: 6.25% 14% 12.1%;
-
-  /* padding: 104px 192px 200px; */
+  padding: 6.25% 1% 12.1%;
   background:
     radial-gradient(305.81% 111.8% at 100% 0%, rgb(64 117 255), rgb(64 117 255 / 0%) 100%),
     radial-gradient(283.02% 111.89% at 27% 0%, rgb(22 217 166), rgb(22 217 166 / 0%) 100%),
@@ -31,140 +29,122 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
-
-    /* desktop 1280px+/Accent S */
     color: rgb(165 168 173);
     text-align: left;
     letter-spacing: 0;
 
-    background: url("../../shared/icons/adDecor.svg") rgb(16 24 40 / 40%) no-repeat right;
+    background: url("../../shared/assets/icons/adDecor.svg") rgb(16 24 40 / 40%) no-repeat right;
     border-radius: 30px;
   }
 
-  .subtitle {
-    position: relative;
-    display: inline-block;
-
-    .subOne {
-      display: inline-block;
-
-      width: 100%;
-      max-width: 376px;
-      min-height: 70px;
-      padding: 0 22px;
-
-      font-family: "Rostelecom Basis Regular", sans-serif;
-      font-size: 60px;
-      font-weight: 700;
-      line-height: 62px;
-      color: rgb(42 50 63);
-      text-align: left;
-      white-space: nowrap;
-
-      background-color: rgb(232 233 234);
-      border-radius: 0 3.86px 0 0;
-    }
-
-    .subTwo {
-      display: inline-block;
-
-      width: 100%;
-      min-height: 67px;
-      padding: 0 22px;
-
-      font-family: "Rostelecom Basis Regular", sans-serif;
-      font-size: 60px;
-      font-weight: 700;
-      line-height: 62px;
-      color: rgb(42 50 63);
-      text-align: left;
-      white-space: nowrap;
-
-      background: rgb(232 233 234);
-      border-radius: 0 3.86px 0 0;
-    }
-
-    .decorate {
-      position: absolute;
-      left: 398px;
-
-      width: 100%;
-      max-width: 44.98px;
-      min-height: 26.46px;
-
-      background-image: url("../../shared/icons/decorateBanner.png");
-    }
-  }
-
-  .bannerTitle {
-    position: relative;
+  .bannerContainer {
     max-width: 1535px;
-    min-height: 277px;
+    margin: 0 auto;
 
-    .bannerTitleText {
-      /* --font-family: "Rostelecom Basis", sans-serif; TODO спросить в макете просто без Regular и про font-size */
-
+    .subtitle {
+      position: relative;
       display: inline-block;
 
+      .subOne {
+        display: inline-block;
+
+        width: 100%;
+        max-width: 376px;
+        min-height: 70px;
+        padding: 0 22px;
+
+        font-family: "Rostelecom Basis Regular", sans-serif;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 62px;
+        color: rgb(42 50 63);
+        text-align: left;
+        white-space: nowrap;
+
+        background-color: rgb(232 233 234);
+        border-radius: 0 3.86px 0 0;
+      }
+
+      .subTwo {
+        display: inline-block;
+
+        width: 100%;
+        min-height: 67px;
+        padding: 0 22px;
+
+        font-family: "Rostelecom Basis Regular", sans-serif;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 62px;
+        color: rgb(42 50 63);
+        text-align: left;
+        white-space: nowrap;
+
+        background: rgb(232 233 234);
+        border-radius: 0 3.86px 0 0;
+      }
+
+      .decorate {
+        position: absolute;
+        left: 398px;
+
+        width: 100%;
+        max-width: 44.98px;
+        min-height: 26.46px;
+
+        background-image: url("../../shared/assets/icons/decorateBanner.png");
+      }
+    }
+
+    .bannerTitle {
+      position: relative;
       max-width: 1535px;
       min-height: 277px;
 
-      font-size: clamp(52px, 15vw, 268.01px);
+      .bannerTitleText {
+        /* --font-family: "Rostelecom Basis", sans-serif; TODO не подключается шрифт */
 
-      /* font-size: 268.01px; */
-      font-weight: 700;
-      line-height: 276.95px;
-      color: rgb(232 233 234);
-      text-align: left;
+        display: inline-block;
+
+        max-width: 1535px;
+        min-height: 277px;
+
+        font-size: clamp(52px, 15vw, 268.01px);
+
+        /* font-size: 268.01px; */
+        font-weight: 700;
+        line-height: 276.95px;
+        color: rgb(232 233 234);
+        text-align: left;
+      }
+
+      .bannerSubtitle {
+        position: absolute;
+        top: 31px;
+        left: 198px;
+
+        display: inline-block;
+
+        min-height: 40px;
+
+        font-size: 22.24px;
+        font-weight: 400;
+        line-height: 39.62px;
+        color: rgb(232 233 234);
+        text-align: left;
+      }
     }
 
-    .bannerSubtitle {
-      position: absolute;
-      top: 31px;
-      left: 198px;
+    .link {
+      display: block;
 
-      display: inline-block;
+      width: 100%;
+      max-width: 152px;
+      min-height: 56px;
+      padding: 16px 40px;
 
-      min-height: 40px;
-
-      font-size: 22.24px;
-      font-weight: 400;
-      line-height: 39.62px;
-      color: rgb(232 233 234);
-      text-align: left;
+      background: rgb(148 102 255);
+      border-radius: 36px;
     }
-
-    /*  @media (max-width: 1630px) {
-      .bannerTitleText { font-size: 200px; }
-    }
-
-    @media (max-width: 1300px) {
-      .bannerTitleText { font-size: 180px; }
-    }
-
-    @media (max-width: 1125px) {
-      .bannerTitleText { font-size: 155px; }
-    }
-
-    @media (max-width: 960px) {
-      .bannerTitleText { font-size: 130px; }
-    } */
-  }
-
-  .link {
-    display: block;
-
-    width: 100%;
-
-    /* flex-direction: row;
-    align-items: center;
-    justify-content: center; */
-
-    max-width: 152px;
-    min-height: 56px;
-    padding: 16px 40px;
-
-    background: rgb(148 102 255);
-    border-radius: 36px;
   }
 }

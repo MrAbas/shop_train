@@ -8,20 +8,33 @@ export default function MuiDrawer() {
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-  /* TODO не понял как стилизовать + ошибочка */
+
   const DrawerList = (
-    <Box sx={{ width: 100000 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
-        {["Каталог", "Покупателям", "Контакты"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-    </Box>
+    <div className={styles.wrapper}>
+      <div className={styles.wrapperContent}>
+        <nav>
+          <a className={styles.logo} href="/" aria-label="logo" />
+        </nav>
+        <Box sx={{ width: 10000, height: 10000 }} role="presentation" onClick={toggleDrawer(false)}>
+          <List sx={{ padding: 0 }} className={styles.drawerList}>
+            {["Каталог", "Покупателям", "Контакты"].map((text, index /* TODO Как сделать ссылки на кнопки */) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton
+                  sx={{
+                    padding: 0,
+                    marginBottom: index === 0 ? "24px" : index === 1 ? "24px" : 0,
+                    marginTop: index === 1 ? "24px" : index === 2 ? "24px" : 0,
+                  }}
+                >
+                  <ListItemText sx={{ margin: 0 }} primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+        </Box>
+      </div>
+    </div>
   );
 
   return (

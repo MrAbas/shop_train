@@ -15,6 +15,7 @@
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.19.2",
+    "http-proxy-middleware": "^3.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "normalize-scss": "^8.0.0",
