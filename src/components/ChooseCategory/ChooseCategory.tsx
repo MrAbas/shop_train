@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./ChooseCategory.module.scss";
 
 interface ChooseCategoryProps {
@@ -26,10 +27,10 @@ const ChooseCategory: React.FC<ChooseCategoryProps> = ({ categoryNames }) => {
           categoryNames.map((option, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <li key={index} className={styles.listBtn}>
-              <button className={styles.listBtnItem} type="button">
+              <Link to={`${option.value}`} className={styles.listBtnItem} type="button">
                 {/* добавить link в роутер на option.value  */}
                 {option.name}
-              </button>
+              </Link>
             </li>
           ))}
       </ul>

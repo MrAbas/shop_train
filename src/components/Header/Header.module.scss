@@ -22,15 +22,6 @@
   /* padding: 12px 14% 18px; */
 }
 
-.burgerMenu {
-  display: flex;
-
-  width: 100%;
-  max-width: 102px;
-  height: 100%;
-  min-height: 32px;
-}
-
 .menu {
   width: 100%;
   max-width: 66px;
@@ -68,28 +59,31 @@
     height: 24px;
   }
 
-  .search {
-    background: url("../../shared/assets/icons/search.svg") no-repeat center;
-    background-size: contain;
+  .listBtn {
+    height: 24px;
+    background-color: transparent;
+
+    &:hover {
+      color: #9466ff;
+
+      .btnIcon {
+        color: #9466ff;
+      }
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    .btnIcon {
+      color: #e8e9ea;
+    }
   }
 
-  .favorites {
-    background: url("../../shared/assets/icons/favorites.svg") no-repeat center;
-    background-size: contain;
-  }
+  .listLink {
+    width: 100%;
+    height: 100%;
+    color: #e8e9ea;
 
-  .compare {
-    background: url("../../shared/assets/icons/compare.svg") no-repeat center;
-    background-size: contain;
-  }
-
-  .basket {
-    background: url("../../shared/assets/icons/basket.svg") no-repeat center;
-    background-size: contain;
-  }
-
-  .profile {
-    background: url("../../shared/assets/icons/profile.svg") no-repeat center;
-    background-size: contain;
+    &:hover {
+      color: #9466ff;
+    }
   }
 }

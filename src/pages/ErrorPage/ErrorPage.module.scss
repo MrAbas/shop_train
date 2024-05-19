@@ -762,45 +762,42 @@ button {
   vertical-align: top;
 
   border: 1px solid #181828;
-}
 
-.eNavLink::before {
-  content: "";
+  &::before {
+    content: "";
 
-  position: absolute;
-  top: 70px;
-  right: 70px;
-  transform: rotate(50deg);
+    position: absolute;
+    top: 70px;
+    right: 70px;
+    transform: rotate(50deg);
 
-  width: 260px;
-  height: 200px;
+    width: 260px;
+    height: 200px;
 
-  background: #212121;
+    background: #212121;
 
-  transition: all 0.3s;
-}
+    transition: all 0.3s;
+  }
 
-.eNavLink::after {
-  position: relative;
-  z-index: 999;
-  transition: all 0.3s;
-}
+  &::after {
+    content: "Home Page";
+    position: relative;
+    z-index: 999;
+    transition: all 0.3s;
+  }
 
-.eNavLink ::after {
-  content: "Home Page";
-}
+  &:hover::before {
+    top: -60px;
+    right: -50px;
+  }
 
-.eNavLink:hover::before {
-  top: -60px;
-  right: -50px;
-}
+  &:hover {
+    color: #fff;
+  }
 
-.eNavLink:hover {
-  color: #fff;
-}
-
-.eNavLink:nth-child(2):hover::after {
-  color: #fff;
+  &:nth-child(2):hover::after {
+    color: #fff;
+  }
 }
 
 /* 2.1. END Section Error */

@@ -1,3 +1,3 @@
 export default function ErrorPage() {
-  return <div>Ошибочка</div>;
+  return <div>Снова накосячил</div>;
 }

@@ -34,8 +34,6 @@ export default function MainPage() {
           </div>
         </section>
       </main>
-
-      {/* TOD  */}
     </div>
   );
 }

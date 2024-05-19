@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import BurgerMenuSvg from "../../shared/assets/icons/BurgerMenuSvg";
 import styles from "./MuiDrawer.module.scss";
 
 export default function MuiDrawer() {
@@ -38,8 +39,9 @@ export default function MuiDrawer() {
   );
 
   return (
-    <div>
-      <button onClick={toggleDrawer(true)} className={styles.burger} type="button" aria-label="open menu">
+    <div className={styles.burgerMenu}>
+      <button onClick={toggleDrawer(true)} className={styles.burgerBtn} type="button" aria-label="open menu">
+        <BurgerMenuSvg className={styles.burgerIcon} />
         Меню
       </button>
       <Drawer open={open} onClose={toggleDrawer(false)}>

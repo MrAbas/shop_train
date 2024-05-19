@@ -1,5 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { MuiDrawer } from "../MuiDrawer";
+import SearchSvg from "../../shared/assets/icons/SearchSvg";
+import FavoritesSvg from "../../shared/assets/icons/FavoritesSvg";
+import CompareSvg from "../../shared/assets/icons/CompareSvg";
+import BasketSvg from "../../shared/assets/icons/BasketSvg";
+import ProfileSvg from "../../shared/assets/icons/ProfileSvg";
 import styles from "./Header.module.scss";
 
 export default function Header() {
@@ -7,28 +12,34 @@ export default function Header() {
     <>
       <header className={styles.header}>
         <nav className={`${styles.nav} ${styles.container}`}>
-          <div className={styles.burgerMenu}>
-            <MuiDrawer />
-          </div>
-
+          <MuiDrawer />
           <a className={styles.logo} href="/" aria-label="Logo" />
           <ul className={styles.category}>
             <li>
-              <a className={styles.search} href="/" aria-label="search" type="button" />
+              <button className={styles.listBtn} aria-label="search" type="button">
+                <SearchSvg className={styles.btnIcon} />
+              </button>
             </li>
             <li>
-              <a className={styles.favorites} href="/" aria-label="favorites" type="button" />
+              <a className={styles.listLink} href="/" aria-label="favorites" type="button">
+                <FavoritesSvg className={styles.listLink} />
+              </a>
             </li>
             <li>
-              <a className={styles.compare} href="/" aria-label="сравнение товаров" type="button" />
+              <a className={styles.listLink} href="/" aria-label="compare" type="button">
+                <CompareSvg className={styles.listLink} />
+              </a>
             </li>
             <li>
-              <a className={styles.basket} href="/" aria-label="basket" type="button" />
+              <a className={styles.listLink} href="/" aria-label="basket" type="button">
+                <BasketSvg className={styles.listLink} />
+              </a>
             </li>
             <li>
-              <a className={styles.profile} href="/" aria-label="profile" type="button" />
+              <button className={styles.listBtn} aria-label="profile" type="button">
+                <ProfileSvg className={styles.btnIcon} />
+              </button>
             </li>
-            {/* Не отображаются иконки + лишние border и margin */}
           </ul>
         </nav>
       </header>

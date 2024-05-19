@@ -4,11 +4,11 @@ import { CustomSelect } from "../../shared/DefaultBtnSelect";
 import styles from "./ShopPage.module.scss";
 
 const categoryNames: { name: string; value: string }[] = [
-  { name: "Все категории", value: "catalog" },
-  { name: "Одежда", value: "catalog" },
-  { name: "Аксессуары", value: "catalog" },
-  { name: "Цвет", value: "catalog" },
-  { name: "Сувениры", value: "catalog" },
+  { name: "Все категории", value: "/shop" },
+  { name: "Одежда", value: "/shop/cloth" },
+  { name: "Аксессуары", value: "/shop/accessories'" },
+  { name: "Сувениры", value: "/shop/souvenirs" },
+  { name: "Канцелярия", value: "/shop/office" },
 ];
 
 const selectData: { name: string; option: string[] }[] = [
