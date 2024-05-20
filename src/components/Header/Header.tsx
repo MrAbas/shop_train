@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { MuiDrawer } from "../MuiDrawer";
-import SearchSvg from "../../shared/assets/icons/SearchSvg";
-import FavoritesSvg from "../../shared/assets/icons/FavoritesSvg";
-import CompareSvg from "../../shared/assets/icons/CompareSvg";
-import BasketSvg from "../../shared/assets/icons/BasketSvg";
-import ProfileSvg from "../../shared/assets/icons/ProfileSvg";
+import SearchSvg from "../../shared/assets/icons/Header/SearchSvg";
+import FavoritesSvg from "../../shared/assets/icons/Header/FavoritesSvg";
+import CompareSvg from "../../shared/assets/icons/Header/CompareSvg";
+import BasketSvg from "../../shared/assets/icons/Header/BasketSvg";
+import ProfileSvg from "../../shared/assets/icons/Header/ProfileSvg";
 import styles from "./Header.module.scss";
 
 export default function Header() {

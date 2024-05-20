@@ -30,11 +30,17 @@
 }
 
 .wrapper {
+  overflow: hidden;
   margin: 0 auto;
 
   .wrapperContent {
     padding: 58px 2% 0;
+
     background-color: #101828;
+    background-image: url("../../shared/assets/icons/Header/burgerBg.png");
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: top;
 
     .logo {
       position: relative;
@@ -49,6 +55,48 @@
       background-image: url("../../shared/assets/icons/logo.svg");
       background-position: center;
       background-size: cover;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+
+      width: 100%;
+      max-width: 1504px;
+      min-height: 82px;
+      margin: 0 auto;
+
+      .containerBtns {
+        width: 100%;
+        max-width: 160px;
+        min-height: 48px;
+
+        .btnsMenu {
+          display: flex;
+          justify-content: space-between;
+
+          .langBtn {
+            position: static;
+
+            display: flex;
+
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 68px;
+            min-height: 48px;
+            padding: 12px 24px;
+
+            font-family: "Rostelecom Basis";
+            font-size: 16px;
+            color: rgb(255 255 255 / 90%);
+            text-align: center;
+
+            background-color: transparent;
+            border: 2px solid rgb(148 102 255);
+            border-radius: 32px;
+          }
+        }
+      }
     }
   }
 }
