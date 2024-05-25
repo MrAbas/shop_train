@@ -3,12 +3,12 @@ import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
 import styles from "./ShopPage.module.scss";
 
-const categoryNames: { name: string; value: string }[] = [
-  { name: "Все категории", value: "/shop" },
-  { name: "Одежда", value: "/shop/cloth" },
-  { name: "Аксессуары", value: "/shop/accessories'" },
-  { name: "Сувениры", value: "/shop/souvenirs" },
-  { name: "Канцелярия", value: "/shop/office" },
+const categoryNames: { option: string; value: string }[] = [
+  { option: "Все категории", value: "/shop" },
+  { option: "Одежда", value: "/shop/cloth" },
+  { option: "Аксессуары", value: "/shop/accessories'" },
+  { option: "Сувениры", value: "/shop/souvenirs" },
+  { option: "Канцелярия", value: "/shop/office" },
 ];
 
 const selectData: { name: string; option: string[] }[] = [
@@ -47,8 +47,11 @@ export default function ShopPage() {
         <div className={styles.btnsFilter}>
           <ChooseCategory categoryNames={categoryNames} />
           <ChoosePrice />
+          {/* TODO применить кастомный хук на 2 селекта! */}
           {/* link добавить или заменить кнопки */}
-          <CustomSelect selectData={selectData} />
+          {selectData.map((filter) => (
+            <CustomSelect selectData={filter} />
+          ))}
         </div>
       </div>
     </section>

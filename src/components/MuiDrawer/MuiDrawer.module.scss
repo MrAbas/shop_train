@@ -50,26 +50,38 @@
       width: 100%;
       max-width: 197px;
       min-height: 50px;
-      margin-bottom: 150px;
 
-      background-image: url("../../shared/assets/icons/logo.svg");
-      background-position: center;
-      background-size: cover;
+      background: no-repeat url("../../shared/assets/icons/logo.svg");
+      background-size: contain;
     }
 
     .nav {
       display: flex;
+      align-items: center;
       justify-content: space-between;
 
       width: 100%;
       max-width: 1504px;
-      min-height: 82px;
+      min-height: 106px;
       margin: 0 auto;
 
       .containerBtns {
         width: 100%;
         max-width: 160px;
         min-height: 48px;
+
+        .containerCloseMenu {
+          display: flex;
+          justify-content: flex-end;
+          min-height: 58px;
+
+          .closeMenu {
+            width: 100%;
+            max-width: 24px;
+            min-height: 24px;
+            background: url("../../shared/assets/icons/Header/closeMenu.svg") transparent no-repeat;
+          }
+        }
 
         .btnsMenu {
           display: flex;
@@ -103,11 +115,15 @@
 
 .drawerList {
   width: 100%;
-  max-width: 903px;
+  max-width: 1575px;
 
   font-family: "Rostelecom Basis";
   font-size: 28px;
   font-weight: 700;
   line-height: 32px;
   color: rgb(119 124 133);
+}
+
+.listMargin:not:last-child {
+  margin-bottom: 48px;
 }

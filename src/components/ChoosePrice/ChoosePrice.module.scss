@@ -11,6 +11,7 @@
   width: 100%;
   max-width: 280px;
   min-height: 48px;
+  margin-bottom: 4px;
   padding: 12px 16px 12px 20px;
 
   /* font-family: "Rostelecom Basis"; */
@@ -41,9 +42,6 @@
 }
 
 .priceFiltering {
-  position: absolute;
-  top: 52px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,6 +49,7 @@
   width: 100%;
   max-width: 280px;
   min-height: 132px;
+  margin-bottom: 4px;
 
   background: rgb(61 69 85);
   border-radius: 16px;

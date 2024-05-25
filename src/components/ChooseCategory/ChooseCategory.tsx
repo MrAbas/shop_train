@@ -1,16 +1,31 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./ChooseCategory.module.scss";
 
 interface ChooseCategoryProps {
-  categoryNames: { name: string; value: string }[];
+  categoryNames: { option: string; value: string }[];
 }
 
 const ChooseCategory: React.FC<ChooseCategoryProps> = ({ categoryNames }) => {
   const [showCategoryList, setShowCategoryList] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function observer(event: MouseEvent) {
+      if (!ref.current.contains(event.target)) {
+        setShowCategoryList(!showCategoryList);
+      }
+    }
+    if (showCategoryList) {
+      window.addEventListener("click", observer);
+    }
+    return () => {
+      window.removeEventListener("click", observer);
+    };
+  }, [showCategoryList]);
 
   return (
-    <div className={styles.containerBtn}>
+    <div ref={ref} className={styles.containerBtn}>
       <button
         className={`${styles.btnFilter} ${styles.categoryIcon}`}
         type="button"
@@ -24,12 +39,10 @@ const ChooseCategory: React.FC<ChooseCategoryProps> = ({ categoryNames }) => {
 
       <ul className={styles.filterList}>
         {showCategoryList &&
-          categoryNames.map((option, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <li key={index} className={styles.listBtn}>
-              <Link to={`${option.value}`} className={styles.listBtnItem} type="button">
-                {/* добавить link в роутер на option.value  */}
-                {option.name}
+          categoryNames.map((item, index) => (
+            <li key={`${index + item.option}`} className={styles.listBtn}>
+              <Link to={`${item.value}`} className={styles.listBtnItem}>
+                {item.option}
               </Link>
             </li>
           ))}

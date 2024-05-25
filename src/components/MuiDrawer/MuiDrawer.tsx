@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import BurgerMenuSvg from "../../shared/assets/icons/Header/BurgerMenuSvg";
+import AccordionMenu from "../AccordionMenu/AccordionMenu";
 import styles from "./MuiDrawer.module.scss";
 
 export default function MuiDrawer() {
@@ -10,15 +11,20 @@ export default function MuiDrawer() {
     setOpen(newOpen);
   };
 
-  // TODO Добавить кнопку закрытия меню
-
   const DrawerList = (
     <div className={styles.wrapper}>
       <div className={styles.wrapperContent}>
         <nav className={styles.nav}>
           <a className={styles.logo} href="/" aria-label="logo" />
           <div className={styles.containerBtns}>
-            <button type="button" aria-label="close menu" />
+            <div className={styles.containerCloseMenu}>
+              <button
+                onClick={toggleDrawer(false)}
+                className={styles.closeMenu}
+                type="button"
+                aria-label="close menu"
+              />
+            </div>
             <div className={styles.btnsMenu}>
               <button className={styles.langBtn} type="button" aria-label="перевести на русский">
                 Ru
@@ -29,21 +35,23 @@ export default function MuiDrawer() {
             </div>
           </div>
         </nav>
-        <Box sx={{ width: "100vw", height: "100vw" }} role="presentation" onClick={toggleDrawer(false)}>
-          <List sx={{ padding: 0 }} className={styles.drawerList}>
-            {["Каталог", "Покупателям", "Контакты"].map((text, index /* TODO Как сделать ссылки на кнопки */) => (
+        <Box sx={{ width: "100vw", height: "100vw" }} role="presentation">
+          <List sx={{ padding: 0, margin: "0 auto" }} className={styles.drawerList}>
+            {["Каталог", "Покупателям", "Контакты"].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton
                   sx={{
                     padding: 0,
                     marginBottom: index === 0 ? "24px" : index === 1 ? "24px" : 0,
                     marginTop: index === 1 ? "24px" : index === 2 ? "24px" : 0,
-                  }} // TODO поменять через not first child
+                  }}
+                  /* className={styles.listMargin}  TODO поменять через not first child */
                 >
-                  <ListItemText sx={{ margin: 0 }} primary={text} />
+                  <ListItemText onClick={toggleDrawer(false)} sx={{ margin: 0 }} primary={text} />
                 </ListItemButton>
               </ListItem>
             ))}
+            <AccordionMenu />
           </List>
           <Divider />
         </Box>
