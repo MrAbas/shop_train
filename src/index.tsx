@@ -5,9 +5,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
 import { store } from "./store";
 import { ErrorPage } from "./pages/ErrorPage";
-import Header from "./components/Header/Header";
+import { Header } from "./components/Header";
 import { MainPage } from "./pages/MainPage";
 import { ShopPage } from "./pages/ShopPage";
+import { Footer } from "./components/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,7 +20,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Header />,
+    element: (
+      <>
+        <Header />
+        <Footer />
+      </>
+    ),
     children: [
       {
         path: "/",
@@ -34,7 +40,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-// const authorized = localStorage.getItem("authorized") === "true";
 root.render(
   <React.StrictMode>
     <Provider store={store}>

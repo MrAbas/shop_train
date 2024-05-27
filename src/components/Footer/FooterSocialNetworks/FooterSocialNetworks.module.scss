@@ -1,0 +1,31 @@
+.footerSocialNetworks {
+  width: 100%;
+  max-width: 208px;
+  min-height: 48px;
+
+  .socialMediaLink {
+    position: relative;
+
+    width: 100%;
+    max-width: 48px;
+    height: 48px;
+
+    border: 2px solid rgb(86 92 102);
+    border-radius: 32px;
+
+    &:hover {
+      border-color: rgb(148 102 255);
+    }
+
+    .socialMediaIcon {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      color: #e8e9ea;
+
+      &:hover {
+        color: rgb(148 102 255);
+      }
+    }
+  }
+}

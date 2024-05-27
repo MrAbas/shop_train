@@ -51,6 +51,7 @@ export default function MuiDrawer() {
                 </ListItemButton>
               </ListItem>
             ))}
+
             <AccordionMenu />
           </List>
           <Divider />

@@ -30,7 +30,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
 
   useEffect(() => {
     const selectedItems = option.map((item: { name: string; selected: boolean }) => {
-      console.log(item.name);
       if (item.selected === true) {
         return item.name;
       }

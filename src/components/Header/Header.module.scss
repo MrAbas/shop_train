@@ -63,17 +63,16 @@
     height: 24px;
     background-color: transparent;
 
+    .btnIcon {
+      color: #e8e9ea;
+    }
+
     &:hover {
       color: #9466ff;
 
       .btnIcon {
         color: #9466ff;
       }
-    }
-
-    /* stylelint-disable-next-line no-descending-specificity */
-    .btnIcon {
-      color: #e8e9ea;
     }
   }
 
