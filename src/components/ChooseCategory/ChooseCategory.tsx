@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import useObserver from "../../shared/hooks/useObserver";
 import styles from "./ChooseCategory.module.scss";
 
 interface ChooseCategoryProps {
@@ -7,22 +8,20 @@ interface ChooseCategoryProps {
 }
 
 const ChooseCategory: React.FC<ChooseCategoryProps> = ({ categoryNames }) => {
-  const [showCategoryList, setShowCategoryList] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
   const ref = useRef(null);
 
+  const { addListener, removeListener } = useObserver(ref, setShowFilters);
+
   useEffect(() => {
-    function observer(event: MouseEvent) {
-      if (!ref.current.contains(event.target)) {
-        setShowCategoryList(!showCategoryList);
-      }
+    if (showFilters) {
+      addListener();
     }
-    if (showCategoryList) {
-      window.addEventListener("click", observer);
-    }
+
     return () => {
-      window.removeEventListener("click", observer);
+      removeListener();
     };
-  }, [showCategoryList]);
+  }, [showFilters]);
 
   return (
     <div ref={ref} className={styles.containerBtn}>
@@ -30,7 +29,7 @@ const ChooseCategory: React.FC<ChooseCategoryProps> = ({ categoryNames }) => {
         className={`${styles.btnFilter} ${styles.categoryIcon}`}
         type="button"
         onClick={() => {
-          setShowCategoryList(!showCategoryList);
+          setShowFilters(!showFilters);
         }}
         aria-label="select a category"
       >
@@ -38,7 +37,7 @@ const ChooseCategory: React.FC<ChooseCategoryProps> = ({ categoryNames }) => {
       </button>
 
       <ul className={styles.filterList}>
-        {showCategoryList &&
+        {showFilters &&
           categoryNames.map((item, index) => (
             <li key={`${index + item.option}`} className={styles.listBtn}>
               <Link to={`${item.value}`} className={styles.listBtnItem}>

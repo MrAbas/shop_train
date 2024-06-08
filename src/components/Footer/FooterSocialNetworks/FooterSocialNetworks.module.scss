@@ -1,7 +1,17 @@
 .footerSocialNetworks {
+  display: flex;
+  justify-content: space-between;
+
   width: 100%;
   max-width: 208px;
   min-height: 48px;
+
+  .socialMediaIcon {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #e8e9ea;
+  }
 
   .socialMediaLink {
     position: relative;
@@ -15,15 +25,8 @@
 
     &:hover {
       border-color: rgb(148 102 255);
-    }
 
-    .socialMediaIcon {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      color: #e8e9ea;
-
-      &:hover {
+      .socialMediaIcon {
         color: rgb(148 102 255);
       }
     }

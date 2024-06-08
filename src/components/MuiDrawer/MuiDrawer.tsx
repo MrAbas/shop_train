@@ -37,16 +37,9 @@ export default function MuiDrawer() {
         </nav>
         <Box sx={{ width: "100vw", height: "100vw" }} role="presentation">
           <List sx={{ padding: 0, margin: "0 auto" }} className={styles.drawerList}>
-            {["Каталог", "Покупателям", "Контакты"].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton
-                  sx={{
-                    padding: 0,
-                    marginBottom: index === 0 ? "24px" : index === 1 ? "24px" : 0,
-                    marginTop: index === 1 ? "24px" : index === 2 ? "24px" : 0,
-                  }}
-                  /* className={styles.listMargin}  TODO поменять через not first child */
-                >
+            {["Каталог", "Покупателям", "Контакты"].map((text) => (
+              <ListItem key={text} disablePadding className={styles.listMargin}>
+                <ListItemButton>
                   <ListItemText onClick={toggleDrawer(false)} sx={{ margin: 0 }} primary={text} />
                 </ListItemButton>
               </ListItem>

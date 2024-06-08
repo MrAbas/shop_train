@@ -124,6 +124,6 @@
   color: rgb(119 124 133);
 }
 
-.listMargin:not:last-child {
+.listMargin:not(:last-child) {
   margin-bottom: 48px;
 }

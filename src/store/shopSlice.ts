@@ -4,12 +4,25 @@ interface State {
   active: boolean;
   theme: string;
   authorized: boolean;
+  filters: product;
+}
+
+interface product {
+  size: string[];
+  color: string[];
+  sort: string[];
 }
 
 const initialState: State = {
   active: false,
   theme: localStorage.theme,
   authorized: localStorage.authorized,
+
+  filters: {
+    size: [],
+    color: [],
+    sort: [],
+  },
 };
 
 const shopSlice = createSlice({
@@ -24,9 +37,13 @@ const shopSlice = createSlice({
       localStorage.theme = newTheme;
       state.theme = newTheme;
     },
+    addFilter(state, actions) {
+      console.log(actions.payload);
+    },
+    // removeFilter(state, actions) {},
   },
 });
 
-export const { handleClickActive, toggleTheme } = shopSlice.actions;
+export const { handleClickActive, toggleTheme, addFilter } = shopSlice.actions;
 
 export default shopSlice.reducer;

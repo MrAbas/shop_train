@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { ChooseCategory } from "../../components/ChooseCategory";
 import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
+import { ListProducts } from "../../components/ListProducts";
 import styles from "./ShopPage.module.scss";
 
 const categoryNames: { option: string; value: string }[] = [
@@ -11,19 +13,47 @@ const categoryNames: { option: string; value: string }[] = [
   { option: "Канцелярия", value: "/shop/office" },
 ];
 
-const selectData: { name: string; option: string[] }[] = [
-  { name: "Размер", option: ["S", "L", "M", "XL", "XXL"] },
+const selectData: { name: string; option: string[]; test: string }[] = [
+  { name: "Размер", option: ["S", "L", "M", "XL", "XXL"], test: "size" },
   {
     name: "Цвет",
     option: ["Пурпурный", "Жёлтый", "Оранжевый", "Чёрный", "Белый"],
+    test: "color",
   },
   {
     name: "Сортировка",
     option: ["Популярные", "Новинки", "Сначала дешевые", "Сначала дорогие"],
+    test: "sort",
   },
 ];
 
 export default function ShopPage() {
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      email: "Abas@gmail.com",
+      password: "testAbas",
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow" as RequestRedirect,
+    };
+    async function getLogin() {
+      const login = await fetch("api/login", requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error));
+
+      console.log(login);
+    }
+    getLogin();
+  }, []);
+
   return (
     <section className={styles.wrapper}>
       <div className={styles.container}>
@@ -47,12 +77,12 @@ export default function ShopPage() {
         <div className={styles.btnsFilter}>
           <ChooseCategory categoryNames={categoryNames} />
           <ChoosePrice />
-          {/* TODO применить кастомный хук на 2 селекта! */}
           {/* link добавить или заменить кнопки */}
-          {selectData.map((filter) => (
-            <CustomSelect selectData={filter} />
+          {selectData.map((filter, index) => (
+            <CustomSelect key={`${index + filter.name}`} selectData={filter} />
           ))}
         </div>
+        <ListProducts />
       </div>
     </section>
   );

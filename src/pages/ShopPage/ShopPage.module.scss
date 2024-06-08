@@ -1,21 +1,14 @@
 .wrapper {
   width: 100%;
-  min-height: 2700px;
+  min-height: 100%;
   padding-top: 24px;
   background-color: #1d2533;
-
-  /* max-width: 1504px;
-  max-width: 1920px;
-  padding: 24px 208px;
-  padding: 26px 14% 18px; */
 }
 
 .container {
   max-width: 1535px;
   margin: 0 auto;
   padding: 0 15px;
-
-  /* max-width: 1504px; */
 }
 
 .links {
@@ -28,8 +21,9 @@
   min-height: 24px;
   margin-bottom: 40px;
 
+  font-family: "Rostelecom Basis";
+
   .styleLinks {
-    /* font-family: "Rostelecom Basis"; */
     font-size: 13px;
     font-weight: 500;
     line-height: 20px;
@@ -66,15 +60,14 @@
   min-height: 44px;
   margin-bottom: 40px;
 
+  font-family: "Rostelecom Basis";
+
   .title {
     font-size: 42px;
     font-weight: 700;
     line-height: 44px;
     color: rgb(241 243 245);
     text-align: left;
-    letter-spacing: 0%;
-
-    /* font-family: "Rostelecom Basis"; */
   }
 
   .countProduct {
@@ -89,8 +82,7 @@
     color: rgb(165 168 173);
     text-align: right;
     letter-spacing: 0;
-
-    /* font-family: "Rostelecom Basis"; */
+    white-space: nowrap;
   }
 }
 

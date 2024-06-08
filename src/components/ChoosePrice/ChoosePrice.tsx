@@ -1,24 +1,22 @@
 import { useEffect, useRef, useState } from "react";
+import useObserver from "../../shared/hooks/useObserver";
 import styles from "./ChoosePrice.module.scss";
 
 const ChoosePrice = () => {
-  const [filterList, setFilterList] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
   const ref = useRef(null);
 
+  const { addListener, removeListener } = useObserver(ref, setShowFilters);
+
   useEffect(() => {
-    function observer(event: MouseEvent) {
-      if (!ref.current.contains(event.target)) {
-        setFilterList(false);
-      }
-    }
-    if (filterList) {
-      window.addEventListener("click", observer);
+    if (showFilters) {
+      addListener();
     }
 
     return () => {
-      window.removeEventListener("click", observer);
+      removeListener();
     };
-  }, [filterList]);
+  }, [showFilters]);
 
   return (
     <div ref={ref} className={styles.containerBtn}>
@@ -26,14 +24,14 @@ const ChoosePrice = () => {
         className={`${styles.btnFilter}`}
         type="button"
         onClick={() => {
-          setFilterList(!filterList);
+          setShowFilters(!showFilters);
         }}
         aria-label="select a category"
       >
         Цена
       </button>
 
-      {filterList && (
+      {showFilters && (
         <div className={styles.priceFiltering}>
           <div className={styles.priceFilteringContainer}>
             <div className={styles.labelContainer}>

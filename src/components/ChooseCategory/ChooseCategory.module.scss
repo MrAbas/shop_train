@@ -34,7 +34,7 @@
 
 .sortIcon {
   padding: 12px 16px 12px 48px;
-  background-image: url("../../shared/assets/icons/CustomSelectIcon/sortIcon.svg");
+  background-image: url("../../shared/assets/icons/sortIcon.svg");
 }
 
 .btnFilter::after {
@@ -47,11 +47,12 @@
   max-width: 24px;
   min-height: 24px;
 
-  background: url("../../shared/assets/icons/CustomSelectIcon/arrowDefault.svg") no-repeat;
+  background: url("../../shared/assets/icons/arrowDefault.svg") no-repeat;
 }
 
 .filterList {
   position: absolute;
+  z-index: 5;
 
   display: flex;
   flex-direction: column;
