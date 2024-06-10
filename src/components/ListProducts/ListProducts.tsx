@@ -3,7 +3,8 @@ import { Product } from "./Product";
 import styles from "./ListProducts.module.scss";
 
 export default function ListProducts() {
-  /* TODO вынести redux компонент с фильтрами */
+  /* TODO добавить фильтр */
+
   return (
     <ul className={styles.productList}>
       {indexData.items.map((item, index) => (

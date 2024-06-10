@@ -38,9 +38,10 @@ const shopSlice = createSlice({
       state.theme = newTheme;
     },
     addFilter(state, actions) {
-      console.log(actions.payload);
+      const { data, name } = actions.payload;
+      const newFilter = data.filter((item) => item.selected);
+      state.filters[name] = newFilter;
     },
-    // removeFilter(state, actions) {},
   },
 });
 

@@ -37,10 +37,10 @@
 
     background: url("../../shared/assets/icons/arrowDefault.svg") no-repeat;
   }
+}
 
-  /* TODO &:last-child {
-    padding-left: 48px;
-  }  нужно применить к последней кнопке */
+.withIcon {
+  padding-left: 48px;
 }
 
 .innerBtnFilter {

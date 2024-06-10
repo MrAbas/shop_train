@@ -13,17 +13,18 @@ const categoryNames: { option: string; value: string }[] = [
   { option: "Канцелярия", value: "/shop/office" },
 ];
 
-const selectData: { name: string; option: string[]; test: string }[] = [
-  { name: "Размер", option: ["S", "L", "M", "XL", "XXL"], test: "size" },
+const selectData: { name: string; option: string[]; value: string; withIcon?: boolean }[] = [
+  { name: "Размер", option: ["S", "L", "M", "XL", "XXL"], value: "size" },
   {
     name: "Цвет",
     option: ["Пурпурный", "Жёлтый", "Оранжевый", "Чёрный", "Белый"],
-    test: "color",
+    value: "color",
   },
   {
     name: "Сортировка",
     option: ["Популярные", "Новинки", "Сначала дешевые", "Сначала дорогие"],
-    test: "sort",
+    value: "sort",
+    withIcon: true,
   },
 ];
 

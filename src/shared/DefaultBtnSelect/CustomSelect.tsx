@@ -6,7 +6,7 @@ import { addFilter } from "../../store/shopSlice";
 import styles from "./CustomSelect.module.scss";
 
 interface CustomSelectProps {
-  selectData: { name: string; option: string[]; test: string };
+  selectData: { name: string; option: string[]; value: string; withIcon?: boolean };
 }
 
 const cx = classNames.bind(styles);
@@ -42,17 +42,10 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
   }, [selectData]);
 
   const [classActive, setClassActive] = useState(false);
-  // const [bgActive, setBgActive] = useState(false);
 
   const onOptionClick = (name: string) => {
-    // TODO вызов redux функции с добавлением фильтра
-    // {color:["розовый,красный"], size:["sm","l"]}
-
     const newOption = option.map((item) => {
       if (item.name === name) {
-        // setBgActive(!bgActive);
-        dispatch(addFilter(item.name));
-
         return {
           name: item.name,
           selected: !item.selected,
@@ -64,32 +57,32 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
 
     setClassActive(newOption.some((item) => item.selected));
     setOption(newOption);
+
+    dispatch(addFilter({ data: newOption, name: selectData.value }));
   };
 
   useEffect(() => {
     const filteredOptions = option.filter((item) => item.selected === true);
     const selectedItems = filteredOptions.map((item) => item.name);
-    console.log(selectedItems);
     setSelected(selectedItems);
   }, [option]);
 
-  const innerBtnFilter = cx({
+  const btnFilter = cx({
     innerBtnFilter: classActive,
+    btnFilter: true,
+    withIcon: selectData.withIcon,
   });
 
   return (
     <div ref={ref} className={styles.wrapper}>
-      <button className={`${innerBtnFilter} ${styles.btnFilter}`} onClick={toggleFilter} type="button">
+      <button className={`${btnFilter}`} onClick={toggleFilter} type="button">
         <span>{selectData.name}</span>
         <span>{selected.map((item) => item)}</span>
       </button>
       {showFilters && (
         <ul className={styles.filterList}>
           {option.map((item, i) => (
-            <li
-              key={`${i + item.name}`}
-              className={`${styles.listBtn} ${item.selected ? styles.backgroundBtnFilter : ""}`}
-            >
+            <li key={`${i + item.name}`} className={`${cx("listBtn", { backgroundBtnFilter: item.selected })}`}>
               <button
                 className={`${styles.listBtnItem}`}
                 onClick={() => {
