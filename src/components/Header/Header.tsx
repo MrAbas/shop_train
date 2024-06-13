@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { MuiDrawer } from "../MuiDrawer";
+import { MuiDrawer } from "../MuiDrawer/index";
 import SearchSvg from "../../shared/assets/icons/Header/SearchSvg";
 import FavoritesSvg from "../../shared/assets/icons/Header/FavoritesSvg";
 import CompareSvg from "../../shared/assets/icons/Header/CompareSvg";

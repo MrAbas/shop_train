@@ -6,7 +6,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { store } from "./store";
 import { ErrorPage } from "./pages/ErrorPage";
 import { Header } from "./components/Header";
-import { MainPage } from "./pages/MainPage";
+import { MainPage } from "./pages/MainPage/index";
 import { ShopPage } from "./pages/ShopPage";
 import { Footer } from "./components/Footer";
 

@@ -3,6 +3,7 @@ import { ChooseCategory } from "../../components/ChooseCategory";
 import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
 import { ListProducts } from "../../components/ListProducts";
+import { OptionValue } from "./OptionValue";
 import styles from "./ShopPage.module.scss";
 
 const categoryNames: { option: string; value: string }[] = [
@@ -83,6 +84,7 @@ export default function ShopPage() {
             <CustomSelect key={`${index + filter.name}`} selectData={filter} />
           ))}
         </div>
+        <OptionValue />
         <ListProducts />
       </div>
     </section>

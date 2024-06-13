@@ -4,13 +4,18 @@ interface State {
   active: boolean;
   theme: string;
   authorized: boolean;
-  filters: product;
+  filters: Product;
 }
 
-interface product {
-  size: string[];
-  color: string[];
-  sort: string[];
+interface Product {
+  size: ProductFilter[];
+  color: ProductFilter[];
+  sort: ProductFilter[];
+}
+
+interface ProductFilter {
+  name: string;
+  selected: boolean;
 }
 
 const initialState: State = {

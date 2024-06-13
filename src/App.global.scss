@@ -20,11 +20,15 @@
     url("https://c.webfontfree.com/c.js?f=RostelecomBasis-Regular") format("woff2"),;
 }
 
-body {
-  min-height: 100%;
-  font-family: Rostelecom;
-  line-height: 1.5;
-  background-color: #1d2533;
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: Rostelecom; /* TODO не применяется к h1 и a */
 }
 
 /* Нормализация блочной модели */
