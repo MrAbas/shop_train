@@ -14,6 +14,8 @@ export default function OptionValue() {
       } else {
         setFilter(false);
       }
+
+      console.log(product.size.map((item) => item.name));
     };
     handleProduct();
   }, [product]);
@@ -21,13 +23,12 @@ export default function OptionValue() {
   const filterClose = () => {
     setFilter(false);
   };
-  console.log(product);
   return (
     <div>
       <ul className={styles.filtersList}>
         {filter && (
           <li className={styles.filterListLstItem}>
-            <span className={styles.itemText}>М</span>
+            <span className={styles.itemText}>S</span>
             <button className={styles.itemClose} type="button" aria-label="close filter" onClick={filterClose} />
           </li>
         )}

@@ -72,7 +72,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
     btnFilter: true,
     withIcon: selectData.withIcon,
   });
-
   return (
     <div ref={ref} className={styles.wrapper}>
       <button className={`${btnFilter}`} onClick={toggleFilter} type="button">
