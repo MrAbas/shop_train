@@ -61,7 +61,7 @@ const shopSlice = createSlice({
       }
     },
     addOptions(state, actions) {
-      console.log(actions.payload);
+      state.options = actions.payload;
     },
   },
 });

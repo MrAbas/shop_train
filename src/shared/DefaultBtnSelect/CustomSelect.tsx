@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import useObserver from "../hooks/useObserver";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch } from "../../store/hooks";
 import { addFilter } from "../../store/shopSlice";
-import { productSelector } from "../../store/selectors";
+// import { productSelector } from "../../store/selectors";
 import styles from "./CustomSelect.module.scss";
 
 interface CustomSelectProps {
@@ -17,7 +17,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
   const dispatch = useAppDispatch();
   const [selected, setSelected] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
-  const product = useAppSelector(productSelector);
+  // const product = useAppSelector(productSelector);
 
   const toggleFilter = () => {
     setShowFilters(!showFilters);

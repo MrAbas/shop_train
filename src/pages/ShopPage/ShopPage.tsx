@@ -4,8 +4,10 @@ import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
 import { ListProducts } from "../../components/ListProducts";
 import { OptionValue } from "./OptionValue";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { addOptions } from "../../store/shopSlice";
 import styles from "./ShopPage.module.scss";
+import { optionsSelector } from "../../store/selectors";
 
 const categoryNames: { option: string; value: string }[] = [
   { option: "Все категории", value: "/shop" },
@@ -32,17 +34,15 @@ const selectData: { name: string; option: string[]; value: string; withIcon?: bo
 
 export default function ShopPage() {
   const dispatch = useAppDispatch();
+  const options = useAppSelector(optionsSelector);
+  console.log(options);
   // data из редакса вместо selectData
   useEffect(() => {
-    let newData = selectData.map((item) => {
-      item.option = item.option.map((subItem) => {
-        return { name: subItem, selected: false };
-      });
-      return item;
+    const newData = selectData.map((item) => {
+      const newOption = item.option.map((subItem) => ({ name: subItem, selected: false }));
+      return newOption;
     });
-
-    dispatch(newData);
-    // добавить в редакс newData
+    dispatch(addOptions(newData));
   }, []);
 
   useEffect(() => {
