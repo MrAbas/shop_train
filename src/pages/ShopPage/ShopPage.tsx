@@ -4,6 +4,7 @@ import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
 import { ListProducts } from "../../components/ListProducts";
 import { OptionValue } from "./OptionValue";
+import { useAppDispatch } from "../../store/hooks";
 import styles from "./ShopPage.module.scss";
 
 const categoryNames: { option: string; value: string }[] = [
@@ -23,13 +24,27 @@ const selectData: { name: string; option: string[]; value: string; withIcon?: bo
   },
   {
     name: "Сортировка",
-    option: ["Популярные", "Новинки", "Сначала дешевые", "Сначала дорогие"],
+    option: ["Популярные", "Новинки", "Сначала дешевые", "Сначала дорогие"], // {name:"Популярные",selected:false}
     value: "sort",
     withIcon: true,
   },
 ];
 
 export default function ShopPage() {
+  const dispatch = useAppDispatch();
+  // data из редакса вместо selectData
+  useEffect(() => {
+    let newData = selectData.map((item) => {
+      item.option = item.option.map((subItem) => {
+        return { name: subItem, selected: false };
+      });
+      return item;
+    });
+
+    dispatch(newData);
+    // добавить в редакс newData
+  }, []);
+
   useEffect(() => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -79,7 +94,7 @@ export default function ShopPage() {
         <div className={styles.btnsFilter}>
           <ChooseCategory categoryNames={categoryNames} />
           <ChoosePrice />
-          {/* link добавить или заменить кнопки */}
+          {/* TODO link добавить или заменить кнопки */}
           {selectData.map((filter, index) => (
             <CustomSelect key={`${index + filter.name}`} selectData={filter} />
           ))}

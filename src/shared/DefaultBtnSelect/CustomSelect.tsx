@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import useObserver from "../hooks/useObserver";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addFilter } from "../../store/shopSlice";
+import { productSelector } from "../../store/selectors";
 import styles from "./CustomSelect.module.scss";
 
 interface CustomSelectProps {
@@ -16,6 +17,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
   const dispatch = useAppDispatch();
   const [selected, setSelected] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
+  const product = useAppSelector(productSelector);
+
   const toggleFilter = () => {
     setShowFilters(!showFilters);
   };
@@ -32,20 +35,21 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
     };
   }, [showFilters]);
 
-  const [option, setOption] = useState([]);
+  const [option, setOption] = useState([]); // не надо
   useEffect(() => {
     const newOption = selectData.option.map((item) => ({
       name: item,
       selected: false,
     }));
     setOption(newOption);
-  }, [selectData]);
+  }, [selectData]); // не надо(сделали в shopPage)
 
   const [classActive, setClassActive] = useState(false);
 
   const onOptionClick = (name: string) => {
     const newOption = option.map((item) => {
       if (item.name === name) {
+        // TODO вынести в редакс
         return {
           name: item.name,
           selected: !item.selected,
@@ -56,7 +60,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
     });
 
     setClassActive(newOption.some((item) => item.selected));
-    setOption(newOption);
+    setOption(newOption); // поменять состояние в редаксе
 
     dispatch(addFilter({ data: newOption, name: selectData.value }));
   };
@@ -66,6 +70,28 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ selectData }) => {
     const selectedItems = filteredOptions.map((item) => item.name);
     setSelected(selectedItems);
   }, [option]);
+
+  /* useEffect(() => {
+    // setOption(product[selectData.value]);
+    console.log(product[selectData.value]);
+    console.log(option);
+    if (option.length > 0) {
+      const newOption = option.map((item) => {
+        if (product[selectData.value].find((value) => value === item.name)) {
+          return {
+            name: item.name,
+            selected: true,
+          };
+        }
+        return {
+          name: item.name,
+          selected: false,
+        };
+      });
+      setOption(newOption);
+      console.log(newOption);
+    }
+  }, [product]); */
 
   const btnFilter = cx({
     innerBtnFilter: classActive,

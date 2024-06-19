@@ -5,6 +5,8 @@ interface State {
   theme: string;
   authorized: boolean;
   filters: Product;
+  optionValueShow: boolean;
+  options: object;
 }
 
 interface Product {
@@ -18,16 +20,22 @@ interface ProductFilter {
   selected: boolean;
 }
 
+/* interface Options {
+  name: string;
+  selected: false;
+} */
+
 const initialState: State = {
   active: false,
   theme: localStorage.theme,
   authorized: localStorage.authorized,
-
   filters: {
     size: [],
     color: [],
     sort: [],
   },
+  optionValueShow: false,
+  options: {},
 };
 
 const shopSlice = createSlice({
@@ -47,9 +55,17 @@ const shopSlice = createSlice({
       const newFilter = data.filter((item) => item.selected);
       state.filters[name] = newFilter;
     },
+    showOptionValue(state) {
+      if (state.filters.color.length > 0 || state.filters.size.length > 0 || state.filters.sort.length > 0) {
+        state.optionValueShow = false;
+      }
+    },
+    addOptions(state, actions) {
+      console.log(actions.payload);
+    },
   },
 });
 
-export const { handleClickActive, toggleTheme, addFilter } = shopSlice.actions;
+export const { handleClickActive, toggleTheme, addFilter, showOptionValue, addOptions } = shopSlice.actions;
 
 export default shopSlice.reducer;
