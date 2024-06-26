@@ -4,10 +4,10 @@ import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
 import { ListProducts } from "../../components/ListProducts";
 import { OptionValue } from "./OptionValue";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addOptions } from "../../store/shopSlice";
-import styles from "./ShopPage.module.scss";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { optionsSelector } from "../../store/selectors";
+import styles from "./ShopPage.module.scss";
 
 const categoryNames: { option: string; value: string }[] = [
   { option: "Все категории", value: "/shop" },
@@ -17,15 +17,15 @@ const categoryNames: { option: string; value: string }[] = [
   { option: "Канцелярия", value: "/shop/office" },
 ];
 
-const selectData: { name: string; option: string[]; value: string; withIcon?: boolean }[] = [
-  { name: "Размер", option: ["S", "L", "M", "XL", "XXL"], value: "size" },
+const selectData: { titleSelect: string; option: string[]; value: string; withIcon?: boolean }[] = [
+  { titleSelect: "Размер", option: ["S", "L", "M", "XL", "XXL"], value: "size" },
   {
-    name: "Цвет",
+    titleSelect: "Цвет",
     option: ["Пурпурный", "Жёлтый", "Оранжевый", "Чёрный", "Белый"],
     value: "color",
   },
   {
-    name: "Сортировка",
+    titleSelect: "Сортировка",
     option: ["Популярные", "Новинки", "Сначала дешевые", "Сначала дорогие"], // {name:"Популярные",selected:false}
     value: "sort",
     withIcon: true,
@@ -35,12 +35,10 @@ const selectData: { name: string; option: string[]; value: string; withIcon?: bo
 export default function ShopPage() {
   const dispatch = useAppDispatch();
   const options = useAppSelector(optionsSelector);
-  console.log(options);
-  // data из редакса вместо selectData
   useEffect(() => {
     const newData = selectData.map((item) => {
       const newOption = item.option.map((subItem) => ({ name: subItem, selected: false }));
-      return newOption;
+      return { ...item, option: newOption };
     });
     dispatch(addOptions(newData));
   }, []);
@@ -95,8 +93,11 @@ export default function ShopPage() {
           <ChooseCategory categoryNames={categoryNames} />
           <ChoosePrice />
           {/* TODO link добавить или заменить кнопки */}
-          {selectData.map((filter, index) => (
-            <CustomSelect key={`${index + filter.name}`} selectData={filter} />
+          {/* {selectData.map((item, index) => (
+            <CustomSelect key={`${index + item.titleSelect}`} data={item} />
+          ))} */}
+          {options.map((item, index) => (
+            <CustomSelect key={`${index + item.titleSelect}`} data={item} />
           ))}
         </div>
         <OptionValue />

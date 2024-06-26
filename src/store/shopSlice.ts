@@ -6,7 +6,7 @@ interface State {
   authorized: boolean;
   filters: Product;
   optionValueShow: boolean;
-  options: object;
+  options: Options[];
 }
 
 interface Product {
@@ -20,10 +20,11 @@ interface ProductFilter {
   selected: boolean;
 }
 
-/* interface Options {
-  name: string;
-  selected: false;
-} */
+export interface Options {
+  titleSelect: string;
+  option: { name: string; selected: boolean }[];
+  value: string;
+}
 
 const initialState: State = {
   active: false,
@@ -35,7 +36,40 @@ const initialState: State = {
     sort: [],
   },
   optionValueShow: false,
-  options: {},
+  options: [
+    {
+      titleSelect: "Размер",
+      option: [
+        { name: "S", selected: false },
+        { name: "L", selected: false },
+        { name: "L", selected: false },
+        { name: "XL", selected: false },
+        { name: "XXL", selected: false },
+      ],
+      value: "size",
+    },
+    {
+      titleSelect: "Цвет",
+      option: [
+        { name: "Пурпурный", selected: false },
+        { name: "Жёлтый", selected: false },
+        { name: "Оранжевый", selected: false },
+        { name: "Чёрный", selected: false },
+        { name: "Белый", selected: false },
+      ],
+      value: "color",
+    },
+    {
+      titleSelect: "Сортировка",
+      option: [
+        { name: "Популярные", selected: false },
+        { name: "Новинки", selected: false },
+        { name: "Сначала дешевые", selected: false },
+        { name: "Сначала дорогие", selected: false },
+      ],
+      value: "sort",
+    },
+  ],
 };
 
 const shopSlice = createSlice({
@@ -50,11 +84,6 @@ const shopSlice = createSlice({
       localStorage.theme = newTheme;
       state.theme = newTheme;
     },
-    addFilter(state, actions) {
-      const { data, name } = actions.payload;
-      const newFilter = data.filter((item) => item.selected);
-      state.filters[name] = newFilter;
-    },
     showOptionValue(state) {
       if (state.filters.color.length > 0 || state.filters.size.length > 0 || state.filters.sort.length > 0) {
         state.optionValueShow = false;
@@ -63,9 +92,24 @@ const shopSlice = createSlice({
     addOptions(state, actions) {
       state.options = actions.payload;
     },
+    toggleSelect(state, actions) {
+      const { name, filterName } = actions.payload;
+
+      state.options = state.options.map((item) => {
+        if (item.titleSelect === filterName) {
+          item.option = item.option.map((el) => {
+            if (el.name === name) {
+              el.selected = !el.selected;
+            }
+            return el;
+          });
+        }
+        return item;
+      });
+    },
   },
 });
 
-export const { handleClickActive, toggleTheme, addFilter, showOptionValue, addOptions } = shopSlice.actions;
+export const { handleClickActive, toggleTheme, showOptionValue, addOptions, toggleSelect } = shopSlice.actions;
 
 export default shopSlice.reducer;

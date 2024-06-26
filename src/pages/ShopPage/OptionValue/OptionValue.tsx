@@ -1,13 +1,47 @@
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { productSelector } from "../../../store/selectors";
-import { addFilter } from "../../../store/shopSlice";
+import { useEffect, useState } from "react";
+import { useAppSelector } from "../../../store/hooks";
+import { optionsSelector, productSelector } from "../../../store/selectors";
 import styles from "./OptionValue.module.scss";
 
 export default function OptionValue() {
   const product = useAppSelector(productSelector);
-  const dispatch = useAppDispatch();
+  const options = useAppSelector(optionsSelector);
 
-  const filterDelete = (name: string) => {
+  // const [optionValueShow, setOptionValueShow] = useState(false);
+  const [optionValue, setOptionValue] = useState([]);
+
+  useEffect(() => {
+    // setOptionValue((prevOptionValue) => [...prevOptionValue, "s", "h", "l"]);
+    // setOptionValue(["s", "h", "l"]);
+
+    /* options.map((item) => {
+      if (item.titleSelect === "Размер") {
+        item.option.map((el) => {
+          if (el.selected === true) {
+            optionValue.push(el.name);
+            return optionValue;
+          }
+        });
+        // item.option.map((el) => el.selected);
+      }
+    }); */
+    // console.log(setOptionValue([...optionValue, "s", "h", "l"]));
+
+    options.map((item) => {
+      if (item.titleSelect === "Размер") {
+        item.option.forEach((el) => {
+          if (el.selected === true) {
+            // setOptionValue([...optionValue, el.name]);
+            console.log(el.name);
+          }
+        });
+      }
+      return item;
+    });
+    console.log(optionValue);
+  }, [options]);
+
+  /* const filterDelete = (name: string) => {
     const newOption = product.size.map((item) => {
       if (item.name === name) {
         // TODO вынести в редакс
@@ -19,9 +53,8 @@ export default function OptionValue() {
 
       return item;
     });
-
-    dispatch(addFilter({ data: newOption, name: "size" }));
-  };
+    // dispatch(addFilter({ data: newOption, name: "size" }));
+  }; */
 
   return (
     <div>
@@ -35,7 +68,7 @@ export default function OptionValue() {
                   className={styles.itemClose}
                   type="button"
                   aria-label="close filter"
-                  onClick={() => filterDelete(item.name)}
+                  // onClick={() => filterDelete(item.name)}
                 />
               </span>
             ))}

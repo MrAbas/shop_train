@@ -2,21 +2,24 @@ import { useEffect, useState } from "react";
 import indexData from "./indexData.json";
 import { Product } from "./Product";
 import { useAppSelector } from "../../store/hooks";
-import { productSelector } from "../../store/selectors";
+import { optionsSelector, productSelector } from "../../store/selectors";
 import styles from "./ListProducts.module.scss";
 
 export default function ListProducts() {
   const [showItems, setShowItems] = useState(indexData.items);
   const product = useAppSelector(productSelector);
+  const options = useAppSelector(optionsSelector);
 
   useEffect(() => {
+    // indexData.items фильтруем по  options и записываем в ShowItems
     // eslint-disable-next-line array-callback-return, @typescript-eslint/no-unused-vars
     /*  indexData.items.map((item) => {
       if (item.sizes.l === product.size) {
         setShowItems(indexData.items.filter((item) => item.sizes.s === product[0].size));
       }
     }); */
-  }, [product]);
+    // console.log(options);
+  }, [options]);
 
   /* TODO добавить фильтр */
   // const [products, setProducts] = useState(false);
