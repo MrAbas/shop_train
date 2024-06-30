@@ -38,23 +38,23 @@ export default function ListProducts() {
             return item.characteristics.color.toLowerCase() === translateColor(filter.name).toLowerCase();
           }
 
-          if (filter.filterName === "sort") {
-            if (filter.name === "Сначала дешевые") {
-              newItems.sort((a, b) => a.price - b.price);
-            }
-            if (filter.name === "Сначала дорогие") {
-              newItems.sort((a, b) => b.price - a.price);
-            }
-            /* if (filter.name === "Популярные") {
-              // console.log(newItems.sort((el) => el.popularity));
-              console.log(newItems.map((el) => el.popularity));
-            }
-            if (filter.name === "Новинки") {
-              console.log(1);
-            } */
-          }
           return true;
         });
+
+        if (filter.filterName === "sort") {
+          if (filter.name === "Сначала дешевые") {
+            newItems.sort((a, b) => a.price - b.price);
+          }
+          if (filter.name === "Сначала дорогие") {
+            newItems.sort((a, b) => b.price - a.price);
+          }
+          if (filter.name === "Популярные") {
+            newItems.sort((a, b) => b.popularity - a.popularity);
+          }
+          if (filter.name === "Новинки") {
+            newItems = newItems.filter((el) => el.isNew);
+          }
+        }
       });
       setShowItems(newItems);
     }

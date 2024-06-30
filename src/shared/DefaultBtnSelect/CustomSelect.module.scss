@@ -39,16 +39,16 @@
   }
 }
 
-.withIcon {
-  padding-left: 48px;
-  background-image: url(".././assets/icons/sortIcon.svg");
-}
-
 .innerBtnFilter {
   display: flex;
   flex-direction: column;
   height: 40px;
   padding: 4px 16px 4px 20px;
+}
+
+.withIcon {
+  padding-left: 48px;
+  background-image: url(".././assets/icons/sortIcon.svg");
 }
 
 .backgroundBtnFilter {
