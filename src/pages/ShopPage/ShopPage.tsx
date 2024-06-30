@@ -12,7 +12,7 @@ import styles from "./ShopPage.module.scss";
 const categoryNames: { option: string; value: string }[] = [
   { option: "Все категории", value: "/shop" },
   { option: "Одежда", value: "/shop/cloth" },
-  { option: "Аксессуары", value: "/shop/accessories'" },
+  { option: "Аксессуары", value: "/shop/accessories" },
   { option: "Сувениры", value: "/shop/souvenirs" },
   { option: "Канцелярия", value: "/shop/office" },
 ];
@@ -93,9 +93,6 @@ export default function ShopPage() {
           <ChooseCategory categoryNames={categoryNames} />
           <ChoosePrice />
           {/* TODO link добавить или заменить кнопки */}
-          {/* {selectData.map((item, index) => (
-            <CustomSelect key={`${index + item.titleSelect}`} data={item} />
-          ))} */}
           {options.map((item, index) => (
             <CustomSelect key={`${index + item.titleSelect}`} data={item} />
           ))}

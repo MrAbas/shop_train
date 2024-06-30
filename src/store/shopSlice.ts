@@ -4,20 +4,7 @@ interface State {
   active: boolean;
   theme: string;
   authorized: boolean;
-  filters: Product;
-  optionValueShow: boolean;
   options: Options[];
-}
-
-interface Product {
-  size: ProductFilter[];
-  color: ProductFilter[];
-  sort: ProductFilter[];
-}
-
-interface ProductFilter {
-  name: string;
-  selected: boolean;
 }
 
 export interface Options {
@@ -30,12 +17,6 @@ const initialState: State = {
   active: false,
   theme: localStorage.theme,
   authorized: localStorage.authorized,
-  filters: {
-    size: [],
-    color: [],
-    sort: [],
-  },
-  optionValueShow: false,
   options: [
     {
       titleSelect: "Размер",
@@ -84,11 +65,6 @@ const shopSlice = createSlice({
       localStorage.theme = newTheme;
       state.theme = newTheme;
     },
-    showOptionValue(state) {
-      if (state.filters.color.length > 0 || state.filters.size.length > 0 || state.filters.sort.length > 0) {
-        state.optionValueShow = false;
-      }
-    },
     addOptions(state, actions) {
       state.options = actions.payload;
     },
@@ -107,9 +83,21 @@ const shopSlice = createSlice({
         return item;
       });
     },
+    optionDelete(state, actions) {
+      // TODO объединить с toggleSelect
+      const nameOptionValue = actions.payload;
+      state.options.map((item) => {
+        item.option.forEach((el) => {
+          if (el.selected === true && el.name === nameOptionValue) {
+            el.selected = false;
+          }
+        });
+        return item;
+      });
+    },
   },
 });
 
-export const { handleClickActive, toggleTheme, showOptionValue, addOptions, toggleSelect } = shopSlice.actions;
+export const { handleClickActive, toggleTheme, addOptions, toggleSelect, optionDelete } = shopSlice.actions;
 
 export default shopSlice.reducer;

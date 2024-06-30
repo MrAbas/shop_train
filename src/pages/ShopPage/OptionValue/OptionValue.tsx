@@ -1,78 +1,45 @@
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../store/hooks";
-import { optionsSelector, productSelector } from "../../../store/selectors";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { optionsSelector } from "../../../store/selectors";
+import { optionDelete } from "../../../store/shopSlice";
 import styles from "./OptionValue.module.scss";
 
 export default function OptionValue() {
-  const product = useAppSelector(productSelector);
+  const dispatch = useAppDispatch();
   const options = useAppSelector(optionsSelector);
-
-  // const [optionValueShow, setOptionValueShow] = useState(false);
   const [optionValue, setOptionValue] = useState([]);
 
   useEffect(() => {
-    // setOptionValue((prevOptionValue) => [...prevOptionValue, "s", "h", "l"]);
-    // setOptionValue(["s", "h", "l"]);
-
-    /* options.map((item) => {
-      if (item.titleSelect === "Размер") {
-        item.option.map((el) => {
-          if (el.selected === true) {
-            optionValue.push(el.name);
-            return optionValue;
-          }
-        });
-        // item.option.map((el) => el.selected);
-      }
-    }); */
-    // console.log(setOptionValue([...optionValue, "s", "h", "l"]));
-
+    const newOption = [];
     options.map((item) => {
-      if (item.titleSelect === "Размер") {
-        item.option.forEach((el) => {
-          if (el.selected === true) {
-            // setOptionValue([...optionValue, el.name]);
-            console.log(el.name);
-          }
-        });
-      }
+      item.option.forEach((el) => {
+        if (el.selected === true) {
+          newOption.push({ name: el.name, filterName: item.value });
+        }
+      });
+
       return item;
     });
-    console.log(optionValue);
+    setOptionValue(newOption);
   }, [options]);
-
-  /* const filterDelete = (name: string) => {
-    const newOption = product.size.map((item) => {
-      if (item.name === name) {
-        // TODO вынести в редакс
-        return {
-          name: item.name,
-          selected: !item.selected,
-        };
-      }
-
-      return item;
-    });
-    // dispatch(addFilter({ data: newOption, name: "size" }));
-  }; */
 
   return (
     <div>
-      {product.size.length > 0 && (
+      {optionValue.length > 0 && (
         <ul className={styles.filtersList}>
-          <li className={styles.filterListLstItem}>
-            {product.size.map((item) => (
+          {optionValue.map((item, index) => (
+            <li key={`${item.name + index}`} className={styles.filterListLstItem}>
               <span style={{ marginRight: "10px" }}>
                 <span className={styles.itemText}>{item.name}</span>
                 <button
                   className={styles.itemClose}
                   type="button"
                   aria-label="close filter"
-                  // onClick={() => filterDelete(item.name)}
+                  onClick={() => dispatch(optionDelete(item.name))}
                 />
               </span>
-            ))}
-          </li>
+            </li>
+          ))}
         </ul>
       )}
     </div>
