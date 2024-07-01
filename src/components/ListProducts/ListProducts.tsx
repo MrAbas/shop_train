@@ -9,7 +9,6 @@ import styles from "./ListProducts.module.scss";
 export default function ListProducts() {
   const [showItems, setShowItems] = useState([]);
   const options = useAppSelector(optionsSelector);
-  // const [currentOptionsEl, setCurrentOptionsEl] = useState("");
 
   useEffect(() => {
     // Функция фильтрации данных
@@ -59,11 +58,6 @@ export default function ListProducts() {
       setShowItems(newItems);
     }
   }, [options]);
-
-  /* TODO добавить фильтр */
-  // const [products, setProducts] = useState(false);
-  /* console.log(indexData.items);
-  console.log(product); */
 
   return (
     <ul className={styles.productList}>

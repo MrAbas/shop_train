@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+// import { useDispatch } from "react-redux";
 import useObserver from "../../shared/hooks/useObserver";
 import styles from "./ChoosePrice.module.scss";
 
 const ChoosePrice = () => {
+  // const dispatch = useDispatch();
   const [showFilters, setShowFilters] = useState(false);
   const ref = useRef(null);
+  const btnFilterName = useRef(null);
   const fromInputRef = useRef(null);
   const toInputRef = useRef(null);
   const { addListener, removeListener } = useObserver(ref, setShowFilters);
@@ -22,13 +25,16 @@ const ChoosePrice = () => {
   const handleFilterClick = () => {
     const fromValue = fromInputRef.current.value;
     const toValue = toInputRef.current.value;
-    console.log(fromValue);
-    console.log(toValue);
+    const btnFilterInner = btnFilterName.current.innerText;
+    // console.log(fromValue);
+    // console.log(toValue);
+    console.log(btnFilterInner);
   };
 
   return (
     <div ref={ref} className={styles.containerBtn}>
       <button
+        ref={btnFilterName}
         className={`${styles.btnFilter}`}
         type="button"
         onClick={() => {

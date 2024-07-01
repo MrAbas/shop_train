@@ -9,7 +9,7 @@ interface State {
 
 export interface Options {
   titleSelect: string;
-  option: { name: string; selected: boolean }[];
+  option: { name: string; selected?: boolean; price?: number }[];
   value: string;
 }
 
@@ -18,6 +18,14 @@ const initialState: State = {
   theme: localStorage.theme,
   authorized: localStorage.authorized,
   options: [
+    {
+      titleSelect: "Цена",
+      option: [
+        { name: "min", price: 0 },
+        { name: "max", price: 0 },
+      ],
+      value: "price",
+    },
     {
       titleSelect: "Размер",
       option: [
