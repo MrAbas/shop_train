@@ -17,7 +17,31 @@ const categoryNames: { option: string; value: string }[] = [
   { option: "Канцелярия", value: "/shop/office" },
 ];
 
-const selectData: { titleSelect: string; option: string[]; value: string; withIcon?: boolean }[] = [
+/* interface OptionDefault {
+  option: { name: string; selected: boolean };
+} */
+
+interface OptionPrice {
+  name: string;
+  price: number;
+}
+
+interface SelectData {
+  titleSelect: string;
+  option: string[] | OptionPrice[];
+  value: string;
+  withIcon?: boolean;
+}
+
+const selectData: SelectData[] = [
+  {
+    titleSelect: "Цена",
+    option: [
+      { name: "min", price: 0 },
+      { name: "max", price: 0 },
+    ],
+    value: "price",
+  },
   { titleSelect: "Размер", option: ["S", "L", "M", "XL", "XXL"], value: "size" },
   {
     titleSelect: "Цвет",
@@ -35,9 +59,18 @@ const selectData: { titleSelect: string; option: string[]; value: string; withIc
 export default function ShopPage() {
   const dispatch = useAppDispatch();
   const options = useAppSelector(optionsSelector);
+
   useEffect(() => {
     const newData = selectData.map((item) => {
-      const newOption = item.option.map((subItem) => ({ name: subItem, selected: false }));
+      const newOption = item.option.map((subItem) => {
+        if (typeof subItem === "string") {
+          return { name: subItem, selected: false };
+        }
+        if (typeof subItem === "object") {
+          return { ...subItem, selected: false };
+        }
+        return subItem;
+      });
       return { ...item, option: newOption };
     });
     dispatch(addOptions(newData));
@@ -93,9 +126,12 @@ export default function ShopPage() {
           <ChooseCategory categoryNames={categoryNames} />
           <ChoosePrice />
           {/* TODO link добавить или заменить кнопки */}
-          {options.map((item, index) => (
-            <CustomSelect key={`${index + item.titleSelect}`} data={item} />
-          ))}
+          {options.map((item, index) => {
+            if (item.titleSelect === "Цена") {
+              return <> </>;
+            }
+            return <CustomSelect key={`${index + item.titleSelect}`} data={item} />;
+          })}
         </div>
         <OptionValue />
         <ListProducts />

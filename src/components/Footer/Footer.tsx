@@ -3,7 +3,7 @@ import styles from "./Footer.module.scss";
 
 export default function Footer() {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <div className={styles.footerTop}>
         <div className={styles.footerTopContainer}>
           <div className={styles.containerLogo}>
@@ -38,6 +38,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

@@ -8,6 +8,7 @@ import { ErrorPage } from "./pages/ErrorPage";
 import { Header } from "./components/Header";
 import { MainPage } from "./pages/MainPage/index";
 import { ShopPage } from "./pages/ShopPage";
+import { ClothPage } from "./pages/ClothPage";
 import { Footer } from "./components/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <ShopPage />,
+      },
+      {
+        path: "/shop/cloth",
+        element: <ClothPage />,
       },
     ],
     errorElement: <ErrorPage />,

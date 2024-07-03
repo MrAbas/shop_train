@@ -78,12 +78,13 @@ const shopSlice = createSlice({
     },
     toggleSelect(state, actions) {
       const { name, filterName } = actions.payload;
-
       state.options = state.options.map((item) => {
         if (item.titleSelect === filterName) {
           item.option = item.option.map((el) => {
             if (el.name === name) {
               el.selected = !el.selected;
+            } else if (filterName === "Сортировка" && el.name !== name) {
+              el.selected = false;
             }
             return el;
           });
@@ -91,21 +92,45 @@ const shopSlice = createSlice({
         return item;
       });
     },
+    addFilteredPrice(state, actions) {
+      const { filterName, min, max } = actions.payload;
+      state.options = state.options.map((item) => {
+        if (item.titleSelect === filterName) {
+          item.option = item.option.map((el) => {
+            if (el.name === "min") {
+              el.price = min;
+              el.selected = true;
+            }
+            if (el.name === "max") {
+              el.price = max;
+              el.selected = true;
+            }
+            return el;
+          });
+        }
+        return item;
+      });
+    },
+
     optionDelete(state, actions) {
       // TODO объединить с toggleSelect
+
       const nameOptionValue = actions.payload;
+
       state.options.map((item) => {
         item.option.forEach((el) => {
           if (el.selected === true && el.name === nameOptionValue) {
             el.selected = false;
           }
         });
+
         return item;
       });
     },
   },
 });
 
-export const { handleClickActive, toggleTheme, addOptions, toggleSelect, optionDelete } = shopSlice.actions;
+export const { handleClickActive, toggleTheme, addOptions, toggleSelect, optionDelete, addFilteredPrice } =
+  shopSlice.actions;
 
 export default shopSlice.reducer;

@@ -15,8 +15,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ data }) => {
   const [options, setoptions] = useState([]);
   const [classActive, setClassActive] = useState(false);
 
-  const [disabledOptions, setDisabledOptions] = useState({}); // TODO сделал disable кнопок спросить !!!
-
   useEffect(() => {
     setoptions(data.option);
     setClassActive(data.option.some((item) => item.selected));
@@ -44,25 +42,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ data }) => {
 
   const onOptionClick = (name: string) => {
     dispatch(toggleSelect({ name, filterName: data.titleSelect }));
-
-    setDisabledOptions((prev) => {
-      const isSelected = options.find((item) => item.name === name).selected;
-      if (isSelected) {
-        return {}; // Сброс состояния, если элемент уже выбран
-      }
-      switch (name) {
-        case "Популярные":
-          return { ...prev, Новинки: true };
-        case "Новинки":
-          return { ...prev, Популярные: true };
-        case "Сначала дешевые":
-          return { ...prev, "Сначала дорогие": true };
-        case "Сначала дорогие":
-          return { ...prev, "Сначала дешевые": true };
-        default:
-          return { ...prev };
-      }
-    });
   };
 
   const btnFilter = cx({
@@ -95,7 +74,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ data }) => {
                 }}
                 type="button"
                 aria-label=""
-                disabled={disabledOptions[item.name]}
               >
                 {item.name}
               </button>

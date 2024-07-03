@@ -3,7 +3,7 @@ import indexData from "./indexData.json";
 import { Product } from "./Product";
 import { useAppSelector } from "../../store/hooks";
 import { optionsSelector } from "../../store/selectors";
-import { translateColor } from "../../shared/utils/translateColor";
+import { filterProducts } from "../../shared/utils/filterProducts";
 import styles from "./ListProducts.module.scss";
 
 export default function ListProducts() {
@@ -26,9 +26,9 @@ export default function ListProducts() {
         return item;
       });
 
-      let newItems = indexData.items;
-
-      newOption.forEach((filter) => {
+      // let newItems = indexData.items;
+      const filteredItems = filterProducts(newOption, indexData.items);
+      /* newOption.forEach((filter) => {
         newItems = newItems.filter((item) => {
           if (filter.filterName === "size") {
             return item.sizes[filter.name.toLowerCase()];
@@ -54,8 +54,8 @@ export default function ListProducts() {
             newItems = newItems.filter((el) => el.isNew);
           }
         }
-      });
-      setShowItems(newItems);
+      }); */
+      setShowItems(filteredItems);
     }
   }, [options]);
 
