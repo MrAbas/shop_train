@@ -1,3 +1,4 @@
+import { filterSort } from "../helpers/filterSort";
 import { translateColor } from "./translateColor";
 
 export const filterProducts = (newOption, items) => {
@@ -15,15 +16,12 @@ export const filterProducts = (newOption, items) => {
   });
 
   newOption.forEach((filter) => {
-    if (filter.filterName === "sort") {
-      if (filter.name === "Сначала дешевые") {
-        filteredItems.sort((a, b) => a.price - b.price);
-      } else if (filter.name === "Сначала дорогие") {
-        filteredItems.sort((a, b) => b.price - a.price);
-      } else if (filter.name === "Популярные") {
-        filteredItems.sort((a, b) => b.popularity - a.popularity);
-      } else if (filter.name === "Новинки") {
-        filteredItems = filteredItems.filter((el) => el.isNew);
+    filteredItems = filterSort(filter.filterName, filter.name, filteredItems);
+    if (filter.filterName === "price") {
+      if (filter.name === "min") {
+        filteredItems = filteredItems.filter((el) => el.price >= filter.price);
+      } else if (filter.name === "max") {
+        filteredItems = filteredItems.filter((el) => el.price <= filter.price);
       }
     }
   });

@@ -25,21 +25,30 @@ export default function OptionValue() {
 
   return (
     <div>
+      {/* TODO рендерится пустой див, нужно ли делать проверку ? */}
       {optionValue.length > 0 && (
         <ul className={styles.filtersList}>
-          {optionValue.map((item, index) => (
-            <li key={`${item.name + index}`} className={styles.filterListLstItem}>
-              <span style={{ marginRight: "10px" }}>
-                <span className={styles.itemText}>{item.name}</span>
-                <button
-                  className={styles.itemClose}
-                  type="button"
-                  aria-label="close filter"
-                  onClick={() => dispatch(optionDelete(item.name))}
-                />
-              </span>
-            </li>
-          ))}
+          {optionValue.map((item, index) => {
+            // TODO изменил момент с компонентом
+            // if (item.name !== "min" && item.name !== "max") {
+            const { filterName } = item;
+            if (filterName !== "sort" && filterName !== "price" && filterName !== "cloth") {
+              return (
+                <li key={`${item.name + index}`} className={styles.filterListLstItem}>
+                  <span style={{ marginRight: "10px" }}>
+                    <span className={styles.itemText}>{item.name}</span>
+                    <button
+                      className={styles.itemClose}
+                      type="button"
+                      aria-label="close filter"
+                      onClick={() => dispatch(optionDelete(item.name))}
+                    />
+                  </span>
+                </li>
+              );
+            }
+            return null;
+          })}
         </ul>
       )}
     </div>

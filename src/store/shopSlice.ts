@@ -1,22 +1,73 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface State {
-  active: boolean;
-  theme: string;
-  authorized: boolean;
-  options: Options[];
+interface Option {
+  name: string;
+  selected?: boolean;
+  price?: number;
 }
 
 export interface Options {
   titleSelect: string;
-  option: { name: string; selected?: boolean; price?: number }[];
+  option: Option[];
   value: string;
+}
+
+interface OptionsCategories {
+  titleSelect: string;
+  cloth?: { option: Option[]; selected: boolean };
+  accessories?: { option: Option[]; selected: boolean };
+  souvenirs?: { option: Option[]; selected: boolean };
+  office?: { option: Option[]; selected: boolean };
+}
+
+interface State {
+  active: boolean;
+  theme: string;
+  authorized: boolean;
+  categories: OptionsCategories[];
+  options: Options[];
 }
 
 const initialState: State = {
   active: false,
   theme: localStorage.theme,
   authorized: localStorage.authorized,
+  categories: [
+    {
+      titleSelect: "Категории",
+      cloth: {
+        option: [
+          { name: "Футболки", selected: false },
+          { name: "Лонг-сливы", selected: false },
+          { name: "Худи", selected: false },
+          { name: "Верхняя одежда", selected: false },
+        ],
+        selected: false,
+      },
+      accessories: {
+        option: [
+          { name: "Сумки", selected: false },
+          { name: "Головные уборы", selected: false },
+          { name: "Зонты", selected: false },
+        ],
+        selected: false,
+      },
+      souvenirs: {
+        option: [
+          { name: "Бизнес-сувениры", selected: false },
+          { name: "Промо-сувениры", selected: false },
+        ],
+        selected: false,
+      },
+      office: {
+        option: [
+          { name: "ручки", selected: false },
+          { name: "тетради", selected: false },
+        ],
+        selected: false,
+      },
+    },
+  ],
   options: [
     {
       titleSelect: "Цена",
@@ -78,6 +129,11 @@ const shopSlice = createSlice({
     },
     toggleSelect(state, actions) {
       const { name, filterName } = actions.payload;
+      state.categories.forEach((item) => {
+        item.cloth.selected = true;
+        // TODO спросить, как правильно менять на false.    По поводу item.cloth, в name заходят на русском можно перевести
+      });
+
       state.options = state.options.map((item) => {
         if (item.titleSelect === filterName) {
           item.option = item.option.map((el) => {
@@ -85,10 +141,31 @@ const shopSlice = createSlice({
               el.selected = !el.selected;
             } else if (filterName === "Сортировка" && el.name !== name) {
               el.selected = false;
+            } else if (filterName === "Категории" && el.name !== name) {
+              el.selected = false;
             }
             return el;
           });
         }
+        return item;
+      });
+    },
+    toggleSelectCategories(state, actions) {
+      const { name, filterName } = actions.payload;
+      state.categories = state.categories.map((item) => {
+        item[name].option.map((el) => {
+          if (el.name === filterName) {
+            el.selected = !el.selected;
+          } else if (
+            name === "cloth" ||
+            name === "accessories" ||
+            name === "souvenirs" ||
+            (name === "office" && el.name !== name)
+          ) {
+            el.selected = false;
+          }
+          return el;
+        });
         return item;
       });
     },
@@ -113,10 +190,7 @@ const shopSlice = createSlice({
     },
 
     optionDelete(state, actions) {
-      // TODO объединить с toggleSelect
-
       const nameOptionValue = actions.payload;
-
       state.options.map((item) => {
         item.option.forEach((el) => {
           if (el.selected === true && el.name === nameOptionValue) {
@@ -130,7 +204,14 @@ const shopSlice = createSlice({
   },
 });
 
-export const { handleClickActive, toggleTheme, addOptions, toggleSelect, optionDelete, addFilteredPrice } =
-  shopSlice.actions;
+export const {
+  handleClickActive,
+  toggleTheme,
+  addOptions,
+  toggleSelect,
+  toggleSelectCategories,
+  optionDelete,
+  addFilteredPrice,
+} = shopSlice.actions;
 
 export default shopSlice.reducer;

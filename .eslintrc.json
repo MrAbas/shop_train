@@ -64,8 +64,9 @@
         "controlComponents": ["CustomInput"],
         "depth": 3
       }
-    ]
+    ],
     // "react/prop-types": 0,
+    "implicit-arrow-linebreak": "off"
   },
   "settings": {
     "import/resolver": {

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ChooseCategory } from "../../components/ChooseCategory";
+import { ChooseCategoryLink } from "../../components/ChooseCategoryLink";
 import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
 import { ListProducts } from "../../components/ListProducts";
@@ -16,10 +16,6 @@ const categoryNames: { option: string; value: string }[] = [
   { option: "Сувениры", value: "/shop/souvenirs" },
   { option: "Канцелярия", value: "/shop/office" },
 ];
-
-/* interface OptionDefault {
-  option: { name: string; selected: boolean };
-} */
 
 interface OptionPrice {
   name: string;
@@ -76,7 +72,7 @@ export default function ShopPage() {
     dispatch(addOptions(newData));
   }, []);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -100,7 +96,7 @@ export default function ShopPage() {
       console.log(login);
     }
     getLogin();
-  }, []);
+  }, []); */
 
   return (
     <section className={styles.wrapper}>
@@ -123,13 +119,15 @@ export default function ShopPage() {
           <span className={styles.countProduct}>67 товаров</span>
         </div>
         <div className={styles.btnsFilter}>
-          <ChooseCategory categoryNames={categoryNames} />
+          <ChooseCategoryLink categoryNames={categoryNames} />
           <ChoosePrice />
           {/* TODO link добавить или заменить кнопки */}
           {options.map((item, index) => {
-            if (item.titleSelect === "Цена") {
-              return <> </>;
+            const optionSelect = item.titleSelect;
+            if (optionSelect === "Цена" || optionSelect === "Категории") {
+              return null;
             }
+
             return <CustomSelect key={`${index + item.titleSelect}`} data={item} />;
           })}
         </div>

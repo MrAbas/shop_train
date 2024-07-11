@@ -8,15 +8,15 @@ import styles from "./CustomSelect.module.scss";
 interface CustomSelectProps {
   data: { titleSelect: string; option: Options["option"]; value: string; withIcon?: boolean };
 }
-
+// TODO иногда неправильно рендерится опшин. Бывает два L(1 вместо M)
 const cx = classNames.bind(styles);
 
 const CustomSelect: React.FC<CustomSelectProps> = ({ data }) => {
-  const [options, setoptions] = useState([]);
+  const [options, setOptions] = useState([]);
   const [classActive, setClassActive] = useState(false);
 
   useEffect(() => {
-    setoptions(data.option);
+    setOptions(data.option);
     setClassActive(data.option.some((item) => item.selected));
   }, [data]);
 
@@ -45,8 +45,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ data }) => {
   };
 
   const btnFilter = cx({
-    innerBtnFilter: classActive,
     btnFilter: true,
+    innerBtnFilter: classActive,
     withIcon: data.withIcon,
   });
 
@@ -59,7 +59,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ data }) => {
             if (item.selected) {
               return item.name;
             }
-            return "";
+            return null;
           })}
         </span>
       </button>
