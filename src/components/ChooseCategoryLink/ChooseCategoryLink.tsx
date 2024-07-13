@@ -1,23 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../store/hooks";
+import classNames from "classnames/bind";
 import useObserver from "../../shared/hooks/useObserver";
-import { toggleSelect } from "../../store/shopSlice";
-import { categoriesSelector } from "../../store/selectors";
 import styles from "./ChooseCategoryLink.module.scss";
 
 interface ChooseCategoryLinkProps {
   categoryNames: { option: string; value: string }[];
 }
 
+const cx = classNames.bind(styles);
+
 const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }) => {
   const [showFilters, setShowFilters] = useState(false);
   const ref = useRef(null);
-  const dispatch = useDispatch();
-  const categories = useAppSelector(categoriesSelector);
-
   const { addListener, removeListener } = useObserver(ref, setShowFilters);
+  const [classActive, setClassActive] = useState(false);
 
   useEffect(() => {
     if (showFilters) {
@@ -29,16 +26,29 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
     };
   }, [showFilters]);
 
-  const onOptionClick = (name) => {
-    categories.forEach((item) => {
-      dispatch(toggleSelect({ name, filterName: item.titleSelect }));
-    });
-  };
+  /*  useEffect(() => {
+    console.log(
+      categoryNames.forEach((item) => {
+        console.log(item);
+      }),
+    );
+  }, [categoryNames]); */
+  /* const toggleCategory = (name) => {
+    if (name === "Все категории") {
+      setClassActive(true);
+    }
+  }; */
+
+  const btnFilter = cx({
+    btnFilter: true,
+    categoryIcon: true,
+    innerBtnFilter: classActive,
+  });
 
   return (
     <div ref={ref} className={styles.containerBtn}>
       <button
-        className={`${styles.btnFilter} ${styles.categoryIcon}`}
+        className={`${btnFilter}`}
         type="button"
         onClick={() => {
           setShowFilters(!showFilters);
@@ -52,7 +62,7 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
         {showFilters &&
           categoryNames.map((item, index) => (
             <li key={`${index + item.option}`} className={styles.listBtn}>
-              <Link to={`${item.value}`} className={styles.listBtnItem} onClick={() => onOptionClick(item.option)}>
+              <Link to={`${item.value}`} className={styles.listBtnItem}>
                 {item.option}
               </Link>
             </li>

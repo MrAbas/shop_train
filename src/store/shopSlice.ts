@@ -14,17 +14,17 @@ export interface Options {
 
 interface OptionsCategories {
   titleSelect: string;
-  cloth?: { option: Option[]; selected: boolean };
-  accessories?: { option: Option[]; selected: boolean };
-  souvenirs?: { option: Option[]; selected: boolean };
-  office?: { option: Option[]; selected: boolean };
+  cloth?: { name: string; value: string; option: Option[] };
+  accessories?: { name: string; value: string; option: Option[] };
+  souvenirs?: { name: string; value: string; option: Option[] };
+  office?: { name: string; value: string; option: Option[] };
 }
 
 interface State {
   active: boolean;
   theme: string;
   authorized: boolean;
-  categories: OptionsCategories[];
+  categories: OptionsCategories;
   options: Options[];
 }
 
@@ -32,42 +32,45 @@ const initialState: State = {
   active: false,
   theme: localStorage.theme,
   authorized: localStorage.authorized,
-  categories: [
-    {
-      titleSelect: "Категории",
-      cloth: {
-        option: [
-          { name: "Футболки", selected: false },
-          { name: "Лонг-сливы", selected: false },
-          { name: "Худи", selected: false },
-          { name: "Верхняя одежда", selected: false },
-        ],
-        selected: false,
-      },
-      accessories: {
-        option: [
-          { name: "Сумки", selected: false },
-          { name: "Головные уборы", selected: false },
-          { name: "Зонты", selected: false },
-        ],
-        selected: false,
-      },
-      souvenirs: {
-        option: [
-          { name: "Бизнес-сувениры", selected: false },
-          { name: "Промо-сувениры", selected: false },
-        ],
-        selected: false,
-      },
-      office: {
-        option: [
-          { name: "ручки", selected: false },
-          { name: "тетради", selected: false },
-        ],
-        selected: false,
-      },
+  categories: {
+    titleSelect: "Категории",
+    cloth: {
+      name: "cloth",
+      value: "Одежда",
+      option: [
+        { name: "Футболки", selected: false },
+        { name: "Лонг-сливы", selected: false },
+        { name: "Худи", selected: false },
+        { name: "Верхняя одежда", selected: false },
+      ],
     },
-  ],
+    accessories: {
+      name: "accessories",
+      value: "Аксессуары",
+      option: [
+        { name: "Сумки", selected: false },
+        { name: "Головные уборы", selected: false },
+        { name: "Зонты", selected: false },
+      ],
+    },
+    souvenirs: {
+      name: "souvenirs",
+      value: "Сувениры",
+      option: [
+        { name: "Бизнес-сувениры", selected: false },
+        { name: "Промо-сувениры", selected: false },
+      ],
+    },
+    office: {
+      name: "office",
+      value: "Канцелярия",
+      option: [
+        { name: "ручки", selected: false },
+        { name: "тетради", selected: false },
+      ],
+    },
+  },
+
   options: [
     {
       titleSelect: "Цена",
@@ -81,7 +84,7 @@ const initialState: State = {
       titleSelect: "Размер",
       option: [
         { name: "S", selected: false },
-        { name: "L", selected: false },
+        { name: "M", selected: false },
         { name: "L", selected: false },
         { name: "XL", selected: false },
         { name: "XXL", selected: false },
@@ -129,11 +132,6 @@ const shopSlice = createSlice({
     },
     toggleSelect(state, actions) {
       const { name, filterName } = actions.payload;
-      state.categories.forEach((item) => {
-        item.cloth.selected = true;
-        // TODO спросить, как правильно менять на false.    По поводу item.cloth, в name заходят на русском можно перевести
-      });
-
       state.options = state.options.map((item) => {
         if (item.titleSelect === filterName) {
           item.option = item.option.map((el) => {
@@ -152,21 +150,13 @@ const shopSlice = createSlice({
     },
     toggleSelectCategories(state, actions) {
       const { name, filterName } = actions.payload;
-      state.categories = state.categories.map((item) => {
-        item[name].option.map((el) => {
-          if (el.name === filterName) {
-            el.selected = !el.selected;
-          } else if (
-            name === "cloth" ||
-            name === "accessories" ||
-            name === "souvenirs" ||
-            (name === "office" && el.name !== name)
-          ) {
-            el.selected = false;
-          }
-          return el;
-        });
-        return item;
+      state.categories[name].option = state.categories[name].option.map((el) => {
+        if (el.name === filterName) {
+          el.selected = !el.selected;
+        } else {
+          el.selected = false;
+        }
+        return el;
       });
     },
     addFilteredPrice(state, actions) {

@@ -1,41 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
-import { useAppDispatch } from "../../store/hooks";
+import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { toggleSelectCategories } from "../../store/shopSlice";
 import useObserver from "../../shared/hooks/useObserver";
+import { categoriesSelector } from "../../store/selectors";
 import styles from "./ChooseCategory.module.scss";
-
-/*  TODO сделал типизацию, при подключении выходят ошибки interface ChooseCategoryProps {
-  data: {
-    titleSelect: string;
-    cloth: { option: Options["option"] };
-    accessories: { option: Options["option"] };
-    souvenirs: { option: Options["option"] };
-    office: { option: Options["option"] };
-  };
-  id: string;
-  titleSelect: string[];
-}
-: React.FC<ChooseCategoryProps>
-*/
 
 const cx = classNames.bind(styles);
 
-const ChooseCategory = ({ data, id, titleSelect }) => {
+const ChooseCategory = () => {
   const [options, setOptions] = useState([]);
   const [classActive, setClassActive] = useState(false);
+  const categories = useAppSelector(categoriesSelector);
+  const { id } = useParams();
+  const { titleSelect } = categories;
 
   useEffect(() => {
-    if (data?.length) {
-      data.forEach((item) => {
-        setOptions(item[id].option);
-      });
+    if (categories[id].option.length) {
+      setOptions(categories[id].option);
     }
-    data.forEach((el) => {
-      setClassActive(el[id].option.some((item) => item.selected));
-    });
-    // setClassActive(options.some((item) => item.selected));
-  }, [data]);
+
+    setClassActive(categories[id].option.some((item) => item.selected));
+  }, [categories]);
 
   const ref = useRef(null);
   const dispatch = useAppDispatch();
@@ -58,7 +45,6 @@ const ChooseCategory = ({ data, id, titleSelect }) => {
   }, [showFilters]);
 
   const onOptionClick = (filterName: string) => {
-    // dispatch(toggleSelect({ name, filterName: id }));
     dispatch(toggleSelectCategories({ name: id, filterName }));
   };
 

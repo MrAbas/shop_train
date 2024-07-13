@@ -8,7 +8,6 @@ import styles from "./CustomSelect.module.scss";
 interface CustomSelectProps {
   data: { titleSelect: string; option: Options["option"]; value: string; withIcon?: boolean };
 }
-// TODO иногда неправильно рендерится опшин. Бывает два L(1 вместо M)
 const cx = classNames.bind(styles);
 
 const CustomSelect: React.FC<CustomSelectProps> = ({ data }) => {

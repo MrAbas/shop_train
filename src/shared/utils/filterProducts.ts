@@ -1,10 +1,12 @@
 import { filterSort } from "../helpers/filterSort";
 import { translateColor } from "./translateColor";
 
-export const filterProducts = (newOption, items) => {
+export const filterProducts = (newOption, items, id) => {
   let filteredItems = [...items];
+  if (id) {
+    filteredItems = filteredItems.filter((el) => el.category === id);
+  }
 
-  // TODO напомнить про Reduce
   newOption.forEach((filter) => {
     if (filter.filterName === "size") {
       filteredItems = filteredItems.filter((item) => item.sizes[filter.name.toLowerCase()]);

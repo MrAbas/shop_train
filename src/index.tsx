@@ -10,9 +10,6 @@ import { MainPage } from "./pages/MainPage/index";
 import { ShopPage } from "./pages/ShopPage";
 import { ClothPage } from "./pages/ClothPage";
 import { Footer } from "./components/Footer";
-// import { AccessoriesPage } from "./pages/AccessoriesPage";
-// import { SouvenirsPage } from "./pages/SouvenirsPage";
-// import { OfficePage } from "./pages/OfficePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

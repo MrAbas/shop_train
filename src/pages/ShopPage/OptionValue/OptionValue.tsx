@@ -24,13 +24,11 @@ export default function OptionValue() {
   }, [options]);
 
   return (
-    <div>
-      {/* TODO рендерится пустой див, нужно ли делать проверку ? */}
+    <>
+      {}
       {optionValue.length > 0 && (
         <ul className={styles.filtersList}>
           {optionValue.map((item, index) => {
-            // TODO изменил момент с компонентом
-            // if (item.name !== "min" && item.name !== "max") {
             const { filterName } = item;
             if (filterName !== "sort" && filterName !== "price" && filterName !== "cloth") {
               return (
@@ -51,6 +49,6 @@ export default function OptionValue() {
           })}
         </ul>
       )}
-    </div>
+    </>
   );
 }
