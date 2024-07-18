@@ -1,0 +1,334 @@
+.wrapper {
+  width: 100%;
+  max-width: 1504px;
+  min-height: 100%;
+  margin: 0 auto;
+  margin-bottom: 80px;
+  padding-top: 24px;
+
+  background-color: #1d2533;
+}
+
+.links {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 24px;
+  margin-bottom: 40px;
+
+  .styleLinks {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgb(255 255 255 / 90%);
+    text-align: center;
+    letter-spacing: 0;
+  }
+
+  .currentLinks {
+    cursor: auto;
+    color: rgb(255 255 255 / 40%);
+  }
+
+  :not(:last-child) {
+    margin-right: 19px;
+  }
+}
+
+.links > li:not(:last-child)::after {
+  content: "";
+
+  position: relative;
+  left: 10px;
+
+  display: inline-block;
+
+  width: 3px;
+  height: 3px;
+
+  background: rgb(255 255 255 / 90%);
+  border-radius: 50%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1504px;
+  min-height: 992px;
+
+  .profileContent {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.productsList {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 992px;
+  min-height: 992px;
+  margin-right: 32px;
+
+  .product {
+    width: 100%;
+    max-width: 480px;
+    min-height: 480px;
+    background: radial-gradient(52.53% 52.53% at 50% 47.47%, #4e5d77 0, rgb(42 50 63 / 0%) 100%), #2a323f;
+  }
+
+  .productImg {
+    width: 100%;
+    max-width: 480px;
+    min-height: 480px;
+  }
+}
+
+.productCard {
+  width: 100%;
+  max-width: 480px;
+  min-height: 48px;
+
+  .productTitle {
+    margin-bottom: 16px;
+
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 44px;
+    color: rgb(241 243 245);
+  }
+
+  .productCharacteristics {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(165 168 173);
+  }
+
+  .productActions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    .price {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 40px;
+      color: rgb(22 217 166);
+    }
+
+    .btnsActions {
+      display: flex;
+      justify-content: space-between;
+
+      width: 100%;
+      max-width: 112px;
+      min-height: 48px;
+
+      .actionsBtn {
+        width: 100%;
+        max-width: 48px;
+        min-height: 48px;
+
+        background: rgb(42 50 63);
+        border-radius: 32px;
+
+        .colorBtn {
+          color: #e8e9ea;
+
+          &:hover {
+            color: rgb(22 217 166);
+          }
+        }
+      }
+    }
+  }
+
+  .productInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .available {
+      margin-right: 23px;
+      padding-left: 4px;
+
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      color: rgb(22 217 166);
+    }
+
+    .productPropertyName {
+      margin-left: 8px;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      color: rgb(232 233 234);
+    }
+  }
+
+  .btnsSizeContainer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 343px;
+    min-height: 32px;
+    margin-bottom: 8px;
+
+    .btnSize {
+      width: 100%;
+      max-width: 59px;
+      min-height: 32px;
+
+      color: rgb(255 255 255 / 90%);
+
+      background: rgb(51 58 71);
+      border-radius: 24px;
+
+      &:hover {
+        background: rgb(148 102 255);
+      }
+    }
+
+    .btnSizeActive {
+      background: rgb(148 102 255);
+    }
+  }
+
+  .sizeTable {
+    margin-bottom: 24px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(22 217 166);
+    text-decoration-line: underline;
+
+    background: transparent;
+  }
+
+  .productContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 480px;
+    min-height: 80px;
+    margin-bottom: 40px;
+
+    .countTitle {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: rgb(165 168 173);
+    }
+
+    .countProduct {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: rgb(255 255 255 / 90%);
+    }
+
+    .productContainerBtns {
+      display: flex;
+      justify-content: space-between;
+
+      width: 100%;
+      max-width: 480px;
+      min-height: 48px;
+
+      .containerTotalProduct {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        max-width: 232px;
+        min-height: 48px;
+        padding: 12px 16px;
+
+        background-color: #333a47;
+        border-radius: 24px;
+
+        .btnCountProducts {
+          display: flex;
+          align-items: center;
+
+          width: 100%;
+          max-width: 24px;
+          min-height: 24px;
+          margin: 0 10px;
+
+          background: transparent;
+
+          .countAction {
+            color: rgb(255 255 255 / 40%);
+
+            &:hover {
+              color: rgb(148 102 255);
+            }
+          }
+        }
+
+        .totalProducts {
+          font-size: 16px;
+          font-weight: 400;
+          color: rgb(255 255 255 / 90%);
+        }
+      }
+
+      .addToCart {
+        width: 100%;
+        max-width: 232px;
+        min-height: 48px;
+        padding: 12px 35px;
+
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        color: rgb(255 255 255);
+
+        background: rgb(148 102 255);
+        border-radius: 50px;
+      }
+    }
+  }
+
+  .containerAccordion {
+    margin: 0;
+
+    .customAccordion {
+      background-color: transparent;
+      border-top: 1px solid #2a323f;
+      border-bottom: 1px solid #2a323f;
+      box-shadow: none;
+
+      .customAccordionSummary {
+        padding: 0;
+
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        color: rgb(165 168 173);
+      }
+
+      .customAccordionDetails {
+        padding: 0;
+
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        color: rgb(232 233 234);
+      }
+    }
+  }
+}

@@ -119,6 +119,9 @@ const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
+    returnToDefault(state) {
+      state.categories = initialState.categories;
+    },
     handleClickActive(state) {
       state.active = !state.active;
     },
@@ -195,6 +198,7 @@ const shopSlice = createSlice({
 });
 
 export const {
+  returnToDefault,
   handleClickActive,
   toggleTheme,
   addOptions,

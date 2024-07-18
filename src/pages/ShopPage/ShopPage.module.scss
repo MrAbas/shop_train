@@ -1,14 +1,11 @@
 .wrapper {
   width: 100%;
+  max-width: 1504px;
   min-height: 100%;
-  padding-top: 24px;
-  background-color: #1d2533;
-}
-
-.container {
-  max-width: 1535px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding-top: 24px;
+
+  background-color: #1d2533;
 }
 
 .links {

@@ -4,6 +4,12 @@
   max-width: 352px;
   height: 492px;
 
+  &:hover {
+    background-color: #2a323f;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 20%), 0 0 20px 0 rgb(0 0 0 / 10%);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
   .productLinkImg {
     display: block;
 

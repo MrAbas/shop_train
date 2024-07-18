@@ -5,7 +5,7 @@ import useObserver from "../../shared/hooks/useObserver";
 import styles from "./ChooseCategoryLink.module.scss";
 
 interface ChooseCategoryLinkProps {
-  categoryNames: { option: string; value: string }[];
+  categoryNames: { option: string; value: string; selected?: boolean }[];
 }
 
 const cx = classNames.bind(styles);
@@ -26,19 +26,6 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
     };
   }, [showFilters]);
 
-  /*  useEffect(() => {
-    console.log(
-      categoryNames.forEach((item) => {
-        console.log(item);
-      }),
-    );
-  }, [categoryNames]); */
-  /* const toggleCategory = (name) => {
-    if (name === "Все категории") {
-      setClassActive(true);
-    }
-  }; */
-
   const btnFilter = cx({
     btnFilter: true,
     categoryIcon: true,
@@ -55,14 +42,21 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
         }}
         aria-label="select a category"
       >
-        Категории
+        <span>Категории</span>
       </button>
 
       <ul className={styles.filterList}>
         {showFilters &&
           categoryNames.map((item, index) => (
             <li key={`${index + item.option}`} className={styles.listBtn}>
-              <Link to={`${item.value}`} className={styles.listBtnItem}>
+              <Link
+                to={`${item.value}`}
+                className={styles.listBtnItem}
+                onClick={() => {
+                  item.selected = !item.selected;
+                  setClassActive(item?.selected);
+                }}
+              >
                 {item.option}
               </Link>
             </li>

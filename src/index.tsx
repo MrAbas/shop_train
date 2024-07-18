@@ -10,6 +10,7 @@ import { MainPage } from "./pages/MainPage/index";
 import { ShopPage } from "./pages/ShopPage";
 import { ClothPage } from "./pages/ClothPage";
 import { Footer } from "./components/Footer";
+import { ProfileProduct } from "./pages/ProfileProduct";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <ShopPage />,
+      },
+      {
+        path: "/shop/:id/:clothId",
+        element: <ProfileProduct />,
       },
       {
         path: "/shop/:id",

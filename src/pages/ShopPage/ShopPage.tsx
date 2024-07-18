@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ChooseCategoryLink } from "../../components/ChooseCategoryLink";
 import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
@@ -9,8 +10,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { optionsSelector } from "../../store/selectors";
 import styles from "./ShopPage.module.scss";
 
-const categoryNames: { option: string; value: string }[] = [
-  { option: "Все категории", value: "/shop" },
+const categoryNames: { option: string; value: string; selected?: boolean }[] = [
+  { option: "Все категории", value: "/shop", selected: false },
   { option: "Одежда", value: "/shop/cloth" },
   { option: "Аксессуары", value: "/shop/accessories" },
   { option: "Сувениры", value: "/shop/souvenirs" },
@@ -99,21 +100,20 @@ export default function ShopPage() {
   }, []); */
 
   return (
-    <section className={styles.wrapper}>
-      <div className={styles.container}>
-        <ul className={styles.links}>
-          <li>
-            <a className={styles.styleLinks} href="/">
-              Главная
-            </a>
-          </li>
-          <li>
-            <a className={`${styles.styleLinks} ${styles.currentLinks}`} href="#T">
-              Каталог
-            </a>
-          </li>
-        </ul>
-
+    <main className={styles.wrapper}>
+      <ul className={styles.links}>
+        <li>
+          <Link className={styles.styleLinks} to="/">
+            Главная
+          </Link>
+        </li>
+        <li>
+          <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
+            Каталог
+          </Link>
+        </li>
+      </ul>
+      <section>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>Каталог</h1>
           <span className={styles.countProduct}>67 товаров</span>
@@ -133,7 +133,7 @@ export default function ShopPage() {
         </div>
         <OptionValue />
         <ListProducts />
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }

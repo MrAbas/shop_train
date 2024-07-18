@@ -32,6 +32,13 @@
   background-image: url("../../shared/assets/icons/categoryIcon.svg");
 }
 
+.innerBtnFilter {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  padding: 4px 16px 4px 45px;
+}
+
 .sortIcon {
   padding: 12px 16px 12px 48px;
   background-image: url("../../shared/assets/icons/sortIcon.svg");
@@ -41,6 +48,7 @@
   content: "";
 
   position: absolute;
+  top: 12px;
   right: 16px;
 
   width: 100%;

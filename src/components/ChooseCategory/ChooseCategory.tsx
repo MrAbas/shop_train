@@ -17,11 +17,11 @@ const ChooseCategory = () => {
   const { titleSelect } = categories;
 
   useEffect(() => {
-    if (categories[id].option.length) {
+    if (categories[id]?.option.length) {
       setOptions(categories[id].option);
     }
 
-    setClassActive(categories[id].option.some((item) => item.selected));
+    setClassActive(categories[id]?.option.some((item) => item.selected));
   }, [categories]);
 
   const ref = useRef(null);
