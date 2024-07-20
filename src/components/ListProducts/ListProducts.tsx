@@ -44,6 +44,7 @@ export default function ListProducts() {
           available={item.available}
           article={item.article}
           price={item.price}
+          categories={item.category}
         />
       ))}
     </ul>

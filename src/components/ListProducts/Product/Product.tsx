@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./Product.module.scss";
 
-export default function Product({ id, image, title, available, article, price }) {
+export default function Product({ id, image, title, available, article, price, categories }) {
   return (
     <li className={styles.productContainer} key={id}>
       <Link
         className={styles.productLinkImg}
-        to={id}
+        to={`/shop/${categories}/${id}`}
         aria-label="product"
         style={{ backgroundImage: `url(${image})` }}
       />

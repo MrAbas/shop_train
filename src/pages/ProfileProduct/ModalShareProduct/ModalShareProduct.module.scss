@@ -1,0 +1,41 @@
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+
+  .modalTitle {
+    margin: 0 0 10px;
+
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 30px;
+    color: #e8e9ea;
+  }
+
+  .modalClose {
+    background-color: transparent;
+
+    .colorCloseModal {
+      color: #e8e9ea;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        color: #9466ff;
+      }
+    }
+  }
+}
+
+.btnsShare {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 74px;
+  height: 32px;
+
+  background-color: transparent;
+
+  .btnShare {
+    background-color: transparent;
+  }
+}

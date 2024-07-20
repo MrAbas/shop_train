@@ -1,0 +1,68 @@
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+
+  .modalTitle {
+    margin: 0 0 32px;
+    font-size: 32px;
+  }
+
+  .modalClose {
+    background-color: transparent;
+
+    .colorCloseModal {
+      color: #e8e9ea;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        color: #9466ff;
+      }
+    }
+  }
+}
+
+.table {
+  margin-bottom: 32px;
+
+  .trContainer {
+    color: hsl(0deg 0% 100% / 90%);
+    background-color: #2a323f;
+
+    .thHead {
+      padding: 15px;
+    }
+  }
+
+  .tdBody {
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.btnTableSize {
+  position: relative;
+
+  width: 100%;
+  max-width: 143px;
+  min-height: 43px;
+  padding: 12px 24px !important;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+
+  background-color: #9466ff !important;
+  border-radius: 32px;
+
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #70f !important;
+    transition: background-color 0.2s ease-in-out;
+  }
+}
+
+.btnTableSizeDisabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

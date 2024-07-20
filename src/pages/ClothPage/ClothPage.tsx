@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { categoriesSelector, optionsSelector } from "../../store/selectors";
 import { OptionValue } from "../ShopPage/OptionValue";
 import { ChooseCategory } from "../../components/ChooseCategory";
-import styles from "../ShopPage/ShopPage.module.scss";
 import { returnToDefault } from "../../store/shopSlice";
+import styles from "../ShopPage/ShopPage.module.scss";
 
 export default function ClothPage() {
   const options = useAppSelector(optionsSelector);
@@ -49,10 +49,8 @@ export default function ClothPage() {
         </div>
 
         <div className={styles.btnsFilter}>
-          {/* data={options.find((item) => item.titleSelect === "Категории")} */}
           <ChooseCategory />
           <ChoosePrice />
-          {/* TODO link добавить или заменить кнопки */}
           {options.map((item, index) => {
             if (item.titleSelect === "Цена" || item.titleSelect === "Категории") {
               return null;

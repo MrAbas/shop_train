@@ -1,3 +1,10 @@
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .wrapper {
   width: 100%;
   max-width: 1504px;
@@ -72,19 +79,15 @@
   width: 100%;
   max-width: 992px;
   min-height: 992px;
-  margin-right: 32px;
 
   .product {
-    width: 100%;
-    max-width: 480px;
-    min-height: 480px;
+    width: clamp(200px, 100%, 480px); /* Пример использования clamp для ширины */
+    min-height: clamp(200px, 100%, 485px);
     background: radial-gradient(52.53% 52.53% at 50% 47.47%, #4e5d77 0, rgb(42 50 63 / 0%) 100%), #2a323f;
   }
 
   .productImg {
-    width: 100%;
-    max-width: 480px;
-    min-height: 480px;
+    object-fit: cover; /* Масштабируем изображение, сохраняя соотношение сторон и обрезая лишнее */
   }
 }
 
@@ -312,22 +315,23 @@
       border-bottom: 1px solid #2a323f;
       box-shadow: none;
 
-      .customAccordionSummary {
+      .customAccordionElements {
         padding: 0;
-
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
-        color: rgb(165 168 173);
+      }
+
+      .customAccordionSummary {
+        color: rgb(232 233 234);
       }
 
       .customAccordionDetails {
-        padding: 0;
+        color: rgb(165 168 173);
 
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        color: rgb(232 233 234);
+        .listCharacteristics li:not(:last-child) {
+          margin-bottom: 12px;
+        }
       }
     }
   }
