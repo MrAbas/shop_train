@@ -27,7 +27,7 @@ export default function ProfileProduct() {
   const { title, image, price, article, available, description, characteristics } = filteredItem;
   const { type, color, collar, silhouette, print, decor, composition, season, collection } = characteristics;
 
-  console.log(filteredItem);
+  // console.log(filteredItem);
 
   const handleChange = (isExpanded: boolean, panel: string) => {
     setExpanded(isExpanded ? panel : false);

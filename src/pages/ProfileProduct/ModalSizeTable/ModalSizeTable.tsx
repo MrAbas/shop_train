@@ -20,7 +20,7 @@ const style = {
 };
 
 export default function ModalSizeTable({ open, setOpen }) {
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setOpen(!open);
 
   return (
     <div>

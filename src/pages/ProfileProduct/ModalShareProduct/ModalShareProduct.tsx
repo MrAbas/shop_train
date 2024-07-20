@@ -3,9 +3,8 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
+import { TelegramIcon, TelegramShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 import CloseModal from "../../../shared/assets/icons/ProfileProduct/CloseModal";
-import IconWhatsApp from "../../../shared/assets/icons/ProfileProduct/IconWhatsApp";
-import IconTelegram from "../../../shared/assets/icons/ProfileProduct/IconTelegram";
 import styles from "./ModalShareProduct.module.scss";
 
 const style = {
@@ -13,17 +12,18 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 773,
+  width: 620,
+  height: 105,
   bgcolor: "#333a47",
   borderRadius: 1,
   boxShadow: 24,
-  p: 4,
+  p: 2,
   color: "rgb(255 255 255)",
 };
 
 export default function ModalShareProduct({ open, setOpen }) {
-  const handleClose = () => setOpen(false);
-
+  const handleClose = () => setOpen(!open);
+  const shareUrlWhatsApp = "https://www.youtube.com/";
   return (
     <div>
       <Modal
@@ -50,12 +50,12 @@ export default function ModalShareProduct({ open, setOpen }) {
               </button>
             </div>
             <div className={styles.btnsShare}>
-              <button type="button" aria-label="share WhatsApp" className={styles.btnShare}>
-                <IconWhatsApp />
-              </button>
-              <button type="button" aria-label="share WhatsApp" className={styles.btnShare}>
-                <IconTelegram />
-              </button>
+              <WhatsappShareButton url={shareUrlWhatsApp}>
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+              <TelegramShareButton url={shareUrlWhatsApp}>
+                <TelegramIcon size={32} round />
+              </TelegramShareButton>
             </div>
           </Box>
         </Fade>
