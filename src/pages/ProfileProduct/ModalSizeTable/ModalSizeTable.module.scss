@@ -10,7 +10,7 @@
   .modalClose {
     background-color: transparent;
 
-    .colorCloseModal {
+    .smallClose {
       color: #e8e9ea;
       transition: background-color 0.2s ease-in-out;
 
@@ -36,6 +36,14 @@
   .tdBody {
     padding: 10px;
     text-align: center;
+  }
+
+  tr:hover {
+    .tdBody {
+      cursor: pointer;
+      background-color: #9466ff;
+      transition: background-color 0.2s ease-in-out;
+    }
   }
 }
 

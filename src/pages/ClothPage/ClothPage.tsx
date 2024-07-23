@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { ChoosePrice } from "../../components/ChoosePrice";
 import { ListProducts } from "../../components/ListProducts";
@@ -8,13 +8,14 @@ import { categoriesSelector, optionsSelector } from "../../store/selectors";
 import { OptionValue } from "../ShopPage/OptionValue";
 import { ChooseCategory } from "../../components/ChooseCategory";
 import { returnToDefault } from "../../store/shopSlice";
+import { Breadcrumbs } from "../../components/Breadcrumbs";
 import styles from "../ShopPage/ShopPage.module.scss";
 
 export default function ClothPage() {
+  const dispatch = useAppDispatch();
   const options = useAppSelector(optionsSelector);
   const categories = useAppSelector(categoriesSelector);
   const { id } = useParams();
-  const dispatch = useAppDispatch();
 
   useEffect(
     () => () => {
@@ -25,23 +26,7 @@ export default function ClothPage() {
 
   return (
     <main className={styles.wrapper}>
-      <ul className={styles.links}>
-        <li>
-          <Link className={styles.styleLinks} to="/">
-            Главная
-          </Link>
-        </li>
-        <li>
-          <Link className={`${styles.styleLinks}`} to="/shop">
-            Каталог
-          </Link>
-        </li>
-        <li>
-          <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
-            {categories[id]?.value}
-          </Link>
-        </li>
-      </ul>
+      <Breadcrumbs />
       <section>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>{categories[id]?.value}</h1>

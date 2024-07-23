@@ -16,49 +16,6 @@ ol {
   background-color: #1d2533;
 }
 
-.links {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-
-  min-height: 24px;
-  margin-bottom: 40px;
-
-  .styleLinks {
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 20px;
-    color: rgb(255 255 255 / 90%);
-    text-align: center;
-    letter-spacing: 0;
-  }
-
-  .currentLinks {
-    cursor: auto;
-    color: rgb(255 255 255 / 40%);
-  }
-
-  :not(:last-child) {
-    margin-right: 19px;
-  }
-}
-
-.links > li:not(:last-child)::after {
-  content: "";
-
-  position: relative;
-  left: 10px;
-
-  display: inline-block;
-
-  width: 3px;
-  height: 3px;
-
-  background: rgb(255 255 255 / 90%);
-  border-radius: 50%;
-}
-
 .container {
   width: 100%;
   max-width: 1504px;
@@ -73,12 +30,15 @@ ol {
 .productsList {
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
   justify-content: space-between;
 
   width: 100%;
   max-width: 992px;
   min-height: 992px;
+
+  & li:nth-child(-n+2) {
+    margin-bottom: 32px;
+  }
 
   .product {
     width: clamp(200px, 100%, 480px); /* Пример использования clamp для ширины */
@@ -198,6 +158,11 @@ ol {
       &:hover {
         background: rgb(148 102 255);
       }
+    }
+
+    .btnSizeDisabled {
+      color: rgb(255 255 255 / 20%);
+      background: rgb(42 50 63);
     }
 
     .btnSizeActive {

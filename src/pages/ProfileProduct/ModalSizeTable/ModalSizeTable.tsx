@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Backdrop, Fade } from "@mui/material";
-import CloseModal from "../../../shared/assets/icons/ProfileProduct/CloseModal";
+import SmallClose from "../../../shared/assets/icons/SmallClose";
 import styles from "./ModalSizeTable.module.scss";
 
 const style = {
@@ -44,7 +44,7 @@ export default function ModalSizeTable({ open, setOpen }) {
                 Таблица размеров
               </Typography>
               <button className={styles.modalClose} type="button" onClick={handleClose} aria-label="close modal">
-                <CloseModal className={styles.colorCloseModal} />
+                <SmallClose className={styles.smallClose} />
               </button>
             </div>
 

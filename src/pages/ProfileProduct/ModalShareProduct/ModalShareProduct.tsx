@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { TelegramIcon, TelegramShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
-import CloseModal from "../../../shared/assets/icons/ProfileProduct/CloseModal";
+import SmallClose from "../../../shared/assets/icons/SmallClose";
 import styles from "./ModalShareProduct.module.scss";
 
 const style = {
@@ -23,6 +23,7 @@ const style = {
 
 export default function ModalShareProduct({ open, setOpen }) {
   const handleClose = () => setOpen(!open);
+
   const shareUrlWhatsApp = "https://www.youtube.com/";
   return (
     <div>
@@ -46,7 +47,7 @@ export default function ModalShareProduct({ open, setOpen }) {
                 ПОДЕЛИТЬСЯ
               </Typography>
               <button className={styles.modalClose} type="button" onClick={handleClose} aria-label="close modal">
-                <CloseModal className={styles.colorCloseModal} />
+                <SmallClose className={styles.smallClose} />
               </button>
             </div>
             <div className={styles.btnsShare}>

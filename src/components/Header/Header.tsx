@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { MuiDrawer } from "../MuiDrawer/index";
 import SearchSvg from "../../shared/assets/icons/Header/SearchSvg";
@@ -5,9 +6,11 @@ import FavoritesSvg from "../../shared/assets/icons/Header/FavoritesSvg";
 import CompareSvg from "../../shared/assets/icons/Header/CompareSvg";
 import BasketSvg from "../../shared/assets/icons/Header/BasketSvg";
 import ProfileSvg from "../../shared/assets/icons/Header/ProfileSvg";
+import { ModalBasket } from "./ModalBasket";
 import styles from "./Header.module.scss";
 
 export default function Header() {
+  const [modalBasket, setModalBasket] = useState(false);
   return (
     <>
       <header className={styles.header}>
@@ -31,9 +34,17 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <a className={styles.listLink} href="/" aria-label="basket" type="button">
+              <a
+                className={styles.listLink}
+                href="/"
+                aria-label="basket"
+                type="button"
+                onMouseEnter={() => setModalBasket(true)}
+                // onMouseLeave={() => setModalBasket(false)}
+              >
                 <BasketSvg className={styles.listLink} />
               </a>
+              {modalBasket && <ModalBasket setModalBasket={setModalBasket} />}
             </li>
             <li>
               <button className={styles.listBtn} aria-label="profile" type="button">

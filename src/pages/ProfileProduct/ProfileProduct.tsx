@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import classNames from "classnames/bind";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import IconFavoriteProduct from "../../shared/assets/icons/ProfileProduct/IconFavoriteProduct";
 import IconShareProduct from "../../shared/assets/icons/ProfileProduct/IconShareProduct";
@@ -11,52 +12,45 @@ import { translate } from "../../shared/utils/translate";
 import indexData from "../../components/ListProducts/indexData.json";
 import { ModalSizeTable } from "./ModalSizeTable";
 import { ModalShareProduct } from "./ModalShareProduct";
+import { Breadcrumbs } from "../../components/Breadcrumbs";
 import styles from "./ProfileProduct.module.scss";
+
+const cx = classNames.bind(styles);
 
 export default function ProfileProduct() {
   const [expanded, setExpanded] = useState<string | false>(false);
-  const { id, itemId } = useParams();
+  const { itemId } = useParams();
 
   const [openModalSizeTable, setOpenModalSizeTable] = useState(false);
   const [openModalShare, setOpenModalShare] = useState(false);
+  const [chosenSize, setChosenSize] = useState("");
+
+  const handleClick = (currentSize) => {
+    setChosenSize(currentSize);
+  };
 
   const handleOpenModalSizeTable = () => setOpenModalSizeTable(true);
   const handleOpenModalShareProduct = () => setOpenModalShare(true);
 
   const filteredItem = indexData.items.find((item) => item.id === itemId);
-  const { title, image, price, article, available, description, characteristics } = filteredItem;
+  const { title, image, price, article, available, description, characteristics, sizes } = filteredItem;
   const { type, color, collar, silhouette, print, decor, composition, season, collection } = characteristics;
-
-  // console.log(filteredItem);
 
   const handleChange = (isExpanded: boolean, panel: string) => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const btnSize = cx({
+    btnSize: true,
+  });
+
+  const sizesKeys = Object.keys(sizes);
+  const missingProducts = sizesKeys.filter((key) => !sizes[key]);
+
+  console.log(missingProducts);
   return (
     <main className={styles.wrapper}>
-      <ul className={styles.links}>
-        <li>
-          <Link className={styles.styleLinks} to="/">
-            Главная
-          </Link>
-        </li>
-        <li>
-          <Link className={`${styles.styleLinks}`} to="/shop">
-            Каталог
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.styleLinks} to={`/shop/${id}`}>
-            {translate(id)}
-          </Link>
-        </li>
-        <li>
-          <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
-            Название продукта
-          </Link>
-        </li>
-      </ul>
+      <Breadcrumbs />
       <section className={styles.container}>
         <div className={styles.profileContent}>
           <ul className={styles.productsList}>
@@ -91,8 +85,8 @@ export default function ProfileProduct() {
                   onClick={handleOpenModalShareProduct}
                 >
                   <IconShareProduct className={styles.colorBtn} />
-                  <ModalShareProduct open={openModalShare} setOpen={setOpenModalShare} />
                 </button>
+                <ModalShareProduct open={openModalShare} setOpen={setOpenModalShare} />
               </div>
             </div>
             <div className={styles.productInfo}>
@@ -109,25 +103,20 @@ export default function ProfileProduct() {
             </div>
             <div className={styles.productInfo} style={{ marginBottom: "12px" }}>
               <span className={styles.productCharacteristics}>Размер:</span>
-              <span className={styles.productPropertyName}>M</span>
+              <span className={styles.productPropertyName}>{chosenSize}</span>
               {/* TODO брать с LocalStorage  */}
             </div>
             <div className={styles.btnsSizeContainer}>
-              <button className={styles.btnSize} type="button">
-                S
-              </button>
-              <button className={styles.btnSize} type="button">
-                L
-              </button>
-              <button className={`${styles.btnSize} ${styles.btnSizeActive}`} type="button">
-                M
-              </button>
-              <button className={styles.btnSize} type="button">
-                XL
-              </button>
-              <button className={styles.btnSize} type="button">
-                XXL
-              </button>
+              {Object.keys(sizes).map((size) => (
+                <button
+                  key={size}
+                  className={cx(btnSize)}
+                  type="button"
+                  onClick={() => handleClick(size.toUpperCase())}
+                >
+                  {size.toUpperCase()}
+                </button>
+              ))}
             </div>
             <button className={styles.sizeTable} type="button" onClick={handleOpenModalSizeTable}>
               Таблица размеров
@@ -200,30 +189,37 @@ export default function ProfileProduct() {
                     <ul className={styles.listCharacteristics}>
                       <li>
                         Type:
+                        <span> </span>
                         <span>{type}</span>
                       </li>
                       <li>
                         Color:
+                        <span> </span>
                         <span>{color}</span>
                       </li>
                       <li>
                         Collar:
+                        <span> </span>
                         <span>{collar}</span>
                       </li>
                       <li>
                         Silhouette:
+                        <span> </span>
                         <span>{silhouette}</span>
                       </li>
                       <li>
                         Print:
+                        <span> </span>
                         <span>{print}</span>
                       </li>
                       <li>
                         Decor:
+                        <span> </span>
                         <span>{decor}</span>
                       </li>
                       <li>
                         Composition:
+                        <span> </span>
                         <span>{composition}</span>
                       </li>
                       <li>Features:</li>
@@ -232,10 +228,12 @@ export default function ProfileProduct() {
                       <li>Clasp:</li>
                       <li>
                         Season:
+                        <span> </span>
                         <span>{season}</span>
                       </li>
                       <li>
                         Collection:
+                        <span> </span>
                         <span>{collection}</span>
                       </li>
                     </ul>

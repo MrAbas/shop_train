@@ -1,0 +1,96 @@
+.modalBasket {
+  position: absolute;
+  z-index: 2;
+  top: 70px;
+  right: 52px;
+  transform-origin: top right;
+
+  /* width: 100%;
+  max-width: 352px; TODO max не работает */
+  width: 352px;
+  min-height: 262px;
+  padding: 12px 5px 12px 12px;
+
+  background-color: #3d4555;
+  border-radius: 12px;
+
+  .smallClose {
+    color: #e8e9ea;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      color: #9466ff;
+    }
+  }
+
+  .headerModal {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 328px;
+    min-height: 37px;
+
+    border-bottom: 1px solid rgb(86 92 102);
+
+    .title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+      color: rgb(255 255 255 / 90%);
+    }
+  }
+
+  .emptyCart {
+    width: 297px;
+    height: 150px;
+    padding-left: 20px;
+  }
+
+  .containerEmptyCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 325px;
+    min-height: 150px;
+    margin-bottom: 12px;
+
+    border-bottom: 1px solid rgb(86 92 102);
+  }
+
+  .orderPrice {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(232 233 234);
+  }
+
+  .linkModalBasket {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 335px;
+    min-height: 32px;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+
+    background-color: #9466ff;
+    border-radius: 24px;
+
+    transition: background-color 0.2s ease-in-out;
+  }
+}

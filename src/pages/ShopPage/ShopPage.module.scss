@@ -8,49 +8,6 @@
   background-color: #1d2533;
 }
 
-.links {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-
-  min-height: 24px;
-  margin-bottom: 40px;
-
-  .styleLinks {
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 20px;
-    color: rgb(255 255 255 / 90%);
-    text-align: center;
-    letter-spacing: 0;
-  }
-
-  .currentLinks {
-    cursor: auto;
-    color: rgb(255 255 255 / 40%);
-  }
-
-  :not(:last-child) {
-    margin-right: 19px;
-  }
-}
-
-.links > li:not(:last-child)::before {
-  content: "";
-
-  position: relative;
-  left: 55px;
-
-  display: inline-block;
-
-  width: 3px;
-  height: 3px;
-
-  background: rgb(255 255 255 / 90%);
-  border-radius: 50%;
-}
-
 .titleContainer {
   display: flex;
 

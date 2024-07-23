@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { ChooseCategoryLink } from "../../components/ChooseCategoryLink";
 import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
@@ -8,6 +7,7 @@ import { OptionValue } from "./OptionValue";
 import { addOptions } from "../../store/shopSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { optionsSelector } from "../../store/selectors";
+import { Breadcrumbs } from "../../components/Breadcrumbs";
 import styles from "./ShopPage.module.scss";
 
 const categoryNames: { option: string; value: string; selected?: boolean }[] = [
@@ -101,18 +101,7 @@ export default function ShopPage() {
 
   return (
     <main className={styles.wrapper}>
-      <ul className={styles.links}>
-        <li>
-          <Link className={styles.styleLinks} to="/">
-            Главная
-          </Link>
-        </li>
-        <li>
-          <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
-            Каталог
-          </Link>
-        </li>
-      </ul>
+      <Breadcrumbs />
       <section>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>Каталог</h1>
