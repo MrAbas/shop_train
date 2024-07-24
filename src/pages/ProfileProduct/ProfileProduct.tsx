@@ -23,7 +23,8 @@ export default function ProfileProduct() {
 
   const [openModalSizeTable, setOpenModalSizeTable] = useState(false);
   const [openModalShare, setOpenModalShare] = useState(false);
-  const [chosenSize, setChosenSize] = useState("");
+  const [chosenSize, setChosenSize] = useState(null);
+  const [numberOfProducts, setNumberOfProducts] = useState(1);
 
   const handleClick = (currentSize) => {
     setChosenSize(currentSize);
@@ -33,21 +34,63 @@ export default function ProfileProduct() {
   const handleOpenModalShareProduct = () => setOpenModalShare(true);
 
   const filteredItem = indexData.items.find((item) => item.id === itemId);
-  const { title, image, price, article, available, description, characteristics, sizes } = filteredItem;
+  const { title, image, price, article, available, description, characteristics, sizes, category, inStock } =
+    filteredItem;
   const { type, color, collar, silhouette, print, decor, composition, season, collection } = characteristics;
 
   const handleChange = (isExpanded: boolean, panel: string) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const btnSize = cx({
-    btnSize: true,
-  });
-
   const sizesKeys = Object.keys(sizes);
   const missingProducts = sizesKeys.filter((key) => !sizes[key]);
 
-  console.log(missingProducts);
+  const productInfo = [
+    { category, color, count: numberOfProducts, image, inStock, name: title, price, itemId, size: chosenSize },
+  ];
+
+  /* if (localStorage.getItem("cart")) {
+    let LSItemsSize = JSON.parse(localStorage.getItem("cart"));
+    LSItemsSize = LSItemsSize.map((el) => el.size);
+
+    console.log(LSItemsSize);
+  } */
+  const setLocalStorage = () => {
+    if (!localStorage.cart) {
+      localStorage.setItem("cart", JSON.stringify(productInfo));
+    } else {
+      const cart = JSON.parse(localStorage.getItem("cart"));
+      cart.push({
+        category,
+        color,
+        count: numberOfProducts,
+        image,
+        inStock,
+        name: title,
+        price,
+        itemId,
+        size: chosenSize,
+      });
+      localStorage.cart = JSON.stringify(cart);
+    }
+
+    /*  if (localStorage.getItem("cart")) {
+      let LSItemsSize = JSON.parse(localStorage.getItem("cart"));
+      LSItemsSize = LSItemsSize.map((el) => el.size);
+      LSItemsSize = LSItemsSize.filter((item) => item === chosenSize);
+      console.log(LSItemsSize[0]);
+    } */
+  };
+
+  const increment = () => {
+    setNumberOfProducts(numberOfProducts + 1);
+  };
+
+  const decrement = () => {
+    if (numberOfProducts > 1) {
+      setNumberOfProducts(numberOfProducts - 1);
+    }
+  };
   return (
     <main className={styles.wrapper}>
       <Breadcrumbs />
@@ -104,15 +147,18 @@ export default function ProfileProduct() {
             <div className={styles.productInfo} style={{ marginBottom: "12px" }}>
               <span className={styles.productCharacteristics}>Размер:</span>
               <span className={styles.productPropertyName}>{chosenSize}</span>
-              {/* TODO брать с LocalStorage  */}
             </div>
             <div className={styles.btnsSizeContainer}>
               {Object.keys(sizes).map((size) => (
                 <button
                   key={size}
-                  className={cx(btnSize)}
+                  className={cx({
+                    btnSize: true,
+                    btnSizeDisabled: missingProducts.includes(size.toLowerCase()),
+                  })}
                   type="button"
                   onClick={() => handleClick(size.toUpperCase())}
+                  disabled={missingProducts.includes(size.toLowerCase())}
                 >
                   {size.toUpperCase()}
                 </button>
@@ -128,25 +174,31 @@ export default function ProfileProduct() {
               <span className={styles.productCharacteristics}>Количество:</span>
 
               <div className={styles.productContainerBtns}>
-                <div className={styles.containerTotalProduct}>
-                  {/* <span className={styles.totalProducts}>Всего в корзине: </span> */}
-                  <button
-                    className={styles.btnCountProducts}
-                    type="button"
-                    aria-label="Кнопка, уменьшающая количество товара в корзине"
-                  >
-                    <IconRemove className={styles.countAction} />
-                  </button>
-                  <span className={styles.countProduct}>1</span>
-                  <button
-                    className={styles.btnCountProducts}
-                    type="button"
-                    aria-label="Кнопка, увеличивающая количество товара в корзине"
-                  >
-                    <IconAdd className={styles.countAction} />
-                  </button>
-                </div>
-                <button className={styles.addToCart} type="button">
+                {chosenSize ? (
+                  <div className={styles.containerTotalProduct}>
+                    <button
+                      className={cx({ btnCountProducts: true, btnCountProductsDisabled: numberOfProducts === 1 })}
+                      type="button"
+                      aria-label="Кнопка, уменьшающая количество товара в корзине"
+                      onClick={decrement}
+                    >
+                      <IconRemove className={styles.countAction} />
+                    </button>
+                    <span className={styles.countProduct}>{numberOfProducts}</span>
+                    <button
+                      className={styles.btnCountProducts}
+                      type="button"
+                      aria-label="Кнопка, увеличивающая количество товара в корзине"
+                    >
+                      <IconAdd className={styles.countAction} onClick={increment} />
+                    </button>
+                  </div>
+                ) : (
+                  <div className={styles.containerTotalProduct}>
+                    <span className={styles.totalProducts}>Всего в корзине: 0</span>
+                  </div>
+                )}
+                <button className={styles.addToCart} type="button" onClick={setLocalStorage}>
                   В корзину
                 </button>
               </div>
