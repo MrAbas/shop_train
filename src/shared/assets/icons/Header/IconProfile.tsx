@@ -1,4 +1,4 @@
-function ProfileSvg(props: React.SVGProps<SVGSVGElement>) {
+function IconProfile(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24.000000"
@@ -24,4 +24,4 @@ function ProfileSvg(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export default ProfileSvg;
+export default IconProfile;

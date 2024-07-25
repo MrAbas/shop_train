@@ -24,6 +24,7 @@ interface State {
   active: boolean;
   theme: string;
   authorized: boolean;
+  modalCart: boolean;
   categories: OptionsCategories;
   options: Options[];
 }
@@ -32,6 +33,7 @@ const initialState: State = {
   active: false,
   theme: localStorage.theme,
   authorized: localStorage.authorized,
+  modalCart: false,
   categories: {
     titleSelect: "Категории",
     cloth: {

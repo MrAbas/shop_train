@@ -1,4 +1,4 @@
-function BurgerMenuSvg(props: React.SVGProps<SVGSVGElement>) {
+function IconBurgerMenu(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="20.000000"
@@ -19,4 +19,4 @@ function BurgerMenuSvg(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export default BurgerMenuSvg;
+export default IconBurgerMenu;

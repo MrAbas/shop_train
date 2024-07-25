@@ -4,8 +4,8 @@ import classNames from "classnames/bind";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import IconFavoriteProduct from "../../shared/assets/icons/ProfileProduct/IconFavoriteProduct";
 import IconShareProduct from "../../shared/assets/icons/ProfileProduct/IconShareProduct";
-import IconRemove from "../../shared/assets/icons/ProfileProduct/IconRemove";
-import IconAdd from "../../shared/assets/icons/ProfileProduct/IconAdd";
+import IconRemove from "../../shared/assets/icons/IconRemove";
+import IconAdd from "../../shared/assets/icons/IconAdd";
 import IconCross from "../../shared/assets/icons/ProfileProduct/IconCross";
 import IconPlus from "../../shared/assets/icons/ProfileProduct/IconPlus";
 import { translate } from "../../shared/utils/translate";
@@ -49,37 +49,38 @@ export default function ProfileProduct() {
     { category, color, count: numberOfProducts, image, inStock, name: title, price, itemId, size: chosenSize },
   ];
 
-  /* if (localStorage.getItem("cart")) {
-    let LSItemsSize = JSON.parse(localStorage.getItem("cart"));
-    LSItemsSize = LSItemsSize.map((el) => el.size);
-
-    console.log(LSItemsSize);
-  } */
   const setLocalStorage = () => {
     if (!localStorage.cart) {
       localStorage.setItem("cart", JSON.stringify(productInfo));
     } else {
-      const cart = JSON.parse(localStorage.getItem("cart"));
-      cart.push({
-        category,
-        color,
-        count: numberOfProducts,
-        image,
-        inStock,
-        name: title,
-        price,
-        itemId,
-        size: chosenSize,
-      });
+      let cart = JSON.parse(localStorage.getItem("cart"));
+
+      console.log(cart);
+      const exists = cart.find((item) => item.itemId === itemId && item.size === chosenSize);
+      console.log(exists);
+      if (exists) {
+        cart = cart.map((item) => {
+          if (item.itemId === itemId && item.size === chosenSize) {
+            item.count = numberOfProducts;
+          }
+          return item;
+        });
+      } else {
+        cart.push({
+          category,
+          color,
+          count: numberOfProducts,
+          image,
+          inStock,
+          name: title,
+          price,
+          itemId,
+          size: chosenSize,
+        });
+      }
+
       localStorage.cart = JSON.stringify(cart);
     }
-
-    /*  if (localStorage.getItem("cart")) {
-      let LSItemsSize = JSON.parse(localStorage.getItem("cart"));
-      LSItemsSize = LSItemsSize.map((el) => el.size);
-      LSItemsSize = LSItemsSize.filter((item) => item === chosenSize);
-      console.log(LSItemsSize[0]);
-    } */
   };
 
   const increment = () => {

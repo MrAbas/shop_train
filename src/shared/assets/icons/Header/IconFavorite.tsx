@@ -1,4 +1,4 @@
-function FavoritesSvg(props: React.SVGProps<SVGSVGElement>) {
+function IconFavorite(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24.000000"
@@ -25,4 +25,4 @@ function FavoritesSvg(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export default FavoritesSvg;
+export default IconFavorite;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
-import BurgerMenuSvg from "../../shared/assets/icons/Header/BurgerMenuSvg";
+import BurgerMenuSvg from "../../shared/assets/icons/Header/IconBurgerMenu";
 import AccordionMenu from "../AccordionMenu/AccordionMenu";
 import styles from "./MuiDrawer.module.scss";
 

@@ -34,14 +34,21 @@ ol {
 
   width: 100%;
   max-width: 992px;
+  height: 100%; /* TODO озарение */
   min-height: 992px;
+  margin-right: 20px;
 
   & li:nth-child(-n+2) {
     margin-bottom: 32px;
   }
 
+  & li:nth-child(2n-1) {
+    margin-right: 32px;
+  }
+
   .product {
-    width: clamp(200px, 100%, 480px); /* Пример использования clamp для ширины */
+    width: 100%;
+    max-width: 480px;
     min-height: clamp(200px, 100%, 485px);
     background: radial-gradient(52.53% 52.53% at 50% 47.47%, #4e5d77 0, rgb(42 50 63 / 0%) 100%), #2a323f;
   }
@@ -239,6 +246,7 @@ ol {
         .btnCountProducts {
           display: flex;
           align-items: center;
+          justify-content: space-around;
 
           width: 100%;
           max-width: 24px;
@@ -252,6 +260,7 @@ ol {
 
             &:hover {
               color: rgb(148 102 255);
+              transition: color 0.2s ease-in-out;
             }
           }
         }

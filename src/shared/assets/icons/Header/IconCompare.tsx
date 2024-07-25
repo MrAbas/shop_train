@@ -1,4 +1,4 @@
-function CompareSvg(props: React.SVGProps<SVGSVGElement>) {
+function IconCompare(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24.000000"
@@ -22,4 +22,4 @@ function CompareSvg(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export default CompareSvg;
+export default IconCompare;

@@ -1,4 +1,4 @@
-function BasketSvg(props: React.SVGProps<SVGSVGElement>) {
+function IconProductPack(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24.000000"
@@ -23,4 +23,4 @@ function BasketSvg(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export default BasketSvg;
+export default IconProductPack;
