@@ -73,6 +73,12 @@ export default function ShopPage() {
     dispatch(addOptions(newData));
   }, []);
 
+  /* if (localStorage.cart) {
+    // TODO закрытие на клик ModalCart
+    window.onclick = () => {
+      dispatch(falseModalCart());
+    };
+  } */
   /*   useEffect(() => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

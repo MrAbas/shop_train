@@ -1,16 +1,20 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { MuiDrawer } from "../MuiDrawer/index";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { modalCartSelector } from "../../store/selectors";
 import IconSearch from "../../shared/assets/icons/Header/IconSearch";
 import IconFavorite from "../../shared/assets/icons/Header/IconFavorite";
 import IconCompare from "../../shared/assets/icons/Header/IconCompare";
 import IconProductPack from "../../shared/assets/icons/Header/IconProductPack";
 import IconProfile from "../../shared/assets/icons/Header/IconProfile";
 import { ModalCart } from "./ModalCart";
+import { trueModalCart } from "../../store/shopSlice";
 import styles from "./Header.module.scss";
 
 export default function Header() {
-  const [modalCart, setModalCart] = useState(false);
+  const dispatch = useAppDispatch();
+  const modalCart = useAppSelector(modalCartSelector);
+
   return (
     <>
       <header className={styles.header}>
@@ -39,12 +43,14 @@ export default function Header() {
                 href="/"
                 aria-label="basket"
                 type="button"
-                onMouseEnter={() => setModalCart(true)}
+                onMouseEnter={() => {
+                  dispatch(trueModalCart());
+                }}
                 // onMouseLeave={() => setModalBasket(false)}
               >
                 <IconProductPack className={styles.listLink} />
               </a>
-              {modalCart && <ModalCart setModalBasket={setModalCart} />}
+              {modalCart && <ModalCart />}
             </li>
             <li>
               <button className={styles.listBtn} aria-label="profile" type="button">

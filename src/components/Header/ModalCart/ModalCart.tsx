@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { handleModalCart } from "../../../store/shopSlice";
+import { useAppDispatch } from "../../../store/hooks";
 import SmallClose from "../../../shared/assets/icons/SmallClose";
 import emptyCart from "../../../shared/assets/icons/Header/emptyCart.svg";
 import WasteBasket from "../../../shared/assets/icons/Header/WasteBasket";
-import styles from "./ModalCart.module.scss";
 import IconRemove from "../../../shared/assets/icons/IconRemove";
 import IconAdd from "../../../shared/assets/icons/IconAdd";
+import styles from "./ModalCart.module.scss";
 
-export default function ModalCart({ setModalBasket }) {
+export default function ModalCart() {
+  const dispatch = useAppDispatch();
   const [urlImg, setUrlImg] = useState(null);
   const [cartState, setCartState] = useState(false);
+
   useEffect(() => {
     if (localStorage.cart) {
       setCartState(!cartState); // TODO если открыт ModalCart, сразу не добавляет
@@ -20,10 +24,10 @@ export default function ModalCart({ setModalBasket }) {
     }
   }, [localStorage.cart]);
   return (
-    <div className={styles.modalCart} onMouseLeave={() => setModalBasket(false)}>
+    <div className={styles.modalCart} onMouseLeave={() => dispatch(handleModalCart())}>
       <div className={styles.headerModal}>
         <h3 className={styles.title}>Корзина</h3>
-        <button type="button" onClick={() => setModalBasket(false)} aria-label="закрытие окна с корзиной">
+        <button type="button" onClick={() => dispatch(handleModalCart())} aria-label="закрытие окна с корзиной">
           <SmallClose className={styles.smallClose} />
         </button>
       </div>

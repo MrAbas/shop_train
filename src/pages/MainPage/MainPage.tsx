@@ -1,16 +1,26 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
+import { falseModalCart } from "../../store/shopSlice";
 import styles from "./MainPage.module.scss";
 
 export default function MainPage() {
   const userIsInactive = localStorage.getItem("authorized");
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (userIsInactive === "false") {
       navigate("/loginPage");
     }
   }, [userIsInactive]);
+
+  if (localStorage.cart) {
+    // TODO закрытие на клик ModalCart, почему работает на всех страницах ? После обновления уже не работает
+    window.onclick = () => {
+      dispatch(falseModalCart());
+    };
+  }
   return (
     <div className={styles.wrapper}>
       <main>

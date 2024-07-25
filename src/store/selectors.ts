@@ -7,3 +7,5 @@ export const themeSelector = (state: RootState) => state.shop.theme;
 export const optionsSelector = (state: RootState) => state.shop.options;
 
 export const categoriesSelector = (state: RootState) => state.shop.categories;
+
+export const modalCartSelector = (state: RootState) => state.shop.modalCart;

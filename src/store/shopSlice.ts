@@ -121,6 +121,16 @@ const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
+    handleModalCart(state) {
+      state.modalCart = !state.modalCart;
+    },
+    trueModalCart(state) {
+      state.modalCart = true;
+    },
+    falseModalCart(state) {
+      state.modalCart = false;
+    },
+
     returnToDefault(state) {
       state.categories = initialState.categories;
     },
@@ -200,6 +210,9 @@ const shopSlice = createSlice({
 });
 
 export const {
+  handleModalCart,
+  trueModalCart,
+  falseModalCart,
   returnToDefault,
   handleClickActive,
   toggleTheme,
