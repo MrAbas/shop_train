@@ -5,10 +5,11 @@
   right: 52px;
   transform-origin: top right;
 
-  /* width: 100%;
-  max-width: 352px; TODO max не работает */
-  width: 352px;
-  min-height: 262px;
+  display: flex;
+  flex-direction: column;
+
+  width: 328px;
+  height: 296px;
   padding: 12px;
 
   background-color: #3d4555;
@@ -45,13 +46,17 @@
 
   .containerCart {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     width: 100%;
     max-width: 322px;
     min-height: 96px;
-    margin-bottom: 12px;
+
+    img {
+      height: 90px;
+    }
 
     .emptyCart {
       width: 100%;
@@ -67,11 +72,14 @@
       width: 100%;
       max-width: 322px;
       min-height: 96px;
+      margin-bottom: 12px;
 
       .imgCart {
         width: 100%;
         max-width: 96px;
         min-height: 96px;
+        margin-right: 12px;
+
         background: rgb(42 50 63);
       }
 
@@ -157,6 +165,20 @@
           }
         }
       }
+    }
+  }
+
+  .scrollContainer {
+    overflow-y: scroll;
+    height: 200px;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #9466ff;
+      border-radius: 3px;
     }
   }
 

@@ -11,20 +11,41 @@ import styles from "./ModalCart.module.scss";
 
 export default function ModalCart() {
   const dispatch = useAppDispatch();
-  const [urlImg, setUrlImg] = useState(null);
   const [cartState, setCartState] = useState(false);
+  const [localCart, setLocalCart] = useState([]);
+  // const [severalProducts, setSeveralProducts] = useState(false);
+  const [cartFromLocalStorage, setCartFromLocalStorage] = useState([]);
 
   useEffect(() => {
     if (localStorage.cart) {
       setCartState(!cartState); // TODO если открыт ModalCart, сразу не добавляет
-      const localCart = JSON.parse(localStorage.cart);
-      localCart.forEach((item) => {
-        setUrlImg(item.image);
-      });
+      setLocalCart(JSON.parse(localStorage.cart));
+      setCartFromLocalStorage(JSON.parse(localStorage.cart)); // паршу с LS, если в LS есть cart
+    } // TODO не понял, как cartState вернуть в false, когда в LS пустой массив
+    /* if (localCart.length === 0) {
+      setCartState(false);
+    } else {
+      setCartState(true);
     }
-  }, [localStorage.cart]);
+    console.log(localCart); */
 
-  const removeProductLS = () => {}; // TODO сделать удаление с LS
+    /* if (localCart.length === 0) {
+      setCartState(false);
+    } */
+
+    /* if (cartFromLocalStorage.length > 1) {
+      setSeveralProducts(true);
+    } else {
+      setSeveralProducts(false);
+    } */
+  }, []);
+
+  const removeProductLS = (name, size) => {
+    const newCart = cartFromLocalStorage.filter((item) => item.name !== name || item.size !== size);
+
+    localStorage.cart = JSON.stringify(newCart);
+  };
+  // TODO заметил, что иногда компонент исчезает, если есть в LS. И карточки странно отображаются, не во весь экран.
   return (
     <div className={styles.modalCart} onMouseLeave={() => dispatch(handleModalCart())}>
       <div className={styles.headerModal}>
@@ -33,42 +54,44 @@ export default function ModalCart() {
           <SmallClose className={styles.smallClose} />
         </button>
       </div>
-      <div className={styles.containerCart}>
+      <ul className={`${styles.containerCart} ${styles.scrollContainer}`}>
         {cartState ? (
-          <div className={styles.containerFilledCart}>
-            <div className={styles.imgCart}>
-              <img src={urlImg} alt="" />
-            </div>
-            <div className={styles.productInformation}>
-              <div className={styles.containerTitleCart}>
-                <span className={styles.titleContainer}>Название</span>
-                <button
-                  className={styles.btnRemoveProduct}
-                  type="button"
-                  aria-label="удаление продукта с корзины"
-                  onClick={removeProductLS}
-                >
-                  <WasteBasket className={styles.btnRemoveProduct} />
-                </button>
+          localCart.map((item) => (
+            <li className={styles.containerFilledCart}>
+              <div className={styles.imgCart}>
+                <img src={item.image} alt="изображение продукта" />
               </div>
-              <div className={styles.containerPriceProduct}>
-                <div className={styles.btnChangePrice}>
-                  <button type="button" aria-label="уменьшение количества продукта">
-                    <IconRemove className={styles.colorIcon} />
-                  </button>
-                  <span className={styles.countProduct}>1</span>
-                  <button type="button" aria-label="увеличение количества продукта">
-                    <IconAdd className={styles.colorIcon} />
+              <div className={styles.productInformation}>
+                <div className={styles.containerTitleCart}>
+                  <span className={styles.titleContainer}>{`${item.name} ${item.size}`}</span>
+                  <button
+                    className={styles.btnRemoveProduct}
+                    type="button"
+                    aria-label="удаление продукта с корзины"
+                    onClick={() => removeProductLS(item.name, item.size)}
+                  >
+                    <WasteBasket className={styles.btnRemoveProduct} />
                   </button>
                 </div>
-                <span className={styles.price}>Цена</span>
+                <div className={styles.containerPriceProduct}>
+                  <div className={styles.btnChangePrice}>
+                    <button type="button" aria-label="уменьшение количества продукта">
+                      <IconRemove className={styles.colorIcon} />
+                    </button>
+                    <span className={styles.countProduct}>1</span>
+                    <button type="button" aria-label="увеличение количества продукта">
+                      <IconAdd className={styles.colorIcon} />
+                    </button>
+                  </div>
+                  <span className={styles.price}>{item.price}</span>
+                </div>
               </div>
-            </div>
-          </div>
+            </li>
+          ))
         ) : (
           <img src={emptyCart} alt="" />
         )}
-      </div>
+      </ul>
       <div className={styles.orderPrice}>
         <span className={styles.titleContainer}>Сумма заказа:</span>
         <span className={styles.price}>0 ₽</span>
