@@ -23,6 +23,8 @@ export default function ModalCart() {
       });
     }
   }, [localStorage.cart]);
+
+  const removeProductLS = () => {}; // TODO сделать удаление с LS
   return (
     <div className={styles.modalCart} onMouseLeave={() => dispatch(handleModalCart())}>
       <div className={styles.headerModal}>
@@ -40,7 +42,12 @@ export default function ModalCart() {
             <div className={styles.productInformation}>
               <div className={styles.containerTitleCart}>
                 <span className={styles.titleContainer}>Название</span>
-                <button className={styles.btnRemoveProduct} type="button" aria-label="удаление продукта с корзины">
+                <button
+                  className={styles.btnRemoveProduct}
+                  type="button"
+                  aria-label="удаление продукта с корзины"
+                  onClick={removeProductLS}
+                >
                   <WasteBasket className={styles.btnRemoveProduct} />
                 </button>
               </div>

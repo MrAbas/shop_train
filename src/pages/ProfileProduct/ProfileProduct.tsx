@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames/bind";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
@@ -24,7 +24,14 @@ export default function ProfileProduct() {
   const [openModalSizeTable, setOpenModalSizeTable] = useState(false);
   const [openModalShare, setOpenModalShare] = useState(false);
   const [chosenSize, setChosenSize] = useState(null);
+  const [showCountProduct, setShowCountProduct] = useState(false);
   const [numberOfProducts, setNumberOfProducts] = useState(1);
+
+  useEffect(() => {
+    if (localStorage.cart) {
+      setShowCountProduct(true);
+    }
+  }, []);
 
   const handleClick = (currentSize) => {
     setChosenSize(currentSize);
@@ -175,7 +182,7 @@ export default function ProfileProduct() {
               <span className={styles.productCharacteristics}>Количество:</span>
 
               <div className={styles.productContainerBtns}>
-                {chosenSize ? (
+                {chosenSize || showCountProduct ? (
                   <div className={styles.containerTotalProduct}>
                     <button
                       className={cx({ btnCountProducts: true, btnCountProductsDisabled: numberOfProducts === 1 })}
