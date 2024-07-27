@@ -10,7 +10,8 @@ import { MainPage } from "./pages/MainPage/index";
 import { ShopPage } from "./pages/ShopPage";
 import { ClothPage } from "./pages/ClothPage";
 import { Footer } from "./components/Footer";
-import { ProfileProduct } from "./pages/ProfileProduct";
+import { ProfileProductPage } from "./pages/ProfileProductPage";
+import { CartPage } from "./pages/CartPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -39,11 +40,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/shop/:id/:itemId",
-        element: <ProfileProduct />,
+        element: <ProfileProductPage />,
       },
       {
         path: "/shop/:id",
         element: <ClothPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
     errorElement: <ErrorPage />,

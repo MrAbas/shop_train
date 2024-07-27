@@ -13,11 +13,11 @@ import indexData from "../../components/ListProducts/indexData.json";
 import { ModalSizeTable } from "./ModalSizeTable";
 import { ModalShareProduct } from "./ModalShareProduct";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
-import styles from "./ProfileProduct.module.scss";
+import styles from "./ProfileProductPage.module.scss";
 
 const cx = classNames.bind(styles);
 
-export default function ProfileProduct() {
+export default function ProfileProductPage() {
   const [expanded, setExpanded] = useState<string | false>(false);
   const { itemId } = useParams();
 
@@ -61,10 +61,8 @@ export default function ProfileProduct() {
       localStorage.setItem("cart", JSON.stringify(productInfo));
     } else {
       let cart = JSON.parse(localStorage.getItem("cart"));
-
-      console.log(cart);
       const exists = cart.find((item) => item.itemId === itemId && item.size === chosenSize);
-      console.log(exists);
+
       if (exists) {
         cart = cart.map((item) => {
           if (item.itemId === itemId && item.size === chosenSize) {

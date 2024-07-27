@@ -51,7 +51,7 @@
     justify-content: center;
 
     width: 100%;
-    max-width: 322px;
+    max-width: 328px;
     min-height: 96px;
 
     img {
@@ -60,7 +60,7 @@
 
     .emptyCart {
       width: 100%;
-      max-width: 322px;
+      max-width: 328px;
       min-height: 96px;
       padding-left: 20px;
     }
@@ -70,7 +70,7 @@
       justify-content: space-between;
 
       width: 100%;
-      max-width: 322px;
+      max-width: 328px;
       min-height: 96px;
       margin-bottom: 12px;
 
@@ -217,4 +217,8 @@
 
     transition: background-color 0.2s ease-in-out;
   }
+}
+
+.changeModalCart {
+  height: 350px;
 }

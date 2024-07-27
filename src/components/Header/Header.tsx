@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { MuiDrawer } from "../MuiDrawer/index";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { modalCartSelector } from "../../store/selectors";
@@ -20,7 +20,7 @@ export default function Header() {
       <header className={styles.header}>
         <nav className={`${styles.nav} ${styles.container}`}>
           <MuiDrawer />
-          <a className={styles.logo} href="/" aria-label="Logo" />
+          <Link className={styles.logo} to="/" aria-label="Logo" />
           <ul className={styles.category}>
             <li>
               <button className={styles.listBtn} aria-label="search" type="button">
@@ -28,28 +28,27 @@ export default function Header() {
               </button>
             </li>
             <li>
-              <a className={styles.listLink} href="/" aria-label="favorites" type="button">
+              <Link className={styles.listLink} to="/" aria-label="favorites" type="button">
                 <IconFavorite className={styles.listLink} />
-              </a>
+              </Link>
             </li>
             <li>
-              <a className={styles.listLink} href="/" aria-label="compare" type="button">
+              <Link className={styles.listLink} to="/" aria-label="compare" type="button">
                 <IconCompare className={styles.listLink} />
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className={styles.listLink}
-                href="/"
-                aria-label="basket"
+                to="/cart"
+                aria-label="cart"
                 type="button"
                 onMouseEnter={() => {
                   dispatch(trueModalCart());
                 }}
-                // onMouseLeave={() => setModalBasket(false)}
               >
                 <IconProductPack className={styles.listLink} />
-              </a>
+              </Link>
               {modalCart && <ModalCart />}
             </li>
             <li>

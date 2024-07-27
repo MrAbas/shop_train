@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks";
 import { falseModalCart } from "../../store/shopSlice";
+// import { closeModalCart } from "../../shared/utils/closeModalCart";
 import styles from "./MainPage.module.scss";
 
 export default function MainPage() {
@@ -18,9 +19,10 @@ export default function MainPage() {
   if (localStorage.cart) {
     // TODO закрытие на клик ModalCart, почему работает на всех страницах ? После обновления уже не работает
     window.onclick = () => {
-      dispatch(falseModalCart());
+      dispatch(falseModalCart()); // проблема, если кликну на ModalCart (не на крестик) закроется
     };
-  }
+  } // TODO перенёс в useCloseModalCart, сделал use чтобы мог использовать dispatch
+
   return (
     <div className={styles.wrapper}>
       <main>
