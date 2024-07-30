@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { LoginPage } from "./pages/LoginPage";
 import { store } from "./store";
 import { ErrorPage } from "./pages/ErrorPage";
@@ -60,5 +61,6 @@ root.render(
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
+    <ToastContainer />
   </React.StrictMode>,
 );

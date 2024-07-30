@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames/bind";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import { toast } from "react-toastify";
 import { useAppSelector } from "../../store/hooks";
 import { modalCartSelector } from "../../store/selectors";
 import useObserverModalCart from "../../shared/hooks/useObserverModalCart";
@@ -29,7 +30,7 @@ export default function ProfileProductPage() {
   const [openModalSizeTable, setOpenModalSizeTable] = useState(false);
   const [openModalShare, setOpenModalShare] = useState(false);
   const [chosenSize, setChosenSize] = useState(null);
-  const [showCountProduct, setShowCountProduct] = useState(false);
+  // const [showCountProduct, setShowCountProduct] = useState(false);
   const [numberOfProducts, setNumberOfProducts] = useState(1);
 
   const filteredItem = indexData.items.find((item) => item.id === itemId);
@@ -37,11 +38,11 @@ export default function ProfileProductPage() {
     filteredItem;
   const { type, color, collar, silhouette, print, decor, composition, season, collection } = characteristics;
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (localStorage.cart) {
       setShowCountProduct(true);
     }
-  }, []);
+  }, []); */
 
   useEffect(() => {
     if (localStorage.cart) {
@@ -129,6 +130,11 @@ export default function ProfileProductPage() {
       setNumberOfProducts(numberOfProducts - 1);
     }
   };
+
+  const notify = () => {
+    toast("Default Notification !");
+  };
+  // TODO изменить 247 строку
   return (
     <main ref={ref}>
       <div className={styles.wrapper}>
@@ -194,6 +200,7 @@ export default function ProfileProductPage() {
                     className={cx({
                       btnSize: true,
                       btnSizeDisabled: missingProducts.includes(size.toLowerCase()),
+                      btnSizeActive: chosenSize === size.toUpperCase(),
                     })}
                     type="button"
                     onClick={() => handleClick(size.toUpperCase())}
@@ -213,7 +220,7 @@ export default function ProfileProductPage() {
                 <span className={styles.productCharacteristics}>Количество:</span>
 
                 <div className={styles.productContainerBtns}>
-                  {chosenSize || showCountProduct ? (
+                  {chosenSize ? (
                     <div className={styles.containerTotalProduct}>
                       <button
                         className={cx({
@@ -240,7 +247,14 @@ export default function ProfileProductPage() {
                       <span className={styles.totalProducts}>Всего в корзине: 0</span>
                     </div>
                   )}
-                  <button className={styles.addToCart} type="button" onClick={setLocalStorage}>
+                  <button
+                    onClick={() => {
+                      setLocalStorage();
+                      notify();
+                    }}
+                    className={styles.addToCart}
+                    type="button"
+                  >
                     В корзину
                   </button>
                 </div>

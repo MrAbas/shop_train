@@ -34,11 +34,13 @@ export default function CartPage() {
   console.log(checked);
   return (
     <main ref={ref}>
-      <div className={styles.sectionContainer}>
+      <section className={styles.sectionCart}>
+        {/* <div className={styles.sectionContainer}> */}
         <Breadcrumbs />
         {/* TODO попробовать реализовать через роутер и закинуть в children Breadcrumbs */}
-        <section className={styles.sectionCart}>
-          <div className={styles.titleContainer}>
+        <div className={styles.sectionContainer}>
+          {/* <section className={styles.sectionCart}> */}
+          <div className={styles.containerTitle}>
             <h1 className={styles.title}>Корзина</h1>
             <span className={styles.numberOfProducts}>1 товар</span>
           </div>
@@ -125,9 +127,15 @@ export default function CartPage() {
               </div>
             </div>
           </div>
-          <a className={styles.callToSupport} href="tel: +7 (499) 999-82-83" aria-label="позвонить службе поддержки" />
-        </section>
-      </div>
+          <div className={styles.containerLink}>
+            <a
+              className={styles.callToSupport}
+              href="tel: +7 (499) 999-82-83"
+              aria-label="позвонить службе поддержки"
+            />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

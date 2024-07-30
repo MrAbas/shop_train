@@ -1,4 +1,4 @@
-.sectionContainer {
+.sectionCart {
   width: 100%;
   max-width: 1535px;
   min-height: 100%;
@@ -212,16 +212,12 @@
     }
   }
 
-  .sectionCart {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
+  .sectionContainer {
     width: 100%;
     max-width: 1504px;
     min-height: 611px;
 
-    .titleContainer {
+    .containerTitle {
       display: flex;
 
       width: 100%;
@@ -404,10 +400,18 @@
     }
   }
 
-  .callToSupport {
-    display: block;
-    width: 72px;
-    min-height: 72px;
-    background-image: url("../../shared/assets/icons/iconPhone.svg");
+  .containerLink {
+    display: flex;
+    justify-content: end;
+
+    .callToSupport {
+      display: block;
+
+      width: 72px;
+      min-height: 72px;
+      margin-top: 24px;
+
+      background-image: url("../../shared/assets/icons/iconPhone.svg");
+    }
   }
 }
