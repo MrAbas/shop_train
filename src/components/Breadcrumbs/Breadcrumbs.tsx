@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import { categoriesSelector } from "../../store/selectors";
 import indexData from "../ListProducts/indexData.json";
@@ -8,17 +8,20 @@ export default function Breadcrumbs() {
   const categories = useAppSelector(categoriesSelector);
   const { id, itemId } = useParams();
 
+  const location = useLocation();
+  const currentUrl = location.pathname;
+
   const filteredItem = indexData.items.find((item) => item.id === itemId);
   const nameLink = filteredItem ? filteredItem.title : null;
 
   return (
     <ul className={styles.links}>
       <li>
-        <Link className={styles.styleLinks} to="/">
+        <Link className={`${styles.styleLinks} ${styles.linksColor}`} to="/">
           Главная
         </Link>
       </li>
-      {!id && (
+      {currentUrl === "/shop" && (
         <li>
           <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
             Каталог
@@ -28,7 +31,7 @@ export default function Breadcrumbs() {
       {id && !itemId && (
         <>
           <li>
-            <Link className={`${styles.styleLinks}`} to="/shop">
+            <Link className={`${styles.styleLinks} ${styles.linksColor}`} to="/shop">
               Каталог
             </Link>
           </li>
@@ -42,12 +45,12 @@ export default function Breadcrumbs() {
       {itemId && (
         <>
           <li>
-            <Link className={`${styles.styleLinks}`} to="/shop">
+            <Link className={`${styles.styleLinks} ${styles.linksColor}`} to="/shop">
               Каталог
             </Link>
           </li>
           <li>
-            <Link className={`${styles.styleLinks}`} to={`/shop/${id}`}>
+            <Link className={`${styles.styleLinks} ${styles.linksColor}`} to={`/shop/${id}`}>
               {categories[id]?.value}
             </Link>
           </li>
@@ -57,6 +60,13 @@ export default function Breadcrumbs() {
             </Link>
           </li>
         </>
+      )}
+      {currentUrl === "/cart" && (
+        <li>
+          <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
+            Корзина
+          </Link>
+        </li>
       )}
     </ul>
   );

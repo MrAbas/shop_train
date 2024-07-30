@@ -17,7 +17,7 @@ export default function ModalCart() {
 
   const [cartState, setCartState] = useState(false);
   const [localCart, setLocalCart] = useState([]);
-  const [cartFromLocalStorage, setCartFromLocalStorage] = useState([]);
+  // const [, setCartFromLocalStorage] = useState([]);
   const [changeModalCart, setChangeModalCart] = useState(false);
   const [numberOfProduct, setNumberOfProduct] = useState(1);
 
@@ -27,18 +27,22 @@ export default function ModalCart() {
 
       if (JSON.parse(localStorage.cart).length > 0) {
         setCartState(!cartState);
-        setCartFromLocalStorage(JSON.parse(localStorage.cart));
+        // setCartFromLocalStorage(JSON.parse(localStorage.cart));
       }
 
       if (JSON.parse(localStorage.cart).length > 1) {
         setChangeModalCart(true);
       }
     }
-    /* TODO хотел сделать так, чтобы при открытии модалки, если удалил продукт, то появлялась корзина
-     if (localCart.length < 1) {
-      setCartState(false);
-    } */
   }, []);
+
+  useEffect(() => {
+    if (localCart.length < 1) {
+      setCartState(false);
+    } else {
+      setCartState(true);
+    }
+  }, [localCart]);
 
   const removeProductLS = (name, size) => {
     const newCart = JSON.parse(localStorage.cart).filter((item) => item.name !== name || item.size !== size);
@@ -59,7 +63,6 @@ export default function ModalCart() {
     changeModalCart,
   });
 
-  // TODO заметил, что иногда компонент исчезает, если есть в LS. И карточки странно отображаются, не во весь экран.
   return (
     <div className={modalCart} onMouseLeave={() => dispatch(handleModalCart())}>
       <div className={styles.headerModal}>
@@ -92,7 +95,7 @@ export default function ModalCart() {
                     <button type="button" aria-label="уменьшение количества продукта" onClick={() => removeProduct()}>
                       <IconRemove className={styles.colorIcon} />
                     </button>
-                    <span className={styles.countProduct}>{numberOfProduct}</span>
+                    <span className={styles.numberOfProducts}>{numberOfProduct}</span>
                     <button type="button" aria-label="увеличение количества продукта">
                       <IconAdd className={styles.colorIcon} onClick={() => addProduct()} />
                     </button>

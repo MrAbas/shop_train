@@ -1,9 +1,9 @@
 .wrapper {
   width: 100%;
-  max-width: 1504px;
+  max-width: 1535px;
   min-height: 100%;
   margin: 0 auto;
-  padding-top: 24px;
+  padding: 24px 15px 0; 
 
   background-color: #1d2533;
 }
@@ -19,6 +19,8 @@
   font-family: "Rostelecom Basis";
 
   .title {
+    margin-right: 16px;
+
     font-size: 42px;
     font-weight: 700;
     line-height: 44px;
@@ -26,11 +28,10 @@
     text-align: left;
   }
 
-  .countProduct {
+  .numberOfProducts {
     width: 100%;
     max-width: 74px;
     height: 20px;
-    margin-left: 16px;
 
     font-size: 14px;
     font-weight: 400;

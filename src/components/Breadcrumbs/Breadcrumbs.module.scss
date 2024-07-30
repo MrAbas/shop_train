@@ -11,9 +11,12 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 20px;
-    color: rgb(255 255 255 / 90%);
     text-align: center;
     letter-spacing: 0;
+  }
+
+  .linksColor {
+    color: rgb(255 255 255 / 90%);
 
     &:hover {
       color: #9466ff;

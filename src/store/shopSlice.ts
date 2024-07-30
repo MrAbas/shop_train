@@ -31,7 +31,7 @@ interface State {
 
 const initialState: State = {
   active: false,
-  theme: localStorage.theme,
+  theme: localStorage.theme ? localStorage.theme : "light",
   authorized: localStorage.authorized,
   modalCart: false,
   categories: {
@@ -138,9 +138,14 @@ const shopSlice = createSlice({
       state.active = !state.active;
     },
     toggleTheme(state) {
-      const newTheme = localStorage.theme === "light" ? "dark" : "light";
-      localStorage.theme = newTheme;
-      state.theme = newTheme;
+      if (typeof localStorage.theme === "string") {
+        const newTheme = localStorage.theme === "light" ? "dark" : "light";
+        localStorage.theme = newTheme;
+        state.theme = newTheme;
+      } else {
+        localStorage.theme = "dark";
+        state.theme = "dark";
+      }
     },
     addOptions(state, actions) {
       state.options = actions.payload;

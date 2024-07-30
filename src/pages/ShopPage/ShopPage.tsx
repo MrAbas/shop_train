@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { ChooseCategoryLink } from "../../components/ChooseCategoryLink";
 import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
@@ -6,8 +6,9 @@ import { ListProducts } from "../../components/ListProducts";
 import { OptionValue } from "./OptionValue";
 import { addOptions } from "../../store/shopSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { optionsSelector } from "../../store/selectors";
+import { modalCartSelector, optionsSelector } from "../../store/selectors";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
+import useObserverModalCart from "../../shared/hooks/useObserverModalCart";
 import styles from "./ShopPage.module.scss";
 
 const categoryNames: { option: string; value: string; selected?: boolean }[] = [
@@ -54,6 +55,8 @@ const selectData: SelectData[] = [
 ];
 
 export default function ShopPage() {
+  const ref = useRef();
+  const modalCart = useAppSelector(modalCartSelector);
   const dispatch = useAppDispatch();
   const options = useAppSelector(optionsSelector);
 
@@ -73,12 +76,18 @@ export default function ShopPage() {
     dispatch(addOptions(newData));
   }, []);
 
-  /* if (localStorage.cart) {
-    // TODO закрытие на клик ModalCart
-    window.onclick = () => {
-      dispatch(falseModalCart());
+  const { addListener, removeListener } = useObserverModalCart(ref, modalCart); // хук для открытия и закрытия ModalCart
+
+  useEffect(() => {
+    if (modalCart) {
+      addListener();
+    }
+
+    return () => {
+      removeListener();
     };
-  } */
+  }, [modalCart]);
+
   /*   useEffect(() => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -106,29 +115,31 @@ export default function ShopPage() {
   }, []); */
 
   return (
-    <main className={styles.wrapper}>
-      <Breadcrumbs />
-      <section>
-        <div className={styles.titleContainer}>
-          <h1 className={styles.title}>Каталог</h1>
-          <span className={styles.countProduct}>67 товаров</span>
-        </div>
-        <div className={styles.btnsFilter}>
-          <ChooseCategoryLink categoryNames={categoryNames} />
-          <ChoosePrice />
-          {/* TODO link добавить или заменить кнопки */}
-          {options.map((item, index) => {
-            const optionSelect = item.titleSelect;
-            if (optionSelect === "Цена" || optionSelect === "Категории") {
-              return null;
-            }
+    <main ref={ref}>
+      <div className={styles.wrapper}>
+        <Breadcrumbs />
+        <section>
+          <div className={styles.titleContainer}>
+            <h1 className={styles.title}>Каталог</h1>
+            <span className={styles.numberOfProducts}>67 товаров</span>
+          </div>
+          <div className={styles.btnsFilter}>
+            <ChooseCategoryLink categoryNames={categoryNames} />
+            <ChoosePrice />
+            {/* TODO link добавить или заменить кнопки */}
+            {options.map((item, index) => {
+              const optionSelect = item.titleSelect;
+              if (optionSelect === "Цена" || optionSelect === "Категории") {
+                return null;
+              }
 
-            return <CustomSelect key={`${index + item.titleSelect}`} data={item} />;
-          })}
-        </div>
-        <OptionValue />
-        <ListProducts />
-      </section>
+              return <CustomSelect key={`${index + item.titleSelect}`} data={item} />;
+            })}
+          </div>
+          <OptionValue />
+          <ListProducts />
+        </section>
+      </div>
     </main>
   );
 }
