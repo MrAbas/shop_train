@@ -4,7 +4,9 @@ import { falseModalCart } from "../../store/shopSlice";
 export default function useObserverModalCart(ref, state) {
   const dispatch = useAppDispatch();
   function observer(event: MouseEvent) {
-    if (ref.current.contains(event.target)) {
+    console.log(ref.current);
+    if (!ref.current.contains(event.target)) {
+      // TODO неправильно работает
       dispatch(falseModalCart(state));
     }
   }

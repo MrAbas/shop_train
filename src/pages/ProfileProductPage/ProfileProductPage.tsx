@@ -30,7 +30,7 @@ export default function ProfileProductPage() {
   const [openModalSizeTable, setOpenModalSizeTable] = useState(false);
   const [openModalShare, setOpenModalShare] = useState(false);
   const [chosenSize, setChosenSize] = useState(null);
-  // const [showCountProduct, setShowCountProduct] = useState(false);
+  const [totalProduct, setTotalProduct] = useState(0);
   const [numberOfProducts, setNumberOfProducts] = useState(1);
 
   const filteredItem = indexData.items.find((item) => item.id === itemId);
@@ -38,11 +38,9 @@ export default function ProfileProductPage() {
     filteredItem;
   const { type, color, collar, silhouette, print, decor, composition, season, collection } = characteristics;
 
-  /* useEffect(() => {
-    if (localStorage.cart) {
-      setShowCountProduct(true);
-    }
-  }, []); */
+  useEffect(() => {
+    // setTotalProduct(JSON.parse(localStorage.cart).length); // Исправить !!!
+  }, []);
 
   useEffect(() => {
     if (localStorage.cart) {
@@ -88,9 +86,13 @@ export default function ProfileProductPage() {
   ];
 
   const setLocalStorage = () => {
+    if (localStorage.cart && JSON.parse(localStorage.cart).length === 0 && chosenSize === null) {
+      setOpenModalSizeTable(true);
+    }
     if (!localStorage.cart) {
       localStorage.setItem("cart", JSON.stringify(productInfo));
-    } else {
+    } else if (localStorage.cart && typeof chosenSize === "string") {
+      // TODO изменил, до этого, если не выбирал size, добавлял в LS с size: null. Было просто else
       let cart = JSON.parse(localStorage.getItem("cart"));
       const exists = cart.find((item) => item.itemId === itemId && item.size === chosenSize);
 
@@ -134,6 +136,7 @@ export default function ProfileProductPage() {
   const notify = () => {
     toast("Default Notification !");
   };
+
   // TODO изменить 247 строку
   return (
     <main ref={ref}>
@@ -244,7 +247,8 @@ export default function ProfileProductPage() {
                     </div>
                   ) : (
                     <div className={styles.containerTotalProduct}>
-                      <span className={styles.totalProducts}>Всего в корзине: 0</span>
+                      <span className={styles.totalProducts}>Всего в корзине: </span>
+                      <span className={styles.totalProducts}>{totalProduct}</span>
                     </div>
                   )}
                   <button
