@@ -126,7 +126,6 @@ export default function ShopPage() {
           <div className={styles.btnsFilter}>
             <ChooseCategoryLink categoryNames={categoryNames} />
             <ChoosePrice />
-            {/* TODO link добавить или заменить кнопки */}
             {options.map((item, index) => {
               const optionSelect = item.titleSelect;
               if (optionSelect === "Цена" || optionSelect === "Категории") {

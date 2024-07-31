@@ -32,6 +32,7 @@
       width: 100%;
       max-width: 352px;
       height: 327px;
+      margin-bottom: 80px;
       padding: 24px;
 
       background: rgb(42 50 63);
@@ -117,6 +118,9 @@
         min-height: 96px;
 
         .bookingLink {
+          user-select: -moz-none;
+          user-select: none;
+
           width: 100%;
           max-width: 304px;
           min-height: 48px;
@@ -130,6 +134,11 @@
 
           background: rgb(148 102 255);
           border-radius: 50px;
+        }
+
+        .disabledBookingLink {
+          pointer-events: none;
+          opacity: 0.5;
         }
 
         .labelOrdering {
@@ -213,6 +222,7 @@
   }
 
   .sectionContainer {
+    position: relative;
     width: 100%;
     max-width: 1504px;
     min-height: 611px;
@@ -400,18 +410,16 @@
     }
   }
 
-  .containerLink {
-    display: flex;
-    justify-content: end;
+  .callToSupport {
+    position: absolute;
+    right: 0;
+    bottom: -5px;
 
-    .callToSupport {
-      display: block;
+    display: block;
 
-      width: 72px;
-      min-height: 72px;
-      margin-top: 24px;
+    width: 72px;
+    min-height: 72px;
 
-      background-image: url("../../shared/assets/icons/iconPhone.svg");
-    }
+    background-image: url("../../shared/assets/icons/iconPhone.svg");
   }
 }

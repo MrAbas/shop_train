@@ -35,11 +35,9 @@ export default function CartPage() {
   return (
     <main ref={ref}>
       <section className={styles.sectionCart}>
-        {/* <div className={styles.sectionContainer}> */}
         <Breadcrumbs />
         {/* TODO попробовать реализовать через роутер и закинуть в children Breadcrumbs */}
         <div className={styles.sectionContainer}>
-          {/* <section className={styles.sectionCart}> */}
           <div className={styles.containerTitle}>
             <h1 className={styles.title}>Корзина</h1>
             <span className={styles.numberOfProducts}>1 товар</span>
@@ -79,6 +77,70 @@ export default function CartPage() {
                     </button>
                   </div>
                 </li>
+                <li className={styles.productContainerCart}>
+                  <img className={styles.imgProduct} src={test} alt="" />
+                  <span className={styles.itemCart}>Название продукта</span>
+                  <span className={styles.itemCart}>Размер</span>
+                  <div className={styles.priceContainer}>
+                    <span className={styles.itemPrice}>Цена</span>
+                    <span className={styles.innerText}>Цена за 1 шт.</span>
+                  </div>
+                  <div className={styles.containerCountProduct}>
+                    <button
+                      className={styles.btnNumberOfProducts}
+                      type="button"
+                      aria-label="Кнопка, уменьшающая количество товара в корзине"
+                    >
+                      <IconRemove />
+                    </button>
+                    <span className={styles.numberOfProducts}>1</span>
+                    <button
+                      className={styles.btnNumberOfProducts}
+                      type="button"
+                      aria-label="Кнопка, увеличивающая количество товара в корзине"
+                    >
+                      <IconAdd />
+                    </button>
+                  </div>
+                  <div className={styles.containerBtnRemove}>
+                    <span className={styles.itemPrice}>2 300 ₽ </span>
+                    <button className={styles.btnRemoveProduct} type="button" aria-label="Удаление продукта с корзины">
+                      <WasteBasket />
+                    </button>
+                  </div>
+                </li>
+                <li className={styles.productContainerCart}>
+                  <img className={styles.imgProduct} src={test} alt="" />
+                  <span className={styles.itemCart}>Название продукта</span>
+                  <span className={styles.itemCart}>Размер</span>
+                  <div className={styles.priceContainer}>
+                    <span className={styles.itemPrice}>Цена</span>
+                    <span className={styles.innerText}>Цена за 1 шт.</span>
+                  </div>
+                  <div className={styles.containerCountProduct}>
+                    <button
+                      className={styles.btnNumberOfProducts}
+                      type="button"
+                      aria-label="Кнопка, уменьшающая количество товара в корзине"
+                    >
+                      <IconRemove />
+                    </button>
+                    <span className={styles.numberOfProducts}>1</span>
+                    <button
+                      className={styles.btnNumberOfProducts}
+                      type="button"
+                      aria-label="Кнопка, увеличивающая количество товара в корзине"
+                    >
+                      <IconAdd />
+                    </button>
+                  </div>
+                  <div className={styles.containerBtnRemove}>
+                    <span className={styles.itemPrice}>2 300 ₽ </span>
+                    <button className={styles.btnRemoveProduct} type="button" aria-label="Удаление продукта с корзины">
+                      <WasteBasket />
+                    </button>
+                  </div>
+                </li>
               </ul>
               <div className={styles.containerPromoCode}>
                 <input className={styles.inputPromoCode} placeholder="Промокод" type="text" />
@@ -86,7 +148,6 @@ export default function CartPage() {
               </div>
             </div>
             <div className={styles.userCheck}>
-              {/* контейнер sticky */}
               <div className={styles.userCheckContainer}>
                 <div className={styles.infoCheck}>
                   <span className={styles.amountTitle}>1 товар на сумму:</span>
@@ -102,7 +163,10 @@ export default function CartPage() {
                 <span className={styles.totalPrice}>2 300 ₽</span>
               </div>
               <div className={styles.orderingContainer}>
-                <Link className={styles.bookingLink} to="/">
+                <Link
+                  className={checked ? `${styles.bookingLink}` : `${styles.bookingLink} ${styles.disabledBookingLink}`}
+                  to="/"
+                >
                   Оформить заказ
                 </Link>
                 <label className={styles.labelOrdering} htmlFor="realCheckbox">
@@ -127,13 +191,7 @@ export default function CartPage() {
               </div>
             </div>
           </div>
-          <div className={styles.containerLink}>
-            <a
-              className={styles.callToSupport}
-              href="tel: +7 (499) 999-82-83"
-              aria-label="позвонить службе поддержки"
-            />
-          </div>
+          <a className={styles.callToSupport} href="tel: +7 (499) 999-82-83" aria-label="позвонить службе поддержки" />
         </div>
       </section>
     </main>

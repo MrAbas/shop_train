@@ -36,10 +36,30 @@ export default function ProfileProductPage() {
   const filteredItem = indexData.items.find((item) => item.id === itemId);
   const { title, image, price, article, available, description, characteristics, sizes, category, inStock } =
     filteredItem;
-  const { type, color, collar, silhouette, print, decor, composition, season, collection } = characteristics;
+  const {
+    type,
+    color,
+    collar,
+    silhouette,
+    print,
+    decor,
+    composition,
+    collection,
+    features,
+    fabricType,
+    sleeve,
+    clasp,
+    season,
+  } = characteristics;
 
   useEffect(() => {
-    // setTotalProduct(JSON.parse(localStorage.cart).length); // Исправить !!!
+    if (localStorage.cart) {
+      const cartLS = JSON.parse(localStorage.cart);
+      if (cartLS.length > 0) {
+        const sum = cartLS.reduce((acc, item) => acc + item.count, 0);
+        setTotalProduct(sum);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -89,7 +109,7 @@ export default function ProfileProductPage() {
     if (localStorage.cart && JSON.parse(localStorage.cart).length === 0 && chosenSize === null) {
       setOpenModalSizeTable(true);
     }
-    if (!localStorage.cart) {
+    if (!localStorage.cart && chosenSize !== null) {
       localStorage.setItem("cart", JSON.stringify(productInfo));
     } else if (localStorage.cart && typeof chosenSize === "string") {
       // TODO изменил, до этого, если не выбирал size, добавлял в LS с size: null. Было просто else
@@ -120,6 +140,8 @@ export default function ProfileProductPage() {
       // TODO брать numberOfProducts с LS
 
       localStorage.cart = JSON.stringify(cart);
+    } else {
+      setOpenModalSizeTable(true);
     }
   };
 
@@ -134,10 +156,13 @@ export default function ProfileProductPage() {
   };
 
   const notify = () => {
-    toast("Default Notification !");
+    toast.success("Добавлено в корзину", {
+      hideProgressBar: true,
+      position: "top-center",
+      autoClose: 2000,
+    });
   };
 
-  // TODO изменить 247 строку
   return (
     <main ref={ref}>
       <div className={styles.wrapper}>
@@ -237,12 +262,14 @@ export default function ProfileProductPage() {
                         <IconRemove />
                       </button>
                       <span className={styles.numberOfProducts}>{numberOfProducts}</span>
+                      {/* TODO должен меняться, если через ModalCart удалять продукты */}
                       <button
                         className={styles.btnNumberOfProducts}
                         type="button"
                         aria-label="Кнопка, увеличивающая количество товара в корзине"
                       >
                         <IconAdd onClick={increment} />
+                        {/* TODO если нажать на край кнопки, то она не срабатывает */}
                       </button>
                     </div>
                   ) : (
@@ -299,55 +326,19 @@ export default function ProfileProductPage() {
                     </AccordionSummary>
                     <AccordionDetails className={`${styles.customAccordionElements} ${styles.customAccordionDetails}`}>
                       <ul className={styles.listCharacteristics}>
-                        <li>
-                          Type:
-                          <span> </span>
-                          <span>{type}</span>
-                        </li>
-                        <li>
-                          Color:
-                          <span> </span>
-                          <span>{color}</span>
-                        </li>
-                        <li>
-                          Collar:
-                          <span> </span>
-                          <span>{collar}</span>
-                        </li>
-                        <li>
-                          Silhouette:
-                          <span> </span>
-                          <span>{silhouette}</span>
-                        </li>
-                        <li>
-                          Print:
-                          <span> </span>
-                          <span>{print}</span>
-                        </li>
-                        <li>
-                          Decor:
-                          <span> </span>
-                          <span>{decor}</span>
-                        </li>
-                        <li>
-                          Composition:
-                          <span> </span>
-                          <span>{composition}</span>
-                        </li>
-                        <li>Features:</li>
-                        <li>FabricType:</li>
-                        <li>Sleeve:</li>
-                        <li>Clasp:</li>
-                        <li>
-                          Season:
-                          <span> </span>
-                          <span>{season}</span>
-                        </li>
-                        <li>
-                          Collection:
-                          <span> </span>
-                          <span>{collection}</span>
-                        </li>
+                        <li>{`Type: ${type}`}</li>
+                        <li>{`Color: ${color}`}</li>
+                        <li>{`Collar: ${collar}`}</li>
+                        <li>{`Silhouette: ${silhouette}`}</li>
+                        <li>{`Print: ${print}`}</li>
+                        <li>{`Decor: ${decor}`}</li>
+                        <li>{`Composition: ${composition}`}</li>
+                        <li>{`Features: ${features}`}</li>
+                        <li>{`FabricType: ${fabricType}`}</li>
+                        <li>{`Sleeve: ${sleeve}`}</li>
+                        {clasp ? <li>{`Clasp: ${clasp}`}</li> : null}
+                        <li>{`Season: ${season}`}</li>
+                        {collection ? <li>{`Collection: ${collection}`}</li> : null}
                       </ul>
                     </AccordionDetails>
                   </Accordion>

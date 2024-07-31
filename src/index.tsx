@@ -13,6 +13,7 @@ import { ClothPage } from "./pages/ClothPage";
 import { Footer } from "./components/Footer";
 import { ProfileProductPage } from "./pages/ProfileProductPage";
 import { CartPage } from "./pages/CartPage";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

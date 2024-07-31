@@ -17,24 +17,23 @@ export default function ModalCart() {
 
   const [cartState, setCartState] = useState(false);
   const [localCart, setLocalCart] = useState([]);
-  // const [, setCartFromLocalStorage] = useState([]);
   const [changeModalCart, setChangeModalCart] = useState(false);
-  const [numberOfProduct, setNumberOfProduct] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     if (localStorage.cart) {
       setLocalCart(JSON.parse(localStorage.cart));
+      setTotalPrice(JSON.parse(localStorage.cart).reduce((acc, item) => acc + item.price, 0));
 
       if (JSON.parse(localStorage.cart).length > 0) {
         setCartState(!cartState);
-        // setCartFromLocalStorage(JSON.parse(localStorage.cart));
       }
 
       if (JSON.parse(localStorage.cart).length > 1) {
         setChangeModalCart(true);
       }
     }
-  }, []);
+  }, [localStorage.cart]);
 
   useEffect(() => {
     if (localCart.length < 1) {
@@ -50,13 +49,9 @@ export default function ModalCart() {
     setLocalCart(newCart);
   };
 
-  const addProduct = () => {
-    setNumberOfProduct(numberOfProduct + 1);
-  };
+  const addProduct = ({ numberOfProduct }) => numberOfProduct + 1; // TODO закрывается не смог протестить, обсудить
 
-  const removeProduct = () => {
-    setNumberOfProduct(numberOfProduct - 1);
-  };
+  const removeProduct = ({ numberOfProduct }) => numberOfProduct - 1;
 
   const modalCart = cx({
     modalCart: true,
@@ -92,12 +87,16 @@ export default function ModalCart() {
                 </div>
                 <div className={styles.containerPriceProduct}>
                   <div className={styles.btnChangePrice}>
-                    <button type="button" aria-label="уменьшение количества продукта" onClick={() => removeProduct()}>
+                    <button
+                      type="button"
+                      aria-label="уменьшение количества продукта"
+                      onClick={() => removeProduct(item.count)}
+                    >
                       <IconRemove className={styles.colorIcon} />
                     </button>
-                    <span className={styles.numberOfProducts}>{numberOfProduct}</span>
+                    <span className={styles.numberOfProducts}>{item.count}</span>
                     <button type="button" aria-label="увеличение количества продукта">
-                      <IconAdd className={styles.colorIcon} onClick={() => addProduct()} />
+                      <IconAdd className={styles.colorIcon} onClick={() => addProduct(item.count)} />
                     </button>
                   </div>
                   <span className={styles.price}>{item.price}</span>
@@ -111,7 +110,7 @@ export default function ModalCart() {
       </ul>
       <div className={styles.orderPrice}>
         <span className={styles.titleContainer}>Сумма заказа:</span>
-        <span className={styles.price}>0 ₽</span>
+        <span className={styles.price}>{`${totalPrice} ₽`}</span>
       </div>
       <Link className={styles.linkModalCart} to="/#">
         Оформление заказа
