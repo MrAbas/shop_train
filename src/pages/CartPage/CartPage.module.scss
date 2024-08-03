@@ -134,6 +134,11 @@
 
           background: rgb(148 102 255);
           border-radius: 50px;
+
+          &:hover {
+            background-color: rgb(119 0 255);
+            transition: background-color 0.2s ease-in-out;
+          }
         }
 
         .disabledBookingLink {
@@ -413,7 +418,7 @@
   .callToSupport {
     position: absolute;
     right: 0;
-    bottom: -5px;
+    bottom: 0;
 
     display: block;
 

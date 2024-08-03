@@ -22,7 +22,7 @@ export default function FooterSocialNetworks() {
         target="_blank"
         rel="noreferrer"
       >
-        <Yt className={styles.socialMediaIcon} />
+        <Vk className={styles.socialMediaIcon} />
       </a>
       <a
         className={styles.socialMediaLink}
@@ -31,7 +31,7 @@ export default function FooterSocialNetworks() {
         target="_blank"
         rel="noreferrer"
       >
-        <Vk className={styles.socialMediaIcon} />
+        <Yt className={styles.socialMediaIcon} />
       </a>
     </div>
   );

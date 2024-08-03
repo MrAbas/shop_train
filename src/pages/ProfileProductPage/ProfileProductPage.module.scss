@@ -279,6 +279,11 @@ ol {
 
         background: rgb(148 102 255);
         border-radius: 50px;
+
+        &:hover {
+          background-color: rgb(119 0 255);
+          transition: background-color 0.2s ease-in-out;
+        }
       }
     }
   }

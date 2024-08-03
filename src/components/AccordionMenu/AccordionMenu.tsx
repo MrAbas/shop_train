@@ -6,12 +6,6 @@ import styles from "./AccordionMenu.module.scss";
 
 export default function AccordionMenu() {
   const accordionNames = ["Одежда", "Аксессуары", "Сувениры", "Канцелярия", "Весь каталог"];
-  /* const accordionItems = {
-    Одежда: ["Футболки", "Лонг-сливы", "Худи", "Верхняя одежда"],
-    Аксессуары: ["Сумки", "Головные уборы", "Зонты"],
-    Сувениры: ["Бизнес-сувениры", "Промо-сувениры"],
-    Канцелярия: ["Тетради", "Ручки"],
-  }; TODO спросить про ссылки */
 
   return (
     <div className={styles.wrapperAccordion}>

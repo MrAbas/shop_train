@@ -119,7 +119,7 @@ export default function ProfileProductPage() {
       if (exists) {
         cart = cart.map((item) => {
           if (item.itemId === itemId && item.size === chosenSize) {
-            item.count = numberOfProducts;
+            item.count = numberOfProducts; // TODO здесь item.count = numberOfProducts + 1; если есть уже в LS нужно прибавлять 1.
           }
           return item;
         });

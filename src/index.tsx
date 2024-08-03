@@ -13,6 +13,7 @@ import { ClothPage } from "./pages/ClothPage";
 import { Footer } from "./components/Footer";
 import { ProfileProductPage } from "./pages/ProfileProductPage";
 import { CartPage } from "./pages/CartPage";
+import { FavoritesPage } from "./pages/FavoritesPage";
 import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/favorites",
+        element: <FavoritesPage />,
       },
     ],
     errorElement: <ErrorPage />,

@@ -16,6 +16,17 @@
   background-color: #3d4555;
   border-radius: 12px;
 
+  .modalCartDecor {
+    position: absolute;
+    top: -8px;
+    right: 11px;
+
+    width: 14px;
+    height: 8px;
+
+    background-image: url("../../../shared/assets/icons/Header/modalCartDecor.png");
+  }
+
   .smallClose {
     color: #e8e9ea;
     transition: background-color 0.2s ease-in-out;

@@ -2,7 +2,7 @@ export default function Vk(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="19.993164"
-      height="12.669922"
+      height="18"
       viewBox="0 0 19.9932 12.6699"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"

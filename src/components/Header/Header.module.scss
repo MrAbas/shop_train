@@ -88,3 +88,34 @@
     }
   }
 }
+
+.searchModalInput {
+  width: 100%;
+  height: 48px;
+  padding-top: 18px;
+  padding-left: 20px;
+
+  color: hsl(0deg 0% 100% / 90%);
+
+  background: hsl(0deg 0% 100% / 6%);
+  border: none;
+}
+
+.modalHeader {
+  position: relative;
+
+  .modalClose {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .smallClose {
+      color: #e8e9ea;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        color: #9466ff;
+      }
+    }
+  }
+}

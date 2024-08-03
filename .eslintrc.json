@@ -65,8 +65,9 @@
         "depth": 3
       }
     ],
-    // "react/prop-types": 0,
-    "implicit-arrow-linebreak": "off"
+    "implicit-arrow-linebreak": "off",
+    "react/jsx-indent": "off",
+    "@typescript-eslint/indent": "off"
   },
   "settings": {
     "import/resolver": {

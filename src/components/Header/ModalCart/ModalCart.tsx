@@ -60,6 +60,7 @@ export default function ModalCart() {
 
   return (
     <div className={modalCart} onMouseLeave={() => dispatch(handleModalCart())}>
+      <div className={styles.modalCartDecor} />
       <div className={styles.headerModal}>
         <h3 className={styles.title}>Корзина</h3>
         <button type="button" onClick={() => dispatch(handleModalCart())} aria-label="закрытие окна с корзиной">
@@ -69,7 +70,8 @@ export default function ModalCart() {
       <ul className={`${styles.containerCart} ${styles.scrollContainer}`}>
         {cartState ? (
           localCart.map((item) => (
-            <li className={styles.containerFilledCart}>
+            <li key={`${item.id + item.size}`} className={styles.containerFilledCart}>
+              {/* TODO проверить key и в CartPage также */}
               <div className={styles.imgCart}>
                 <img src={item.image} alt="изображение продукта" />
               </div>

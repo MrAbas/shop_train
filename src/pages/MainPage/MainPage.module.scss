@@ -137,6 +137,10 @@
 
       background: rgb(148 102 255);
       border-radius: 36px;
+
+      &:hover {
+        background-color: rgb(119 0 255);
+      }
     }
   }
 }
