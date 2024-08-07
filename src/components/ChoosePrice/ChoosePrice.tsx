@@ -17,7 +17,7 @@ const ChoosePrice = () => {
   const btnFilterName = useRef(null);
   const minRef = useRef(null);
   const maxRef = useRef(null);
-  const { addListener, removeListener } = useObserver(ref, setShowFilters);
+  const { addListener, removeListener } = useObserver(ref, setShowFilters, () => {});
   const [disableBtn, setDisableBtn] = useState(true);
 
   useEffect(() => {

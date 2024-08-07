@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Backdrop, Box, Fade, Modal, Typography } from "@mui/material";
 import { MuiDrawer } from "../MuiDrawer/index";
@@ -11,7 +11,6 @@ import IconProductPack from "../../shared/assets/icons/Header/IconProductPack";
 import IconProfile from "../../shared/assets/icons/Header/IconProfile";
 import { ModalCart } from "./ModalCart";
 import { trueModalCart } from "../../store/shopSlice";
-import useObserverModalCart from "../../shared/hooks/useObserverModalCart";
 import SmallClose from "../../shared/assets/icons/SmallClose";
 import styles from "./Header.module.scss";
 
@@ -27,29 +26,18 @@ const style = {
   p: "24px",
 };
 
+// TODO debounce поисковик
+
 export default function Header() {
   const dispatch = useAppDispatch();
   const modalCart = useAppSelector(modalCartSelector);
-  const ref = useRef();
   const [open, setOpen] = useState(false);
-
-  const { addListener, removeListener } = useObserverModalCart(ref, modalCart); // хук для открытия и закрытия ModalCart
-
-  useEffect(() => {
-    if (modalCart) {
-      addListener();
-    }
-
-    return () => {
-      removeListener();
-    };
-  }, [modalCart]);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
     <>
-      <header ref={ref} className={styles.header}>
+      <header className={styles.header}>
         <nav className={`${styles.nav} ${styles.container}`}>
           <MuiDrawer />
           <Link className={styles.logo} to="/" aria-label="Logo" />

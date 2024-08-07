@@ -31,7 +31,7 @@ const ChooseCategory = () => {
   const toggleFilter = () => {
     setShowFilters(!showFilters);
   };
-  const { addListener, removeListener } = useObserver(ref, setShowFilters); // хук для открытия и закрытия filterList
+  const { addListener, removeListener } = useObserver(ref, setShowFilters, () => {}); // хук для открытия и закрытия filterList
 
   // открывает и закрывает filterList
   useEffect(() => {

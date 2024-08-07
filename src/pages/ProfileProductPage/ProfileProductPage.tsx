@@ -3,9 +3,6 @@ import { useParams } from "react-router-dom";
 import classNames from "classnames/bind";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { toast } from "react-toastify";
-import { useAppSelector } from "../../store/hooks";
-import { modalCartSelector } from "../../store/selectors";
-import useObserverModalCart from "../../shared/hooks/useObserverModalCart";
 import IconFavoriteProduct from "../../shared/assets/icons/ProfileProduct/IconFavoriteProduct";
 import IconShareProduct from "../../shared/assets/icons/ProfileProduct/IconShareProduct";
 import IconRemove from "../../shared/assets/icons/IconRemove";
@@ -23,7 +20,6 @@ const cx = classNames.bind(styles);
 
 export default function ProfileProductPage() {
   const [expanded, setExpanded] = useState<string | false>(false);
-  const modalCart = useAppSelector(modalCartSelector);
   const { itemId } = useParams();
   const ref = useRef();
 
@@ -73,19 +69,7 @@ export default function ProfileProductPage() {
         setNumberOfProducts(1);
       }
     }
-  }, [chosenSize]);
-
-  const { addListener, removeListener } = useObserverModalCart(ref, modalCart); // хук для открытия и закрытия ModalCart
-
-  useEffect(() => {
-    if (modalCart) {
-      addListener();
-    }
-
-    return () => {
-      removeListener();
-    };
-  }, [modalCart]);
+  }, [chosenSize, localStorage.cart]);
 
   const handleClick = (currentSize) => {
     setChosenSize(currentSize);
@@ -112,17 +96,17 @@ export default function ProfileProductPage() {
     if (!localStorage.cart && chosenSize !== null) {
       localStorage.setItem("cart", JSON.stringify(productInfo));
     } else if (localStorage.cart && typeof chosenSize === "string") {
-      // TODO изменил, до этого, если не выбирал size, добавлял в LS с size: null. Было просто else
       let cart = JSON.parse(localStorage.getItem("cart"));
       const exists = cart.find((item) => item.itemId === itemId && item.size === chosenSize);
 
       if (exists) {
         cart = cart.map((item) => {
           if (item.itemId === itemId && item.size === chosenSize) {
-            item.count = numberOfProducts; // TODO здесь item.count = numberOfProducts + 1; если есть уже в LS нужно прибавлять 1.
+            item.count = numberOfProducts + 1;
           }
           return item;
         });
+        setNumberOfProducts(numberOfProducts + 1);
       } else {
         cart.push({
           category,
@@ -136,8 +120,6 @@ export default function ProfileProductPage() {
           size: chosenSize,
         });
       }
-
-      // TODO брать numberOfProducts с LS
 
       localStorage.cart = JSON.stringify(cart);
     } else {
@@ -267,9 +249,9 @@ export default function ProfileProductPage() {
                         className={styles.btnNumberOfProducts}
                         type="button"
                         aria-label="Кнопка, увеличивающая количество товара в корзине"
+                        onClick={increment}
                       >
-                        <IconAdd onClick={increment} />
-                        {/* TODO если нажать на край кнопки, то она не срабатывает */}
+                        <IconAdd />
                       </button>
                     </div>
                   ) : (

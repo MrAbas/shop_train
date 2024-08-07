@@ -26,7 +26,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ data }) => {
   const toggleFilter = () => {
     setShowFilters(!showFilters);
   };
-  const { addListener, removeListener } = useObserver(ref, setShowFilters); // хук открывает и закрывает filterList
+  const { addListener, removeListener } = useObserver(ref, setShowFilters, () => {}); // хук открывает и закрывает filterList
 
   // открывает и закрывает filterList
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { ChooseCategoryLink } from "../../components/ChooseCategoryLink";
 import { ChoosePrice } from "../../components/ChoosePrice";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
@@ -6,9 +6,8 @@ import { ListProducts } from "../../components/ListProducts";
 import { OptionValue } from "./OptionValue";
 import { addOptions } from "../../store/shopSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { modalCartSelector, optionsSelector } from "../../store/selectors";
+import { optionsSelector } from "../../store/selectors";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
-import useObserverModalCart from "../../shared/hooks/useObserverModalCart";
 import styles from "./ShopPage.module.scss";
 
 const categoryNames: { option: string; value: string; selected?: boolean }[] = [
@@ -55,8 +54,6 @@ const selectData: SelectData[] = [
 ];
 
 export default function ShopPage() {
-  const ref = useRef();
-  const modalCart = useAppSelector(modalCartSelector);
   const dispatch = useAppDispatch();
   const options = useAppSelector(optionsSelector);
 
@@ -75,18 +72,6 @@ export default function ShopPage() {
     });
     dispatch(addOptions(newData));
   }, []);
-
-  const { addListener, removeListener } = useObserverModalCart(ref, modalCart); // хук для открытия и закрытия ModalCart
-
-  useEffect(() => {
-    if (modalCart) {
-      addListener();
-    }
-
-    return () => {
-      removeListener();
-    };
-  }, [modalCart]);
 
   /*   useEffect(() => {
     const myHeaders = new Headers();
@@ -115,7 +100,7 @@ export default function ShopPage() {
   }, []); */
 
   return (
-    <main ref={ref}>
+    <main>
       <div className={styles.wrapper}>
         <Breadcrumbs />
         <section>

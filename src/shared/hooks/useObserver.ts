@@ -1,7 +1,9 @@
-export default function useObserver(ref, setShowFilters) {
+export default function useObserver(ref, setShowFilters, cb) {
   function observer(event: MouseEvent) {
     if (!ref.current.contains(event.target)) {
       setShowFilters(false);
+
+      cb();
     }
   }
   function addListener() {

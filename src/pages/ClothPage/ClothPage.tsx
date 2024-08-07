@@ -4,18 +4,16 @@ import { ChoosePrice } from "../../components/ChoosePrice";
 import { ListProducts } from "../../components/ListProducts";
 import { CustomSelect } from "../../shared/DefaultBtnSelect";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { categoriesSelector, modalCartSelector, optionsSelector } from "../../store/selectors";
+import { categoriesSelector, optionsSelector } from "../../store/selectors";
 import { OptionValue } from "../ShopPage/OptionValue";
 import { ChooseCategory } from "../../components/ChooseCategory";
 import { returnToDefault } from "../../store/shopSlice";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
-import useObserverModalCart from "../../shared/hooks/useObserverModalCart";
 import styles from "../ShopPage/ShopPage.module.scss";
 
 export default function ClothPage() {
   const dispatch = useAppDispatch();
   const ref = useRef();
-  const modalCart = useAppSelector(modalCartSelector);
   const options = useAppSelector(optionsSelector);
   const categories = useAppSelector(categoriesSelector);
   const { id } = useParams();
@@ -26,18 +24,6 @@ export default function ClothPage() {
     },
     [],
   );
-
-  const { addListener, removeListener } = useObserverModalCart(ref, modalCart); // хук для открытия и закрытия ModalCart
-
-  useEffect(() => {
-    if (modalCart) {
-      addListener();
-    }
-
-    return () => {
-      removeListener();
-    };
-  }, [modalCart]);
 
   return (
     <main ref={ref}>

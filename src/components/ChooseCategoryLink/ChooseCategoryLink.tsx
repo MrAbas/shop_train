@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }) => {
   const [showFilters, setShowFilters] = useState(false);
   const ref = useRef(null);
-  const { addListener, removeListener } = useObserver(ref, setShowFilters);
+  const { addListener, removeListener } = useObserver(ref, setShowFilters, () => {});
   const [classActive, setClassActive] = useState(false);
 
   useEffect(() => {

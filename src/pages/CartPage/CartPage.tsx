@@ -1,23 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import test from "./bomber.png";
 import IconRemove from "../../shared/assets/icons/IconRemove";
 import IconAdd from "../../shared/assets/icons/IconAdd";
 import WasteBasket from "../../shared/assets/icons/Header/WasteBasket";
-import useObserverModalCart from "../../shared/hooks/useObserverModalCart";
-import { useAppSelector } from "../../store/hooks";
-import { modalCartSelector } from "../../store/selectors";
 import styles from "./CartPage.module.scss";
 
 export default function CartPage() {
-  const modalCart = useAppSelector(modalCartSelector);
-  const ref = useRef();
   const [checked, setChecked] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const [localCart, setLocalCart] = useState([]);
-
-  const { addListener, removeListener } = useObserverModalCart(ref, modalCart); // хук для открытия и закрытия ModalCart
 
   useEffect(() => {
     if (localStorage.cart) {
@@ -25,16 +18,6 @@ export default function CartPage() {
       setTotalPrice(JSON.parse(localStorage.cart).reduce((acc, item) => acc + item.price, 0));
     }
   }, [localStorage.cart]);
-
-  useEffect(() => {
-    if (modalCart) {
-      addListener();
-    }
-
-    return () => {
-      removeListener();
-    };
-  }, [modalCart]);
 
   const toggleChecked = () => {
     setChecked(!checked);
@@ -47,7 +30,7 @@ export default function CartPage() {
   };
 
   return (
-    <main ref={ref}>
+    <main>
       <section className={styles.sectionCart}>
         <Breadcrumbs />
         <div className={styles.sectionContainer}>

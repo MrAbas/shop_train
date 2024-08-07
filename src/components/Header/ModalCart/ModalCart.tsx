@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames/bind";
-import { handleModalCart } from "../../../store/shopSlice";
-import { useAppDispatch } from "../../../store/hooks";
+import { modalCartSelector } from "../../../store/selectors";
+import { falseModalCart, handleModalCart } from "../../../store/shopSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import useObserver from "../../../shared/hooks/useObserver";
 import SmallClose from "../../../shared/assets/icons/SmallClose";
 import emptyCart from "../../../shared/assets/icons/Header/emptyCart.svg";
 import WasteBasket from "../../../shared/assets/icons/Header/WasteBasket";
@@ -19,6 +21,28 @@ export default function ModalCart() {
   const [localCart, setLocalCart] = useState([]);
   const [changeModalCart, setChangeModalCart] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const modalCart = useAppSelector(modalCartSelector);
+  const ref = useRef();
+
+  const { addListener, removeListener } = useObserver(
+    ref,
+    () => {},
+    () => {
+      dispatch(falseModalCart());
+    },
+  ); // хук для открытия и закрытия ModalCart
+
+  useEffect(() => {
+    console.log(ref);
+    if (modalCart) {
+      addListener();
+    }
+
+    return () => {
+      removeListener();
+    };
+  }, [modalCart]);
 
   useEffect(() => {
     if (localStorage.cart) {
@@ -49,17 +73,35 @@ export default function ModalCart() {
     setLocalCart(newCart);
   };
 
-  const addProduct = ({ numberOfProduct }) => numberOfProduct + 1; // TODO закрывается не смог протестить, обсудить
+  const addProduct = (id, size, name) => {
+    const updatedCart = localCart.map((item) => {
+      if (item.id === id && item.size === size && item.name === name) {
+        return { ...item, count: item.count + 1 };
+      }
+      return item;
+    });
+    setLocalCart(updatedCart);
+    localStorage.cart = JSON.stringify(updatedCart);
+  };
 
-  const removeProduct = ({ numberOfProduct }) => numberOfProduct - 1;
+  const removeProduct = (id, size, name) => {
+    const updatedCart = localCart.map((item) => {
+      if (item.id === id && item.size === size && item.name === name) {
+        return { ...item, count: item.count - 1 };
+      }
+      return item;
+    });
+    setLocalCart(updatedCart);
+    localStorage.cart = JSON.stringify(updatedCart);
+  };
 
-  const modalCart = cx({
+  const modalCartStyle = cx({
     modalCart: true,
     changeModalCart,
   });
 
   return (
-    <div className={modalCart} onMouseLeave={() => dispatch(handleModalCart())}>
+    <div ref={ref} className={modalCartStyle} onMouseLeave={() => dispatch(handleModalCart())}>
       <div className={styles.modalCartDecor} />
       <div className={styles.headerModal}>
         <h3 className={styles.title}>Корзина</h3>
@@ -77,13 +119,16 @@ export default function ModalCart() {
               </div>
               <div className={styles.productInformation}>
                 <div className={styles.containerTitleCart}>
-                  <span className={styles.titleContainer}>{`${item.name}, ${item.size}`}</span>
+                  <Link to={`/shop/${item.category}/${item.itemId}`} className={styles.titleContainer}>
+                    {`${item.name}, ${item.size}`}
+                  </Link>
                   <button
                     className={styles.btnRemoveProduct}
                     type="button"
                     aria-label="удаление продукта с корзины"
                     onClick={() => removeProductLS(item.name, item.size)}
                   >
+                    {/* TODO при нажатии закрывается модалка */}
                     <WasteBasket className={styles.btnRemoveProduct} />
                   </button>
                 </div>
@@ -92,13 +137,19 @@ export default function ModalCart() {
                     <button
                       type="button"
                       aria-label="уменьшение количества продукта"
-                      onClick={() => removeProduct(item.count)}
+                      onClick={() => removeProduct(item.id, item.size, item.name)}
+                      disabled={item.count === 1}
+                      className={item.count === 1 ? styles.btnDisabled : ""}
                     >
                       <IconRemove className={styles.colorIcon} />
                     </button>
                     <span className={styles.numberOfProducts}>{item.count}</span>
-                    <button type="button" aria-label="увеличение количества продукта">
-                      <IconAdd className={styles.colorIcon} onClick={() => addProduct(item.count)} />
+                    <button
+                      type="button"
+                      aria-label="увеличение количества продукта"
+                      onClick={() => addProduct(item.id, item.size, item.name)}
+                    >
+                      <IconAdd className={styles.colorIcon} />
                     </button>
                   </div>
                   <span className={styles.price}>{item.price}</span>

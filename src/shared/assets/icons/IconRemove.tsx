@@ -1,8 +1,8 @@
 export default function IconRemove(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width="12.000000"
-      height="1.500000"
+      width="12"
+      height="12"
       viewBox="0 0 12 1.5"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
