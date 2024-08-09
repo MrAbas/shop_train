@@ -43,12 +43,13 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
         aria-label="select a category"
       >
         <span>Категории</span>
+        {categoryNames.map((item) => item.selected && <span>Все категории</span>)}
       </button>
 
       <ul className={styles.filterList}>
         {showFilters &&
           categoryNames.map((item, index) => (
-            <li key={`${index + item.option}`} className={styles.listBtn}>
+            <li key={`${index + item.option}`}>
               <Link
                 to={`${item.value}`}
                 className={styles.listBtnItem}

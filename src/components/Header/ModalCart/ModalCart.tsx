@@ -27,14 +27,13 @@ export default function ModalCart() {
 
   const { addListener, removeListener } = useObserver(
     ref,
-    () => {},
+    () => {}, // TODO спросить для уточнения
     () => {
       dispatch(falseModalCart());
     },
   ); // хук для открытия и закрытия ModalCart
 
   useEffect(() => {
-    console.log(ref);
     if (modalCart) {
       addListener();
     }
@@ -70,7 +69,7 @@ export default function ModalCart() {
   const removeProductLS = (name, size) => {
     const newCart = JSON.parse(localStorage.cart).filter((item) => item.name !== name || item.size !== size);
     localStorage.cart = JSON.stringify(newCart);
-    setLocalCart(newCart);
+    setLocalCart(newCart); /* TODO при нажатии закрывается модалка */
   };
 
   const addProduct = (id, size, name) => {
@@ -112,7 +111,7 @@ export default function ModalCart() {
       <ul className={`${styles.containerCart} ${styles.scrollContainer}`}>
         {cartState ? (
           localCart.map((item) => (
-            <li key={`${item.id + item.size}`} className={styles.containerFilledCart}>
+            <li key={`${item.itemId + item.size}`} className={styles.containerFilledCart}>
               {/* TODO проверить key и в CartPage также */}
               <div className={styles.imgCart}>
                 <img src={item.image} alt="изображение продукта" />
@@ -128,7 +127,6 @@ export default function ModalCart() {
                     aria-label="удаление продукта с корзины"
                     onClick={() => removeProductLS(item.name, item.size)}
                   >
-                    {/* TODO при нажатии закрывается модалка */}
                     <WasteBasket className={styles.btnRemoveProduct} />
                   </button>
                 </div>

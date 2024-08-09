@@ -69,7 +69,7 @@ const ChooseCategory = () => {
       {showFilters && (
         <ul className={styles.filterList}>
           {options.map((item, i) => (
-            <li key={`${i + item.name}`} className={`${cx("listBtn", { backgroundBtnFilter: item.selected })}`}>
+            <li key={`${i + item.name}`} className={`${cx({ backgroundBtnFilter: item.selected })}`}>
               <button
                 className={`${styles.listBtnItem}`}
                 onClick={() => {

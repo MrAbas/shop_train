@@ -43,7 +43,7 @@ export default function CartPage() {
               <ul className={styles.productList}>
                 {localCart.length > 0
                   ? localCart.map((item) => (
-                      <li key={`${item.id + item.size}`} className={styles.productContainerCart}>
+                      <li key={`${item.itemId + item.size}`} className={styles.productContainerCart}>
                         <img className={styles.imgProduct} src={test} alt="" />
                         <span className={styles.itemCart}>{item.name}</span>
                         <span className={styles.itemCart}>{`Размер: ${item.size}`}</span>
