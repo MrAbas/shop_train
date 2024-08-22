@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
-import test from "./bomber.png";
 import IconRemove from "../../shared/assets/icons/IconRemove";
 import IconAdd from "../../shared/assets/icons/IconAdd";
 import WasteBasket from "../../shared/assets/icons/Header/WasteBasket";
@@ -44,7 +43,7 @@ export default function CartPage() {
                 {localCart.length > 0
                   ? localCart.map((item) => (
                       <li key={`${item.itemId + item.size}`} className={styles.productContainerCart}>
-                        <img className={styles.imgProduct} src={test} alt="" />
+                        <img className={styles.imgProduct} src={item.image} alt="" />
                         <span className={styles.itemCart}>{item.name}</span>
                         <span className={styles.itemCart}>{`Размер: ${item.size}`}</span>
                         <div className={styles.priceContainer}>
@@ -69,7 +68,7 @@ export default function CartPage() {
                           </button>
                         </div>
                         <div className={styles.containerBtnRemove}>
-                          <span className={styles.itemPrice}>2 300 ₽ </span>
+                          <span className={styles.itemPrice}>{`${item.price * item.count} ₽`} </span>
                           <button
                             className={styles.btnRemoveProduct}
                             type="button"

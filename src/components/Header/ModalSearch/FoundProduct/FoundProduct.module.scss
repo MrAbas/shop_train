@@ -1,0 +1,141 @@
+.scrollContainer {
+  overflow-y: scroll;
+  height: 400px;
+  padding-right: 10px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #9466ff;
+    border-radius: 3px;
+  }
+
+  .containerFilledCart {
+    cursor: default;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 96px;
+    margin-bottom: 12px;
+
+    .imgCart {
+      width: 100%;
+      max-width: 200px;
+      min-height: 200px;
+      margin-right: 12px;
+
+      background: rgb(42 50 63);
+    }
+
+    .productInformation {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      width: 100%;
+      max-width: 220px;
+      min-height: 145px;
+
+      .containerTitleCart {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        width: 100%;
+        max-width: 220px;
+        min-height: 52px;
+
+        .titleContainer {
+          width: 100%;
+
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          color: rgb(232 233 234);
+
+          transition: color 0.2s ease-in-out;
+
+          &:hover {
+            color: #9466ff;
+            transition: color 0.2s ease-in-out;
+          }
+        }
+
+        .btnRemoveProduct {
+          color: rgb(165 168 173);
+
+          &:hover {
+            color: #ff0c0c;
+          }
+        }
+      }
+
+      .containerPriceProduct {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        max-width: 220px;
+        min-height: 32px;
+
+        .btnChangePrice {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          width: 100%;
+          max-width: 106px;
+          min-height: 32px;
+          padding: 4px 6px;
+
+          background: rgb(29 37 51);
+          border-radius: 16px;
+
+          .btnDisabled {
+            pointer-events: none;
+            cursor: default;
+            opacity: 0.5;
+          }
+
+          button {
+            display: flex;
+            align-items: center;
+            width: 12px;
+            height: 24px;
+
+            .colorIcon {
+              color: rgb(255 255 255 / 40%);
+
+              &:hover {
+                color: #9466ff;
+                transition: color 0.2s ease-in-out;
+              }
+            }
+          }
+
+          .numberOfProducts {
+            user-select: none;
+
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            color: rgb(255 255 255 / 90%);
+          }
+        }
+
+        .price {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 24px;
+          color: rgb(232 233 234);
+        }
+      }
+    }
+  }
+}

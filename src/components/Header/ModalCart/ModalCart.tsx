@@ -27,7 +27,7 @@ export default function ModalCart() {
 
   const { addListener, removeListener } = useObserver(
     ref,
-    () => {}, // TODO спросить для уточнения
+    () => {},
     () => {
       dispatch(falseModalCart());
     },
@@ -46,7 +46,8 @@ export default function ModalCart() {
   useEffect(() => {
     if (localStorage.cart) {
       setLocalCart(JSON.parse(localStorage.cart));
-      setTotalPrice(JSON.parse(localStorage.cart).reduce((acc, item) => acc + item.price, 0));
+      const sumTotalProducts = JSON.parse(localStorage.cart).reduce((acc, item) => acc + item.price, 0);
+      setTotalPrice(sumTotalProducts);
 
       if (JSON.parse(localStorage.cart).length > 0) {
         setCartState(!cartState);
@@ -69,29 +70,29 @@ export default function ModalCart() {
   const removeProductLS = (name, size) => {
     const newCart = JSON.parse(localStorage.cart).filter((item) => item.name !== name || item.size !== size);
     localStorage.cart = JSON.stringify(newCart);
-    setLocalCart(newCart); /* TODO при нажатии закрывается модалка */
+    setLocalCart(newCart); /* TODO при нажатии закрывается модалка  */
   };
 
   const addProduct = (id, size, name) => {
-    const updatedCart = localCart.map((item) => {
+    const changeCart = localCart.map((item) => {
       if (item.id === id && item.size === size && item.name === name) {
         return { ...item, count: item.count + 1 };
       }
       return item;
     });
-    setLocalCart(updatedCart);
-    localStorage.cart = JSON.stringify(updatedCart);
+    setLocalCart(changeCart);
+    localStorage.cart = JSON.stringify(changeCart);
   };
 
   const removeProduct = (id, size, name) => {
-    const updatedCart = localCart.map((item) => {
+    const changeCart = localCart.map((item) => {
       if (item.id === id && item.size === size && item.name === name) {
         return { ...item, count: item.count - 1 };
       }
       return item;
     });
-    setLocalCart(updatedCart);
-    localStorage.cart = JSON.stringify(updatedCart);
+    setLocalCart(changeCart);
+    localStorage.cart = JSON.stringify(changeCart);
   };
 
   const modalCartStyle = cx({
@@ -112,7 +113,6 @@ export default function ModalCart() {
         {cartState ? (
           localCart.map((item) => (
             <li key={`${item.itemId + item.size}`} className={styles.containerFilledCart}>
-              {/* TODO проверить key и в CartPage также */}
               <div className={styles.imgCart}>
                 <img src={item.image} alt="изображение продукта" />
               </div>
@@ -125,7 +125,10 @@ export default function ModalCart() {
                     className={styles.btnRemoveProduct}
                     type="button"
                     aria-label="удаление продукта с корзины"
-                    onClick={() => removeProductLS(item.name, item.size)}
+                    onClick={(e) => {
+                      e.stopPropagation(); // TODO
+                      removeProductLS(item.name, item.size);
+                    }}
                   >
                     <WasteBasket className={styles.btnRemoveProduct} />
                   </button>
@@ -150,7 +153,7 @@ export default function ModalCart() {
                       <IconAdd className={styles.colorIcon} />
                     </button>
                   </div>
-                  <span className={styles.price}>{item.price}</span>
+                  <span className={styles.price}>{item.price * item.count}</span>
                 </div>
               </div>
             </li>
@@ -159,13 +162,15 @@ export default function ModalCart() {
           <img src={emptyCart} alt="" />
         )}
       </ul>
-      <div className={styles.orderPrice}>
-        <span className={styles.titleContainer}>Сумма заказа:</span>
-        <span className={styles.price}>{`${totalPrice} ₽`}</span>
+      <div className={styles.modalCartFooter}>
+        <div className={styles.orderPrice}>
+          <span className={styles.titleContainer}>Сумма заказа:</span>
+          <span className={styles.price}>{`${totalPrice} ₽`}</span>
+        </div>
+        <Link className={styles.linkModalCart} to="/#">
+          Оформление заказа
+        </Link>
       </div>
-      <Link className={styles.linkModalCart} to="/#">
-        Оформление заказа
-      </Link>
     </div>
   );
 }

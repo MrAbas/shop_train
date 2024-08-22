@@ -244,7 +244,6 @@ export default function ProfileProductPage() {
                         <IconRemove />
                       </button>
                       <span className={styles.numberOfProducts}>{numberOfProducts}</span>
-                      {/* TODO должен меняться, если через ModalCart удалять продукты */}
                       <button
                         className={styles.btnNumberOfProducts}
                         type="button"

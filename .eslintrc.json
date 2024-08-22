@@ -33,9 +33,10 @@
     }
   ],
   "rules": {
+    "react/jsx-one-expression-per-line": "off",
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-uses-react": ["off"],
-    "react/jsx-props-no-spreading": ["off"],
+    "react/jsx-props-no-spreading": ["warnings"],
     "react/no-unescaped-entities": ["off"],
     "@typescript-eslint/quotes": ["off", {}],
     "semi": "off",
@@ -56,6 +57,7 @@
     "no-unused-expressions": "off",
     "@typescript-eslint/no-unused-expressions": "off",
     "object-curly-newline": "off",
+    "no-confusing-arrow": "off",
     "jsx-a11y/label-has-associated-control": [
       2,
       {
@@ -66,8 +68,9 @@
       }
     ],
     "implicit-arrow-linebreak": "off",
-    "react/jsx-indent": "off",
-    "@typescript-eslint/indent": "off"
+    "react/jsx-indent": [2, { "indentMode": 4, "ignoreTernaryOperator": true }],
+    "react/jsx-props": [2, { "indentMode": 4, "ignoreTernaryOperator": true }],
+    "@typescript-eslint/indent": [2, { "indentMode": 4, "ignoreTernaryOperator": true }]
   },
   "settings": {
     "import/resolver": {
