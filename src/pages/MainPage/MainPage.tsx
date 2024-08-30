@@ -15,8 +15,8 @@ export default function MainPage() {
   return (
     <main>
       <section className={styles.banner}>
-        <span className={styles.advertising}>Реклама</span>
         <div className={styles.bannerContainer}>
+          <span className={styles.advertising}>Реклама</span>
           <div className={styles.subtitle}>
             <span className={styles.subOne}>Зима, мода</span>
             <br />

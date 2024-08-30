@@ -1,5 +1,4 @@
 .banner {
-  position: relative;
   min-height: 800px;
   padding: 6.25% 1% 12.1%;
   background:
@@ -9,8 +8,8 @@
 
   .advertising {
     position: absolute;
-    top: 24px;
-    right: 14%;
+    top: -112px;
+    right: 23px;
 
     display: flex;
     align-items: center;
@@ -31,6 +30,7 @@
   }
 
   .bannerContainer {
+    position: relative;
     max-width: 1535px;
     margin: 0 auto;
 
@@ -46,7 +46,6 @@
         min-height: 70px;
         padding: 0 22px;
 
-        font-family: "Rostelecom Basis Regular", sans-serif;
         font-size: 60px;
         font-weight: 700;
         line-height: 62px;
@@ -65,7 +64,6 @@
         min-height: 67px;
         padding: 0 22px;
 
-        font-family: "Rostelecom Basis Regular", sans-serif;
         font-size: 60px;
         font-weight: 700;
         line-height: 62px;
@@ -79,7 +77,7 @@
 
       .decorate {
         position: absolute;
-        left: 398px;
+        left: 355px;
 
         width: 100%;
         max-width: 44.98px;
