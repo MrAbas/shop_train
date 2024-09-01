@@ -7,7 +7,7 @@
   letter-spacing: 0%;
   src:
     local("Rostelecom"),
-    url("https://c.webfontfree.com/c.js?f=RostelecomBasis-Bold") format("woff2"),;
+    url("./shared/assets/fonts/RostelecomBasisBold/rostelecombasis-bold.woff2") format("woff2"),;
 }
 
 @font-face {
@@ -17,7 +17,7 @@
   color: rgb(232 233 234);
   src:
     local("Rostelecom"),
-    url("https://c.webfontfree.com/c.js?f=RostelecomBasis-Regular") format("woff2"),;
+    url("./shared/assets/fonts/RostelecomBasisRegular/rostelecombasis-light.woff2") format("woff2"),;
 }
 
 *,
