@@ -1,38 +1,41 @@
 .banner {
+  height: 800px;
   min-height: 800px;
-  padding: 6.25% 1% 12.1%;
+  padding-top: 104px;
+  padding-bottom: 200px;
+
   background:
     radial-gradient(305.81% 111.8% at 100% 0%, rgb(64 117 255), rgb(64 117 255 / 0%) 100%),
     radial-gradient(283.02% 111.89% at 27% 0%, rgb(22 217 166), rgb(22 217 166 / 0%) 100%),
     rgb(148 102 255);
 
-  .advertising {
-    position: absolute;
-    top: -112px;
-    right: 23px;
-
-    display: flex;
-    align-items: center;
-
-    width: 97px;
-    height: 28px;
-    padding: 2px 4px 2px 8px;
-
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    color: rgb(165 168 173);
-    text-align: left;
-    letter-spacing: 0;
-
-    background: url("../../shared/assets/icons/adDecor.svg") rgb(16 24 40 / 40%) no-repeat right;
-    border-radius: 30px;
-  }
-
   .bannerContainer {
     position: relative;
     max-width: 1535px;
     margin: 0 auto;
+
+    .advertising {
+      position: absolute;
+      top: -80px;
+      right: 24px;
+
+      display: flex;
+      align-items: center;
+
+      width: 97px;
+      height: 28px;
+      padding: 2px 4px 2px 8px;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      color: rgb(165 168 173);
+      text-align: left;
+      letter-spacing: 0;
+
+      background: url("../../shared/assets/icons/adDecor.svg") rgb(16 24 40 / 40%) no-repeat right;
+      border-radius: 30px;
+    }
 
     .subtitle {
       position: relative;

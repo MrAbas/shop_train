@@ -11,6 +11,34 @@ export default function MuiDrawer() {
     setOpen(newOpen);
   };
 
+  const accordionCloth = [
+    {
+      id: 1,
+      title: "Одежда",
+      // href: ,
+    },
+    {
+      id: 2,
+      title: "Аксессуары",
+      // href: ,
+    },
+    {
+      id: 3,
+      title: "Сувениры",
+      // href: ,
+    },
+    {
+      id: 4,
+      title: "Канцелярия",
+      // href: ,
+    },
+    {
+      id: 5,
+      title: "Весь каталог",
+      // href: ,
+    },
+  ];
+
   const DrawerList = (
     <div className={styles.wrapper}>
       <div className={styles.wrapperContent}>
@@ -44,8 +72,7 @@ export default function MuiDrawer() {
                 </ListItemButton>
               </ListItem>
             ))}
-
-            <AccordionMenu />
+            <AccordionMenu accordionData={accordionCloth} />
           </List>
           <Divider />
         </Box>

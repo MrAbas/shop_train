@@ -20,7 +20,7 @@
 .searchModalInput {
   width: 100%;
   height: 48px;
-  margin-bottom: 12px;
+  margin-bottom: 25px;
   padding-top: 18px;
   padding-left: 20px;
 
@@ -28,4 +28,25 @@
 
   background: hsl(0deg 0% 100% / 6%);
   border: none;
+}
+
+.labelInput {
+  .fakePlaceholder {
+    pointer-events: none;
+
+    position: relative;
+    bottom: 59px;
+    left: 20px;
+
+    font-size: 16px;
+    color: hsl(0deg 0% 100% / 40%);
+
+    transition: bottom 0.4s ease, font-size 0.4s ease, color 0.4s ease;
+  }
+
+  .focused {
+    bottom: 77px;
+    font-size: 12px;
+    color: #9466ff;
+  }
 }

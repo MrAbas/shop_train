@@ -20,6 +20,7 @@ const style = {
 export default function ModalSearch({ open, handleClose }) {
   const [inputValue, setInputValue] = useState("");
   const [fountItem, setFountItem] = useState([]);
+  const [isFocused, setIsFocused] = useState(false);
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -67,13 +68,20 @@ export default function ModalSearch({ open, handleClose }) {
                 <SmallClose className={styles.smallClose} />
               </button>
             </div>
-            <input
-              className={styles.searchModalInput}
-              type="text"
-              placeholder="Название товара, категория, тип..."
-              value={inputValue}
-              onChange={onInputChange}
-            />
+            <label className={styles.labelInput}>
+              <input
+                className={styles.searchModalInput}
+                type="text"
+                placeholder=""
+                value={inputValue}
+                onChange={onInputChange}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+              />
+              <span className={`${styles.fakePlaceholder} ${isFocused ? styles.focused : ""}`}>
+                Название товара, категория, тип...
+              </span>
+            </label>
             <FoundProduct fountItem={fountItem} />
           </Box>
         </Fade>
