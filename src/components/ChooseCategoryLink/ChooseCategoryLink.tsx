@@ -17,6 +17,7 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
   const [classActive, setClassActive] = useState(false);
   const [changeBtnTitle, setChangeBtnTitle] = useState(false);
   const [changeBtnInfo, setChangeBtnInfo] = useState(false);
+  const [categories, setCategories] = useState(categoryNames);
 
   useEffect(() => {
     if (showFilters) {
@@ -33,6 +34,19 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
     categoryIcon: true,
     innerBtnFilter: classActive,
   });
+
+  const handleCategoryClick = (index: number) => {
+    const updatedCategories = categories.map((category, idx) => ({
+      ...category,
+      selected: idx === index ? !category.selected : false,
+    }));
+
+    setCategories(updatedCategories);
+    const isActive = updatedCategories[index].selected;
+    setClassActive(isActive);
+    setChangeBtnTitle(isActive);
+    setChangeBtnInfo(isActive);
+  };
 
   return (
     <div ref={ref} className={styles.containerBtn}>
@@ -53,16 +67,7 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
           categoryNames.map((item, index) => (
             <li key={`${index + item.option}`}>
               {/* TODO проблема с key(клик на "Все категории") */}
-              <Link
-                to={`${item.value}`}
-                className={styles.listBtnItem}
-                onClick={() => {
-                  item.selected = !item.selected;
-                  setClassActive(item?.selected);
-                  setChangeBtnTitle(item?.selected);
-                  setChangeBtnInfo(item?.selected);
-                }}
-              >
+              <Link to={`${item.value}`} className={styles.listBtnItem} onClick={() => handleCategoryClick(index)}>
                 {item.option}
               </Link>
             </li>
