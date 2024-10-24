@@ -61,12 +61,10 @@ const ChooseCategoryLink: React.FC<ChooseCategoryLinkProps> = ({ categoryNames }
         <span className={cx({ changeBtnTitle })}>Категории</span>
         {categoryNames.map((item) => item.selected && <span className={cx({ changeBtnInfo })}>Все категории</span>)}
       </button>
-      {/* TODO когда кликаю на "Все категории", перехожу на одежду и обратно, ломается */}
       <ul className={styles.filterList}>
         {showFilters &&
           categoryNames.map((item, index) => (
             <li key={`${index + item.option}`}>
-              {/* TODO проблема с key(клик на "Все категории") */}
               <Link to={`${item.value}`} className={styles.listBtnItem} onClick={() => handleCategoryClick(index)}>
                 {item.option}
               </Link>
