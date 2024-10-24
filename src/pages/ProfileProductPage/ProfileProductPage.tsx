@@ -145,6 +145,8 @@ export default function ProfileProductPage() {
     });
   };
 
+  console.log(totalProduct);
+
   return (
     <main ref={ref}>
       <div className={styles.wrapper}>
@@ -261,8 +263,12 @@ export default function ProfileProductPage() {
                   )}
                   <button
                     onClick={() => {
-                      setLocalStorage();
-                      notify();
+                      if (chosenSize) {
+                        setLocalStorage();
+                        notify();
+                      } else {
+                        setOpenModalSizeTable(true);
+                      }
                     }}
                     className={styles.addToCart}
                     type="button"
