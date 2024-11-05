@@ -67,9 +67,10 @@
       }
     ],
     "implicit-arrow-linebreak": "off",
-    "react/jsx-indent": [2, { "indentMode": 4, "ignoreTernaryOperator": true }],
-    "react/jsx-props": [2, { "indentMode": 4, "ignoreTernaryOperator": true }],
-    "@typescript-eslint/indent": [2, { "indentMode": 4, "ignoreTernaryOperator": true }]
+    "react/jsx-indent": [2, 2],
+    "quotes": [2, "double", { "avoidEscape": true }],
+    "jsx-quotes": [2, "prefer-double"],
+    "@typescript-eslint/quotes": [2, "double", { "avoidEscape": true }]
   },
   "settings": {
     "import/resolver": {
