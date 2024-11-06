@@ -8,6 +8,7 @@ import { addOptions } from "../../store/shopSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { optionsSelector } from "../../store/selectors";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
+import { ILinks } from "../../shared/types/interfaces";
 import styles from "./ShopPage.module.scss";
 
 const categoryNames: { option: string; value: string; selected?: boolean }[] = [
@@ -51,6 +52,11 @@ const selectData: SelectData[] = [
     value: "sort",
     withIcon: true,
   },
+];
+
+const links: ILinks[] = [
+  { href: "/", title: "Главная" },
+  { href: "/shop", title: "Каталог" },
 ];
 
 export default function ShopPage() {
@@ -102,7 +108,7 @@ export default function ShopPage() {
   return (
     <main>
       <div className={styles.wrapper}>
-        <Breadcrumbs />
+        <Breadcrumbs links={links} activeTitle="Каталог" />
         <section>
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>Каталог</h1>

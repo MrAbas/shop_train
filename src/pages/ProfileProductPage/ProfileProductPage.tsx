@@ -13,6 +13,7 @@ import { translate } from "../../shared/utils/translate";
 import indexData from "../../components/ListProducts/indexData.json";
 import { ModalSizeTable } from "./ModalSizeTable";
 import { ModalShareProduct } from "./ModalShareProduct";
+import { ILinks } from "../../shared/types/interfaces";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import styles from "./ProfileProductPage.module.scss";
 
@@ -20,7 +21,7 @@ const cx = classNames.bind(styles);
 
 export default function ProfileProductPage() {
   const [expanded, setExpanded] = useState<string | false>(false);
-  const { itemId } = useParams();
+  const { itemId, id } = useParams();
   const ref = useRef();
 
   const [openModalSizeTable, setOpenModalSizeTable] = useState(false);
@@ -145,12 +146,17 @@ export default function ProfileProductPage() {
     });
   };
 
-  console.log(totalProduct);
-
+  const titleLink = filteredItem ? filteredItem.title : null;
+  const links: ILinks[] = [
+    { href: "/", title: "Главная" },
+    { href: "/shop", title: "Каталог" },
+    { href: `/shop/${id}`, title: "Одежда" },
+    { href: "#", title: `${titleLink}` },
+  ];
   return (
     <main ref={ref}>
       <div className={styles.wrapper}>
-        <Breadcrumbs />
+        <Breadcrumbs links={links} activeTitle={titleLink} />
         <section className={styles.container}>
           <div className={styles.profileContent}>
             <ul className={styles.productsList}>

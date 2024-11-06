@@ -1,60 +1,30 @@
-import { Link, useLocation, useParams } from "react-router-dom";
-import { useAppSelector } from "../../store/hooks";
-import { categoriesSelector } from "../../store/selectors";
-import { BreadcrumbsProfileProduct } from "./BreadcrumbsProfileProduct";
+import { Link } from "react-router-dom";
+import { ILinks } from "../../shared/types/interfaces";
 import styles from "./Breadcrumbs.module.scss";
 
-export default function Breadcrumbs() {
-  const categories = useAppSelector(categoriesSelector);
-  const { id, itemId } = useParams();
+interface BreadcrumbsProps {
+  links: ILinks[];
+  activeTitle?: string;
+}
 
-  const location = useLocation();
-  const currentUrl = location.pathname;
-
+export default function Breadcrumbs({ links, activeTitle }: BreadcrumbsProps) {
   return (
     <ul className={styles.links}>
-      <li>
-        <Link className={`${styles.styleLinks} ${styles.linksColor}`} to="/">
-          Главная
-        </Link>
-      </li>
-      {currentUrl === "/shop" && (
-        <li>
-          <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
-            Каталог
+      {links.map((link, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <li key={index}>
+          <Link
+            className={`${styles.styleLinks} ${link.title === activeTitle ? styles.currentLinks : styles.linksColor}`}
+            to={link.href}
+          >
+            {link.title}
           </Link>
         </li>
-      )}
-      {id && !itemId && (
-        <>
-          <li>
-            <Link className={`${styles.styleLinks} ${styles.linksColor}`} to="/shop">
-              Каталог
-            </Link>
-          </li>
-          <li>
-            <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
-              {categories[id]?.value}
-            </Link>
-          </li>
-        </>
-      )}
-      {itemId && <BreadcrumbsProfileProduct />}
-      {currentUrl === "/cart" && (
-        <li>
-          <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
-            Корзина
-          </Link>
-        </li>
-      )}
-
-      {currentUrl === "/favorites" && (
-        <li>
-          <Link className={`${styles.styleLinks} ${styles.currentLinks}`} to="#T">
-            Избранное
-          </Link>
-        </li>
-      )}
+      ))}
     </ul>
   );
 }
+
+Breadcrumbs.defaultProps = {
+  activeTitle: undefined,
+};

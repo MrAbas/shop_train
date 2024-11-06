@@ -1,12 +1,18 @@
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import bgEmptyHeart from "../../shared/assets/icons/FavoritesPage/bgEmptyHeart.png";
+import { ILinks } from "../../shared/types/interfaces";
 import styles from "./FavoritesPage.module.scss";
+
+const links: ILinks[] = [
+  { href: "/", title: "Главная" },
+  { href: "#", title: "Избранное" },
+];
 
 export default function FavoritesPage() {
   return (
     <main>
       <div className={styles.favoritesPageWrapper}>
-        <Breadcrumbs />
+        <Breadcrumbs links={links} activeTitle="Избранное" />
         <section>
           <div className={styles.container}>
             <div className={styles.emptyCart}>

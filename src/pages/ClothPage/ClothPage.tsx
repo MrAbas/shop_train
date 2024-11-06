@@ -8,8 +8,15 @@ import { categoriesSelector, optionsSelector } from "../../store/selectors";
 import { OptionValue } from "../ShopPage/OptionValue";
 import { ChooseCategory } from "../../components/ChooseCategory";
 import { returnToDefault } from "../../store/shopSlice";
+import { ILinks } from "../../shared/types/interfaces";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import styles from "../ShopPage/ShopPage.module.scss";
+
+const links: ILinks[] = [
+  { href: "/", title: "Главная" },
+  { href: "/shop", title: "Каталог" },
+  { href: "#", title: "Одежда" },
+];
 
 export default function ClothPage() {
   const dispatch = useAppDispatch();
@@ -23,12 +30,12 @@ export default function ClothPage() {
       dispatch(returnToDefault());
     },
     [],
-  );
+  ); // TODO исправить сохранение перенос
 
   return (
     <main ref={ref}>
       <div className={styles.wrapper}>
-        <Breadcrumbs />
+        <Breadcrumbs links={links} activeTitle="Одежда" />
         <section>
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>{categories[id]?.value}</h1>

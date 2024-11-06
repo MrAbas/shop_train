@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ILinks } from "../../shared/types/interfaces";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import IconRemove from "../../shared/assets/icons/IconRemove";
 import IconAdd from "../../shared/assets/icons/IconAdd";
 import WasteBasket from "../../shared/assets/icons/Header/WasteBasket";
 import styles from "./CartPage.module.scss";
+
+const links: ILinks[] = [
+  { href: "/", title: "Главная" },
+  { href: "#", title: "Корзина" },
+];
 
 export default function CartPage() {
   const [checked, setChecked] = useState(false);
@@ -31,7 +37,7 @@ export default function CartPage() {
   return (
     <main>
       <section className={styles.sectionCart}>
-        <Breadcrumbs />
+        <Breadcrumbs links={links} activeTitle="Корзина" />
         <div className={styles.sectionContainer}>
           <div className={styles.containerTitle}>
             <h1 className={styles.title}>Корзина</h1>
@@ -42,6 +48,7 @@ export default function CartPage() {
               <ul className={styles.productList}>
                 {localCart.length > 0
                   ? localCart.map((item) => (
+                      // eslint-disable-next-line react/jsx-indent
                       <li key={`${item.itemId + item.size}`} className={styles.productContainerCart}>
                         <img className={styles.imgProduct} src={item.image} alt="" />
                         <span className={styles.itemCart}>{item.name}</span>
